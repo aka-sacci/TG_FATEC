@@ -1,0 +1,28 @@
+.back-claro{
+    background-color: #bedfeb;
+
+}
+
+.navbar{
+    background-color: #4682B4;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+#container-corpoindex{
+    margin-top: 55px;
+}
+
+.buttoncad{
+    background-color: #4682B4;
+    color: white;
+    border-color: #4682B4;
+}
+
+.buttoncad:hover {
+    background-color: #bedfeb;
+    border-color: black;
+    color:black;
+    transition: all 0.5s ease-in;
+
+}
