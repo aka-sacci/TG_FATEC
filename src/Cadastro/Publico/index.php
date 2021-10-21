@@ -26,7 +26,8 @@ if (isset($_SESSION['login'])) {
             $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
         }
     } else {
-        header("location:../config/logout.php");
+        session_unset();
+        header("location:login.php");
     }
 } else {
     header('location:../../../index.php');
@@ -49,8 +50,11 @@ if (isset($_SESSION['login'])) {
           echo "<p>Logado como " . $_SESSION['login'] . ". <a href='../config/logout.php'>Logout</a></p>";
     if (isset($descStatus)) {
         echo $descStatus;
-    }else{
-        //echo menu
+    } else {
+        echo "<p>alterar dados</p>";
+        echo "<a href='../../Pedido/criarPedido.php'>Criar novo pedido</a>";
+        echo "<p>Meus pedidos</p>";
+        echo "<p>Consultar pedidos de outros órgãos públicos</p>";
     }
 
     ?>

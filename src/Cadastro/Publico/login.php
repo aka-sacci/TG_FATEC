@@ -54,7 +54,7 @@ if (isset($_SESSION['login'])) {
                     </label>
                     </div>
                     <div class="form-floating">
-                        <input name="typeCNPJ" type="hidden" value="PRI">
+                        <input name="typeCNPJ" type="hidden" value="PUB">
                             <?php
                             if (isset($_SESSION['statusLogin'])) {
                                 echo($_SESSION['statusLogin']);

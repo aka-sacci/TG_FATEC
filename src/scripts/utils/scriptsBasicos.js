@@ -27,6 +27,7 @@ function adicionarCategoria()
         newSelect.id = "selectCategorias" + counterCategorias;
         newSelect.name = "selectCategorias" + counterCategorias;
 
+
         var i = 0;
         while (catJson[i]) {
             var option = document.createElement("option");

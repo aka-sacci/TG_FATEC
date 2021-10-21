@@ -3,8 +3,8 @@
 require_once "../../../vendor/autoload.php";
 session_start();
 if (isset($_SESSION['login'])) {
-  $_SESSION['erroReportado'] = "Não é possível criar uma conta já estando logado!";
-  header("location:../config/erroReportado.php");
+    $_SESSION['erroReportado'] = "Não é possível criar uma conta já estando logado!";
+    header("location:../config/erroReportado.php");
 }
 ?>
 <!DOCTYPE html>
