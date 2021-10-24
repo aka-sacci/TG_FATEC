@@ -16,6 +16,7 @@ if (isset($_SESSION['login'])) {
     if (!$log) {
         header('location:../Cadastro/Publico/login.php');
     }
+    echo "<script>sessionStorage.setItem('counterItens', 1);</script>";
 } else {
     header('location:../Cadastro/Publico/login.php');
 }
@@ -29,11 +30,13 @@ if (isset($_SESSION['login'])) {
     <meta charset="utf-8">
     <title>LicitaTudo - Meu cadastro</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script type="text/javascript" src="../scripts/utils/itensActions.js"></script>
 </head>
 
     <body>
-    <p>Selecionar categoria</p>
+
+    <!--    início selecionar categoria -->
+    <p>Selecionar categoria: 
     <select>
         <?php
         $sql = "select * from categoria order by categoria";
@@ -44,8 +47,34 @@ if (isset($_SESSION['login'])) {
         }
         ?>
     </select>
-    <p>Adicionar itens</p>
-    <p>Modo do pedido</p>
+    </p>
+    <!--    fim selecionar categoria -->
+
+
+    <!--    início itens -->
+    <h3>Itens</h3>
+    <div class="divItens">
+
+    <p class="p1" id="p1">
+    <input type="text" placeholder="Item #1" maxlength="50" id="txtItem1" name="txtItem1" required>
+    <textarea placeholder="Descrição detalhada do item #1" maxlength="400" id="txtDesc1" name="txtDesc1" required ></textarea>
+    <input type="number" placeholder="Quantidade" id="txtQtde1" name="txtQtde1" value="1" required>
+    <select id="selectQtde1" name="selectQtde1">
+        <option value="un">Unidade</option>
+        <option value="mt">Metro</option>
+        <option value="lt">Litro</option>
+    </select>
+    </p>
+
+    </div>
+
+    <p><button onclick="adicionarItem()" type="button">Adicionar mais um item</button>
+        <button onclick="deletarItem()" type="button">Remover</button></p>
+    <br>
+    <!--    fim itens -->
+
+    <!--    início modo -->
+    <p>Modo do pedido:
     <select>
         <?php
         $sql = "select * from modo_pedido order by modo";
@@ -55,8 +84,13 @@ if (isset($_SESSION['login'])) {
             echo "<option value='$val'>$text</option>";
         }
         ?>
-    </select>
+    </select></p>
+    <!--    fim modo -->
+
+    <!--    início distância -->
     <p>Distância (KM)</p>
+    <!--    fim distância -->
+
     </body>
 
 

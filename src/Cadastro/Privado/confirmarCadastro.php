@@ -6,7 +6,6 @@ require_once '../../scripts/utils/converterPontuacaoCNPJ.php';
 require_once '../../scripts/utils/converterPontuacaoCEP.php';
 $connection  = require '../../scripts/connectionClass.php';
 $arrayCategoria = array();
-$x = "teste";
 $sql = "select * from categoria order by categoria ASC";
 foreach ($connection->query($sql) as $key => $value) {
     $thisCategoria = array("cod" => $value["cod"], "categoria" => $value["categoria"]);
