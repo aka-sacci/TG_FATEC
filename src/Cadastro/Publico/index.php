@@ -1,37 +1,20 @@
 <?php
 
 require_once "../../../vendor/autoload.php";
-session_start();
-if (isset($_SESSION['login'])) {
-    $email = $_SESSION['login'];
-    $senha = $_SESSION['pwd'];
-    $log = false;
+include_once "../../scripts/validaLogin.php";
+$cnpj = $_SESSION['cnpj'];
 
-    $connection  = require '../../scripts/connectionClass.php';
-    $sql = "select * from login_instituicao_publica where login = '" . $email . "' and senha = '" . $senha . "' limit 1";
-    foreach ($connection->query($sql) as $key => $value) {
-        $log = true;
-        $cnpj = $value['cnpj'];
-    }
-
-    if ($log) {
         $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
-        foreach ($connection->query($sql) as $key => $value) {
-            $statusConta = $value['status_cadastro'];
-        }
-        if ($statusConta == "1") {
-            $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
-        }
-        if ($statusConta == "2") {
-            $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
-        }
-    } else {
-        session_unset();
-        header("location:login.php");
-    }
-} else {
-    header('location:../../../index.php');
+foreach ($connection->query($sql) as $key => $value) {
+    $statusConta = $value['status_cadastro'];
 }
+if ($statusConta == "1") {
+    $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
+}
+if ($statusConta == "2") {
+    $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
+}
+
 
 ?>
 <!DOCTYPE html>

@@ -19,28 +19,47 @@ function adicionarCategoria()
     var counterCategorias  = sessionStorage.getItem('counterCategorias');
     if (counterCategorias < 5) {
         var categorias = sessionStorage.getItem('categorias');
-        document.getElementById("selectCategorias" + counterCategorias).disabled = true;
         var catJson = JSON.parse(categorias);
-        counterCategorias++;
-        var $wrapper = document.querySelector('.divSelects');
-        var newSelect = document.createElement('select');
-        newSelect.id = "selectCategorias" + counterCategorias;
-        newSelect.name = "selectCategorias" + counterCategorias;
 
-
-        var i = 0;
-        while (catJson[i]) {
-            var option = document.createElement("option");
-            option.value = catJson[i]['cod'];
-            option.text = catJson[i]['categoria'];
-            newSelect.appendChild(option);
-            i++;
+          //filtro de elementos
+          var elementos = document.getElementById("divSelects").getElementsByTagName("select");
+        for (var i = 0, max = elementos.length; i < max; i++) {
+            var busca = elementos[i].value;
+            var b = 0;
+            while (catJson[b]) {
+                if (busca == catJson[b]['cod']) {
+                    catJson.splice(b,1);
+                }
+                b++;
+            }
         }
 
-        $wrapper.insertBefore(newSelect, $wrapper.lastChild);
-        sessionStorage.setItem('counterCategorias', counterCategorias);
-    }
+        if (!(catJson[0] == null)) {
+        //desativa o select anterior
+            document.getElementById("selectCategorias" + counterCategorias).disabled = true;
+            counterCategorias++;
+        //seleciona o elemento que vai receber o novo select
+            var $wrapper = document.querySelector('.divSelects');
+        //cria o novo select
+            var newSelect = document.createElement('select');
+            newSelect.id = "selectCategorias" + counterCategorias;
+            newSelect.name = "selectCategorias" + counterCategorias;
 
+        //preenche o select com os dados filtrados
+            var i = 0;
+            while (catJson[i]) {
+                var option = document.createElement("option");
+                option.value = catJson[i]['cod'];
+                option.text = catJson[i]['categoria'];
+                newSelect.appendChild(option);
+                i++;
+            }
+
+        //insere no html
+            $wrapper.insertBefore(newSelect, $wrapper.lastChild);
+            sessionStorage.setItem('counterCategorias', counterCategorias);
+        }
+    }
 }
 
 function deleteCategoria()
