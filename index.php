@@ -19,7 +19,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
 
-    <body>
+    <body">
         <?php
             if(isset($_SESSION['login'])) {
             $login = $_SESSION['login'];
@@ -77,7 +77,7 @@
                 <div class="container-fluid py-3">
                     <h1 class="display-5 fw-bold col-md-8">Licitações é com o LicitaTudo</h1>
                     <p class="col-md-8">Facilite o processo de localização e registro de fornecedores, obtenção de orçamentos e cotações de qualidade com o portal LicitaTudo. Transações B2G de um jeito que você nunca viu e com a facilidade que só a gente pode te oferecer.</p>
-                    <button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>
+                    <!--<button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>-->
                 </div>
                 </div>
 

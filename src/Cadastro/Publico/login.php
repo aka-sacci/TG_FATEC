@@ -32,7 +32,7 @@ if (isset($_SESSION['login'])) {
     <body class="login">
         </br>
         <a class="home" href="../../../index.php">
-        <i class="fa fa-home"> Home</i>
+        <i class="fa fa-home"> Início</i>
         </a>
         <div class="text-center loginphp">
             <main class="form-signin">

@@ -8,15 +8,16 @@
 html,
 body {
   height: 100%;
+  background-color: #95dcf8be;
 }
 
 .back-claro{
-    background-color: #888f96d8;
-    opacity: 85%;
+    background-color: #ffffff;
+    opacity: 95%;
 }
 
 .navbar{
-    background-color: #4682B4;
+    background-color: #2d92e6;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -44,7 +45,7 @@ Componentes login.php
 */
 
 #btnSubmit{
-    background-color: #4682B4;
+    background-color: #2d92e6;
     border-color: #bedfeb;
     color:white;
     border-radius: 18px;
@@ -53,12 +54,12 @@ Componentes login.php
 .loginphp {
     align-items: center;
     padding-top: 40px;
-    padding-bottom: 40px;
-    background-color: #a4c5a7;
+    padding-bottom: 60px;
+    background-color: #95dcf8be;
 }
 
 .login{
-    background-color: #a4c5a7;
+    background-color: #95dcf8be;
 }
 
 .form-signin {
@@ -91,4 +92,12 @@ Componentes login.php
 .home{
     margin-left: 30px;
     color:black;
+}
+
+/*
+Componentes login.php
+*/
+.cadastrophp {
+    padding-top: 110px;
+    padding-bottom: 90px;
 }
