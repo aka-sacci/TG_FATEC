@@ -39,7 +39,7 @@ echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCatego
     <body>
         <h1>Abertura de novo pedido</h1>
 
-    <form action="criarPedidoAction.php" method="post">
+    <form action="criarPedidoAction.php" method="post" onsubmit="avancar()">
         <!--    início informações básicas do pedido -->
         <p>Título do pedido</p>
         <input type="text" placeholder="Título" maxlength="50" id="txtTituloPedido" name="txtTituloPedido" required>
@@ -101,7 +101,7 @@ echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCatego
     <p><input type="number" name="txtDistancia" placeholder="Distância (KM)" class="txtDistancia" hidden disabled required></p>
     <!--    fim distância -->
 
-    <button type="submit" onclick="avancar()" >Avançar</button>
+    <button type="submit" >Avançar</button>
     </form>
     </body>
 

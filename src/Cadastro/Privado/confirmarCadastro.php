@@ -30,7 +30,7 @@ echo "<script>sessionStorage.setItem('counterCategorias', 1);</script>";
 </head>
 
     <body>
-    <form action="../config/confirmarCadastroAction.php" method="post">
+    <form action="../config/confirmarCadastroAction.php" method="post" onsubmit="enableCategoria()">
    
       <p><b>Confirme os dados</b></p>
       <p><b>Informações Gerais</b></p>
@@ -67,7 +67,7 @@ echo "<script>sessionStorage.setItem('counterCategorias', 1);</script>";
         echo '<p><b>Email</b></p><input name="txtEmail" required value="' . $_SESSION['cadEmail'] . '">';
         ?>
 
-        <p><input type='submit' value="Prosseguir" onclick="enableCategoria()"/></p>
+        <p><input type='submit' value="Prosseguir"/></p>
         </form> 
     </body>
 
