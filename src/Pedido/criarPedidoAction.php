@@ -1,7 +1,11 @@
 <?php
 
+require_once "../../vendor/autoload.php";
+$curl = new Curl\Curl();
 include_once "../scripts/validaLogin.php";
 $connection  = require '../scripts/connectionClass.php';
+$useKey = require '../scripts/config.php';
+/*
 $distancia = null;
 //var_dump($_POST);
 if (isset($_POST['cbDistancia'])) {
@@ -39,3 +43,16 @@ for ($i = $qtdeItems; $i > 0; $i--) {
 
 $_SESSION['idPedido'] = $idPedido;
 header("location:pedidoConcluido.php");
+*/
+$url = "https://maps.googleapis.com/maps/api/distancematrix/json";
+$curl->get($url, array(
+    'origins' => 'Washington DC',
+    'destinations' => 'New York City',
+    'units' => 'kilometers',
+    'key' => $useKey
+));
+$dados = $curl->response;
+echo $dados;
+$curl->close();
+
+
