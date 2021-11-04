@@ -36,3 +36,6 @@ for ($i = $qtdeItems; $i > 0; $i--) {
     $prepare = $connection->prepare($sql);
     $prepare->execute();
 }
+
+$_SESSION['idPedido'] = $idPedido;
+header("location:pedidoConcluido.php");

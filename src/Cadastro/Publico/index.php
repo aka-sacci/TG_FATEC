@@ -35,8 +35,8 @@ if ($statusConta == "2") {
         echo $descStatus;
     } else {
         echo "<p>alterar dados</p>";
-        echo "<a href='../../Pedido/criarPedido.php'>Criar novo pedido</a>";
-        echo "<p>Meus pedidos</p>";
+        echo "<p><a href='../../Pedido/criarPedido.php'>Criar novo pedido</a></p>";
+        echo "<p><a href='../../Pedido/meusPedidos.php'>Meus pedidos</a></p>";
         echo "<p>Consultar pedidos de outros órgãos públicos</p>";
     }
 

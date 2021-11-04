@@ -14,6 +14,7 @@ if ($type == "PUB") {
         $_SESSION['login'] = $email;
         $_SESSION['pwd'] = $senha;
         $_SESSION['type'] = $type;
+        $_SESSION['cnpj'] = $value['cnpj'];
         header("location:../Publico");
     }
     $_SESSION['statusLogin'] = "Login ou senha incorretos!";
@@ -24,6 +25,7 @@ if ($type == "PUB") {
         $_SESSION['login'] = $email;
         $_SESSION['pwd'] = $senha;
         $_SESSION['type'] = $type;
+        $_SESSION['cnpj'] = $value['cnpj'];
         header("location:../Privado");
     }
     $_SESSION['statusLogin'] = "Login ou senha incorretos!";
