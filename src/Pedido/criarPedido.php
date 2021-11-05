@@ -20,8 +20,6 @@ foreach ($connection->query($sql) as $key => $value) {
     array_push($arrayModo, $thisModo);
 }
 
-echo "<script>sessionStorage.setItem('counterItens', 1);</script>";
-echo "<script>sessionStorage.setItem('counterCategorias', 1);</script>";
 echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCategoria) . "');</script>";
 
 ?>
@@ -36,7 +34,7 @@ echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCatego
     <script type="text/javascript" src="scripts/itensActions.js"></script>
 </head>
 
-    <body>
+    <body onload="loadCriarPedido()">
         <h1>Abertura de novo pedido</h1>
 
     <form action="criarPedidoAction.php" method="post" onsubmit="avancar()">
@@ -97,8 +95,8 @@ echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCatego
     <!--    fim modo -->
 
     <!--    início distância -->
-    <p>Limitar distância máxima das empresas? <input type="checkbox" onclick="enableDistancia()" name="cbDistancia"></p>
-    <p><input type="number" name="txtDistancia" placeholder="Distância (KM)" class="txtDistancia" hidden disabled required></p>
+    <p>Limitar distância máxima das empresas? <input type="checkbox" onclick="enableDistancia()" name="cbDistancia" class="cbDistancia"></p>
+    <p><input type="number" name="txtDistancia" placeholder="Distância (KM)" class="txtDistancia" required></p>
     <!--    fim distância -->
 
     <button type="submit" >Avançar</button>

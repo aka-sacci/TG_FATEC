@@ -1,8 +1,5 @@
--- se não houver limite de distância, não é necessário o uso da API do Google, nem à outras consultas feitas para o uso da mesma. Reorganizar o código para que isso seja feito.
-
--- mover "prepara e executa o SQL para selecionar os endereços dos órgãos públicos" para condicional de limitador de distância;
-
--- mover "prepara e executa o SQL para selecionar os endereços das empresas filtradas" para condicional de limitador de distância;
-
---tratar a possível consulta à API como um modificador do array $empresasNotificadas
-
+- começar módulo de alteração de dados do órgão público: Login, Senha, telefones, endereços novos
+- alterar banco? endereco principal? descricao de endereco? -> alteração no cadastro de órgão público -> indicar endereço principal, indicar que tais dados só podem ser alterados mudando no CNPJ
+- o endereco principal só pode ser alterado a partir da consulta CNPJ
+- Endereços novos podem ser adicionados normalmente
+- Alteração de dados como: endereço primário, razao social, nome da empresa, etc só podem ser alterados a partir de uma consulta cnpj

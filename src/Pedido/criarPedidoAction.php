@@ -9,34 +9,32 @@ $url = "https://maps.googleapis.com/maps/api/distancematrix/xml";
 $categoriasSelecionadas = array();
 $dadosEnderecosPrivados = array();
 $empresasNotificadas = array();
-/*
 $distancia = null;
+
 //var_dump($_POST);
 if (isset($_POST['cbDistancia'])) {
     $distancia = $_POST['txtDistancia'];
 }
-*/
-/*
+
 //insere o pedido
 $sql = 'INSERT INTO pedido (titulo, descricao, data_abertura, status, modo, cnpj, distancia) VALUES ("' . $_POST['txtTituloPedido'] . '", "' . $_POST['txtDescricaoPedido'] . '",
 now(), 1, "' . $_POST['selectModoPedido'] . '", "' . $_SESSION['cnpj'] . '", "' . $distancia . '");';
 $prepare = $connection->prepare($sql);
 $prepare->execute();
 $idPedido = $connection->lastInsertId();
-*/
+
 
 //insere as categorias
 $qtdeCategorias = $_POST["qtdeCategorias"];
 for ($i = $qtdeCategorias; $i > 0; $i--) {
     $thisCategoria = $_POST['selectCategorias' . $i];
     array_push($categoriasSelecionadas, $thisCategoria);
-    //$sql = 'INSERT INTO categoria_pedido (pedido, categoria) VALUES (' . $idPedido . ', "' . $thisCategoria . '");';
-    //$prepare = $connection->prepare($sql);
-    //$prepare->execute();
+    $sql = 'INSERT INTO categoria_pedido (pedido, categoria) VALUES (' . $idPedido . ', "' . $thisCategoria . '");';
+    $prepare = $connection->prepare($sql);
+    $prepare->execute();
 }
 
 //insere os itens
-/*
 $qtdeItems = $_POST["qtdeItems"];
 for ($i = $qtdeItems; $i > 0; $i--) {
     $thisItemTitulo = $_POST['txtItem' . $i];
@@ -49,13 +47,8 @@ for ($i = $qtdeItems; $i > 0; $i--) {
     $prepare->execute();
 }
 
-$_SESSION['idPedido'] = $idPedido;
-header("location:pedidoConcluido.php");
-*/
 
-//prepara e executa o SQL para selecionar os endereços dos órgãos públicos
-$sql = "select * from endereco_instituicao_publica where cnpj='" . $_SESSION['cnpj'] . "'";
-$dadosEnderecosPublicos = $connection->query($sql);
+
 
 //prepara e executa o  SQL para filtrar as empresas
 $baseSQL = "SELECT cnpj FROM categoria_empresa_privada WHERE cnpj!=NULL ";
@@ -67,21 +60,29 @@ $cnpjEmpresasFiltradas = $connection->query($baseSQL);
 //coloca as empresas filtradas dentro do array empresasNotificadas, pois estas serão notificadas (caso não haja alterador de distância)
 foreach ($cnpjEmpresasFiltradas as $key => $empresa) {
     array_push($empresasNotificadas, $empresa["cnpj"]);
+    
 }
 
+
+//limitador de distância ativado
+if (isset($_POST['cbDistancia'])) {
+    array_splice($empresasNotificadas, 0);
+//prepara e executa o SQL para selecionar os endereços dos órgãos públicos
+$sql = "select * from endereco_instituicao_publica where cnpj='" . $_SESSION['cnpj'] . "'";
+$dadosEnderecosPublicos = $connection->query($sql);
+$cnpjEmpresasFiltradasEnderecos = $connection->query($baseSQL);
 //prepara e executa o SQL para selecionar os endereços das empresas filtradas
-foreach ($cnpjEmpresasFiltradas as $key => $empresa) {
+foreach ($cnpjEmpresasFiltradasEnderecos as $key => $empresa) {
     $sql = "select * from endereco_empresa_privada where cnpj='" . $empresa['cnpj'] . "'";
     $thisEnderecoPrivado = $connection->query($sql);
     array_push($dadosEnderecosPrivados, $thisEnderecoPrivado);
 }
 
-
 //consulta à API
 foreach ($dadosEnderecosPublicos as $key => $endPub) {
-
+ 
     foreach ($dadosEnderecosPrivados as $endPri) {
-        
+
         foreach ($endPri as $query => $regPri){
 
             $curl->get($url, array(
@@ -95,19 +96,38 @@ foreach ($dadosEnderecosPublicos as $key => $endPub) {
             $distanciaEndPriv = $responseAPIXML -> row -> element -> distance -> value;
             $distanciaEndPriv = $distanciaEndPriv/1000;
 
-            var_dump($responseAPIXML);
-            echo "<br>";
-            echo "Distância: " . $distanciaEndPriv . " km";
-            echo "<br><br>";
-
+            if($distanciaEndPriv <= $distancia){
+                array_push($empresasNotificadas, $regPri["cnpj"]);
+            }
+            
         }
        
     }
 
-    
+}
+$empresasNotificadas = array_unique($empresasNotificadas);
+$curl->close();
+
 }
 
-$curl->close();
+//var_dump($empresasNotificadas);
+//notifica as empresas
+foreach($empresasNotificadas as $key => $thisEmpresaNotificada){
+    $sql = 'INSERT INTO notificacao_pedido (pedido, empresa, status) VALUES (' . $idPedido . ', "' . $thisEmpresaNotificada . '", 1);';
+    $prepare = $connection->prepare($sql);
+    $prepare->execute();
+
+}
+
+$_SESSION['idPedido'] = $idPedido;
+header("location:pedidoConcluido.php");
+
+
+
+
+
+
+
 
 
 

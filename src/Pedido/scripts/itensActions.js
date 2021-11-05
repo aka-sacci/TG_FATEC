@@ -1,3 +1,10 @@
+function loadCriarPedido(){
+    sessionStorage.setItem('counterItens', 1);
+    sessionStorage.setItem('counterCategorias', 1);
+    enableDistancia();
+}
+
+
 function adicionarItem()
 {
     var counterItens  = sessionStorage.getItem('counterItens');
@@ -120,14 +127,16 @@ function avancar()
 function enableDistancia()
 {
 
-    var txtDistanciaIsHidden = document.querySelector(".txtDistancia").hidden;
-    if (txtDistanciaIsHidden) {
+    var cbDistanciaIsEnable = document.querySelector(".cbDistancia").checked;
+    if (cbDistanciaIsEnable) {
         document.querySelector(".txtDistancia").hidden = false;
         document.querySelector(".txtDistancia").disabled = false;
     } else {
         document.querySelector(".txtDistancia").hidden = true;
         document.querySelector(".txtDistancia").disabled = true;
     }
+    
+    
 
 }
 
