@@ -60,7 +60,7 @@ if (isset($_SESSION['login'])) {
                             ?>
                     </div></br>
                     <p><input type="submit" class="w-100 btn btn-lg btn-primary" value="Prosseguir" id="btnSubmit"/></p>
-                    <p class="mt-5 mb-3 text-muted">&copy;Licitatudo  2020 – 2021</p>
+                    <p class="mt-5 mb-3 text-muted">&copy; Licitatudo  2020 – 2021</p>
                 </form> 
             </main> 
         </div>   

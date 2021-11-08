@@ -13,39 +13,33 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!-- Lista de Estilos CSS -->
-        <link rel="stylesheet" href="src\scripts\utils\style.css">
+        <link rel="stylesheet" href="src/scripts/utils/style.css">
+        <!-- Lista de icones -->
+        <link  rel="stylesheet" href="src/scripts/utils/fontawesome/css/all.css">
+		<!-- skin -->
+		<link rel="stylesheet" href="src/scripts/utils/default.css">
         <!-- jQuery e Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
 
-    <body">
+    <body>
         <?php
             if(isset($_SESSION['login'])) {
             $login = $_SESSION['login'];
             }
         ?>    
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <!-- Barra de navegação -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container">
             <a class="navbar-brand" href="index.php" id="nav-img">
-                <img src="src/Imagens/Logo-Licita.png" alt="" width="30" height="30" class="d-inline-block align-text-center">
-                    LicitaTudo            
+                <img src="src/Imagens/Logo-Licita.png" alt="" width="30" height="30" class="d-inline-block align-text-center">LicitaTudo            
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto"><!-- nav-item active -->
-                <li class="nav-item">
-                    <a class="nav-link"><!-- Logado como -->
-                        <?php
-                        if(isset($login)){
-                            echo $login;
-                        }
-                        ?>
-                    </a>
-                </li>
+                <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
                 <li class="nav-item dropdown"><!-- dropdown Login -->
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
                     <div class="dropdown-menu">
@@ -66,24 +60,84 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contato</a>
                 </li>
+                <li class="nav-item navbar-nav ml-auto"><!-- adicionei isso: navbar-nav ml-aut -->
+                    <a class="nav-link"><!-- Logado como -->
+                        <?php
+                        if(isset($login)){
+                            echo $login;
+                        }
+                        ?>
+                    </a>
+                </li>
                 </ul>
             </div>
             </div>
         </nav>  
-          
-            <!-- Container Corpo do Index -->
-            <div class="container py-4" id="container-corpoindex">
-                <div class="p-5 mb-4 back-claro">
-                <div class="container-fluid py-3">
-                    <h1 class="display-5 fw-bold col-md-8">Licitações é com o LicitaTudo</h1>
-                    <p class="col-md-8">Facilite o processo de localização e registro de fornecedores, obtenção de orçamentos e cotações de qualidade com o portal LicitaTudo. Transações B2G de um jeito que você nunca viu e com a facilidade que só a gente pode te oferecer.</p>
-                    <!--<button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>-->
-                </div>
-                </div>
 
-                <div class="row align-items-md-stretch">
+        <!-- Container Corpo do Index -->
+        <div class="container py-4" id="container-corpoindex">
+            <div class="container marketing">
+                <!-- START THE FEATURETTES -->
+                <div class="row featurette back-claro">
+                    <div class="col-md-8 ">
+                        <h2 class="featurette-heading">Licitações é com o <span class="text-primary">LicitaTudo.</span></h2>
+                        <p class="pprincipal">Facilite o processo de localização e registro de fornecedores, obtenção de orçamentos e cotações de qualidade com o portal LicitaTudo. Transações B2G de um jeito que você nunca viu e com a facilidade que só a gente pode te oferecer.</p>
+                        <button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>
+                    </div>
+                    <div class="col-md-4 img">
+                        <img src="src/Imagens/holding-money.PNG" alt="abacate" width=250 height=250>
+                    </div>
+                </div></br>
+            </div> 
+            <hr class="featurette-divider">
+
+        <!-- Nossos diferenciais -->
+		<div class="container"> 
+            <div class="row mar-bot5">
+                <div class="col-md-offset-3 col-md-12">						
+                    <div class="centro">					
+                        <h2>Nossos diferenciais</h2>
+                        <p class="pprincipal">Neque porro quisquam est, qui dolorem ipsum quia dolor.</p>						
+                    </div>						
+                </div>
+            </div></br>
+
+			<div class="row mar-bot40">
+				<div class="col-lg-4" >
+					<div class="align-center service-col">					
+                        <div class="service-icon centro">
+                            <figure><i class="fa fa-chart-line"></i></figure>
+                        </div>
+                            <h2>Facilidade</h2>
+                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>		
+					</div>
+				</div>
+					
+				<div class="col-lg-4" >
+                    <div class="align-center service-col">					
+                        <div class="service-icon centro">
+                            <figure><i class="fa fa-business-time"></i></figure>
+                        </div>
+                            <h2>Agilidade</h2>
+                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
+                    </div>
+                </div>	
+
+                <div class="col-lg-4" >
+                    <div class="align-center service-col">					
+                        <div class="service-icon centro">
+                            <figure><i class="fa fa-search-location"></i></figure>
+                        </div>
+                            <h2>Eficiência</h2>
+                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
+                    </div>
+                </div>			
+            </div>
+        </div>	
+        <hr class="featurette-divider">
+            <div class="row align-items-md-stretch">
                 <div class="col-md-6">
-                    <div class="h-90 p-5 text-white bg-dark">
+                    <div class="back-medio h-90 p-5 text-white">
                     <h2>Para você Fornecedor</h2>
                     <p>Faça como muitas outras empresas e simplifique a forma de oferecer orçamentos produtos e serviços para órgãos públicos, além de ficar por dentro das licitações em aberto.</p>
                     <a class="btn btn-outline-light" type="button" href="src/Cadastro/Privado/novoCadastro.php">Cadastrar agora</a>
@@ -96,7 +150,13 @@
                     <a class="btn btn-outline-secondary" type="button" href="src/Cadastro/Publico/novoCadastro.php">Cadastrar agora</a>
                     </div>
                 </div>
-                </div>
             </div>
+            <hr class="featurette-divider">
+
+            <!-- footer da página -->
+            <div class="container center col-md-3">
+             <p class="text-muted">&copy; Licitatudo  2020 – 2021</p>
+            </div>
+        </div>       
     </body>
 </html>
