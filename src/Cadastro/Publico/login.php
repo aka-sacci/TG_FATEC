@@ -6,11 +6,12 @@ if (isset($_SESSION['login'])) {
         header("location:index.php");
     } else {
         $_SESSION['erroReportado'] = "Não é possível logar numa conta pública estando logado em uma conta de empresa privada!";
+        echo "<p>ERRO: " . $_SESSION['erroReportado'] . "</p>";
         header("location:../config/erroReportado.php");
     }
 }
-
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>

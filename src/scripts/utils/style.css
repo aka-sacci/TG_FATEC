@@ -12,7 +12,7 @@ Componentes index.php
     }
 
     .back-medio{
-    background-color: #363636ee;
+    background-color: #141414ee;
     }
 
     .navbar{
@@ -48,6 +48,19 @@ Componentes index.php
     align-items: center;
     }
 
+    .logado{
+    margin-right: 18px;
+    font-size: 20px;
+    margin-top: 10px;
+    color: #363636ee;
+    }
+
+    .footer{
+    position: fixed;
+    bottom: 0;
+    height: 4rem;
+    right: 32%;
+    }
 /*
 Componentes login.php
 -------------------------------------------------- */

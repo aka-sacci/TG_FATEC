@@ -33,7 +33,7 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container">
             <a class="navbar-brand" href="index.php" id="nav-img">
-                <img src="src/Imagens/Logo-Licita.png" alt="" width="30" height="30" class="d-inline-block align-text-center">LicitaTudo            
+                <img src="src/Imagens/Logo-Licita.png" alt="" width="30" height="30" class="d-inline-block align-text-center"> LicitaTudo            
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -59,15 +59,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contato</a>
-                </li>
-                <li class="nav-item navbar-nav ml-auto"><!-- adicionei isso: navbar-nav ml-aut -->
-                    <a class="nav-link"><!-- Logado como -->
-                        <?php
-                        if(isset($login)){
-                            echo $login;
-                        }
-                        ?>
-                    </a>
                 </li>
                 </ul>
             </div>
@@ -96,8 +87,8 @@
             <div class="row mar-bot5">
                 <div class="col-md-offset-3 col-md-12">						
                     <div class="centro">					
-                        <h2>Nossos diferenciais</h2>
-                        <p class="pprincipal">Neque porro quisquam est, qui dolorem ipsum quia dolor.</p>						
+                        <h2>Nossos serviços</h2>
+                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>						
                     </div>						
                 </div>
             </div></br>
@@ -109,7 +100,7 @@
                             <figure><i class="fa fa-chart-line"></i></figure>
                         </div>
                             <h2>Facilidade</h2>
-                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>		
+                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>		
 					</div>
 				</div>
 					
@@ -119,7 +110,7 @@
                             <figure><i class="fa fa-business-time"></i></figure>
                         </div>
                             <h2>Agilidade</h2>
-                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
+                            <p>Otimize seu tempo e reduza o período gasto no processo de coleta de orçamentos para Licitações.</p>
                     </div>
                 </div>	
 
@@ -129,7 +120,7 @@
                             <figure><i class="fa fa-search-location"></i></figure>
                         </div>
                             <h2>Eficiência</h2>
-                            <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum.</p>
+                            <p>Disponha de ferramentas como o delimitador de distância para definir uma área de atuação.</p>
                     </div>
                 </div>			
             </div>
