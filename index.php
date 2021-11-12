@@ -68,7 +68,6 @@
         <!-- Container Corpo do Index -->
         <div class="container py-4" id="container-corpoindex">
             <div class="container marketing">
-                <!-- START THE FEATURETTES -->
                 <div class="row featurette back-claro">
                     <div class="col-md-8 ">
                         <h2 class="featurette-heading">Licitações é com o <span class="text-primary">LicitaTudo.</span></h2>
