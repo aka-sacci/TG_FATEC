@@ -1,5 +1,1 @@
-- começar módulo de alteração de dados do órgão público: Login, Senha, telefones, endereços novos
-- alterar banco? endereco principal? descricao de endereco? -> alteração no cadastro de órgão público -> indicar endereço principal, indicar que tais dados só podem ser alterados mudando no CNPJ
-- o endereco principal só pode ser alterado a partir da consulta CNPJ
-- Endereços novos podem ser adicionados normalmente
-- Alteração de dados como: endereço primário, razao social, nome da empresa, etc só podem ser alterados a partir de uma consulta cnpj
+- Alterar lógica dos índex.php (publico, privado e principals)

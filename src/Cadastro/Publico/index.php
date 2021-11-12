@@ -105,7 +105,7 @@
                         if (isset($descStatus)) {
                             echo $descStatus;
                         } else {
-                            echo "<p>alterar dados</p>";
+                            echo "<p><a href='Alteracoes'>Ver meus dados</a></p>";
                             echo "<p><a href='../../Pedido/criarPedido.php'>Criar novo pedido</a></p>";
                             echo "<p><a href='../../Pedido/meusPedidos.php'>Meus pedidos</a></p>";
                             echo "<p>Consultar pedidos de outros órgãos públicos</p>";
