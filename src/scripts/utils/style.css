@@ -117,7 +117,7 @@ Componentes Cadastro.php
     padding-top: 110px;
     padding-bottom: 90px;
     }
-    
+
 /* Marketing Conteudo
 -------------------------------------------------- */
     .img{
@@ -137,7 +137,7 @@ Componentes Cadastro.php
     }
 
     .featurette-divider {
-    margin: 5rem 0; 
+    margin: 5rem 0;
     }
 
     .featurette-heading {
@@ -152,7 +152,7 @@ Componentes Cadastro.php
 
     .featurette-heading {
     margin-top: 7rem;
-    }   
+    }
 
 /*
 Componentes service
@@ -193,7 +193,7 @@ Componentes service
     -moz-animation: serviceicon 0.6s ease-in-out;
     animation: serviceicon 0.6s ease-in-out;
     }
-    
+
     .service-col:hover {
     background-color: rgba(102, 143, 194, 0.63);
     -webkit-transition: all 0.2s ease-out;

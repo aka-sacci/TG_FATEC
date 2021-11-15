@@ -1,6 +1,18 @@
 <?php
-    require_once "vendor/autoload.php";
+
+use function PHPSTORM_META\type;
+
+require_once "vendor/autoload.php";
     session_start();
+    $connection  = require 'src/scripts/connectionClass.php';
+
+    if (isset($_SESSION['login'])){
+        $type = $_SESSION['type'];
+        if($type == "PUB") header("location: src/Cadastro/Publico");
+        if($type == "PRI") header("location: src/Cadastro/Privado");
+        
+    }
+
 ?>
 
 <!DOCTYPE html>

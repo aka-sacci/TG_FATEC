@@ -2,6 +2,7 @@
 
 require_once "../../vendor/autoload.php";
 include_once "../scripts/validaLogin.php";
+validarLogin("PUB");
 $connection  = require '../scripts/connectionClass.php';
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 $cnpj = $_SESSION["cnpj"];

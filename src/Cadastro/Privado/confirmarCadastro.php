@@ -6,11 +6,11 @@
     $connection  = require '../../scripts/connectionClass.php';
     $arrayCategoria = array();
     $sql = "select * from categoria order by categoria ASC";
-    foreach ($connection->query($sql) as $key => $value) {
-        $thisCategoria = array("cod" => $value["cod"], "categoria" => $value["categoria"]);
-        array_push($arrayCategoria, $thisCategoria);
-        //echo "<script>sessionStorage.setItem('" . $value["cod"] . "', '" . $value["categoria"] . "');</script>";
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $thisCategoria = array("cod" => $value["cod"], "categoria" => $value["categoria"]);
+    array_push($arrayCategoria, $thisCategoria);
+    //echo "<script>sessionStorage.setItem('" . $value["cod"] . "', '" . $value["categoria"] . "');</script>";
+}
 
     //var_dump($arrayCategorias);
     echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCategoria) . "');</script>";
@@ -41,9 +41,9 @@
         <div id="divSelects" class="divSelects">
         <select name="selectCategorias1" id="selectCategorias1">
     <?php
-        foreach ($arrayCategoria as $key => $registro) {
-            echo "<option value='" . $registro['cod'] . "'>" . $registro['categoria']  . "</option> ";
-        }
+    foreach ($arrayCategoria as $key => $registro) {
+        echo "<option value='" . $registro['cod'] . "'>" . $registro['categoria']  . "</option> ";
+    }
     ?>
         </select>
         </div>

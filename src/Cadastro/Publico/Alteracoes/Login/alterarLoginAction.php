@@ -1,6 +1,7 @@
 <?php
 
 include_once "../../../../scripts/validaLogin.php";
+validarLogin("PUB");
 $connection  = require '../../../../scripts/connectionClass.php';
 $novoEmail = $_POST['txtEmail'];
 $emailAntigo = $_SESSION['login'];

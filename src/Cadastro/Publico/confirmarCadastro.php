@@ -73,13 +73,13 @@
             echo '<p><b>Ente Federativo Responsável (EFR): </b>' . $_SESSION['cadEFR'] . '</p>';
             echo '<p><b>Natureza Jurídica: </b>' . $_SESSION['cadNatureza'] . '</p>';
             echo '<p><b>Endereço: </b>' . $_SESSION['cadLog'] . ', ' . $_SESSION['cadNumero'] . ' - ' . $_SESSION['cadBairro'] . ' (' . converterCEP($_SESSION['cadCEP']) . ') - ' . $_SESSION['cadCidade'] . ', ' . $_SESSION['cadUF'] . '</p>';
-          ?>
+            ?>
       <hr>
       <p><b>Informações para contato</b></p>
           <?php
               echo '<p><b>Telefone(s): </b><input type="text" name="txtTelefone" required value="' . $_SESSION['cadTelefone'] . '"></p>';
               echo '<p><b>Email: </b><input type="email" name="txtEmail" required value="' . $_SESSION['cadEmail'] . '"></p>';
-          ?>
+            ?>
       </br>
       <p><input class="btn btn-md btn-primary" type='submit' value="Prosseguir"/></p>
       </form> 

@@ -1,6 +1,7 @@
 <?php
 
 include_once "../../../../scripts/validaLogin.php";
+validarLogin("PUB");
 $novaSenha = $_POST['txtSenha'];
 $senhaAntiga = $_SESSION['pwd'];
 if ($novaSenha == $senhaAntiga) {

@@ -2,6 +2,8 @@
 
 require_once "../../../../../vendor/autoload.php";
 include_once "../../../../scripts/validaLogin.php";
+validarLogin("PUB");
+$connection  = require "../../../../scripts/connectionClass.php";
 use AkaSacci\GetcnpjPhp\Search;
 $mySearch = new Search();
 //pega os dados da receita federal referentes ao CNPJ informado

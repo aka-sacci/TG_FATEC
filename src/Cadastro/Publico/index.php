@@ -1,18 +1,21 @@
 <?php
     require_once "../../../vendor/autoload.php";
     include_once "../../scripts/validaLogin.php";
+    $connection  = require "../../scripts/connectionClass.php";
+    validarLogin("PUB");
+    $login = $_SESSION['login'];
     $cnpj = $_SESSION['cnpj'];
 
             $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
-    foreach ($connection->query($sql) as $key => $value) {
-        $statusConta = $value['status_cadastro'];
-    }
-    if ($statusConta == "1") {
-        $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
-    }
-    if ($statusConta == "2") {
-        $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $statusConta = $value['status_cadastro'];
+}
+if ($statusConta == "1") {
+    $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
+}
+if ($statusConta == "2") {
+    $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,19 +31,14 @@
         <link rel="stylesheet" href="../../scripts/utils/style.css">
         <!-- Lista de icones -->
         <link  rel="stylesheet" href="../../scripts/utils/fontawesome/css/all.css">
-		<!-- skin -->
-		<link rel="stylesheet" href="../../scripts/utils/default.css">
+        <!-- skin -->
+        <link rel="stylesheet" href="../../scripts/utils/default.css">
         <!-- jQuery e Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
 
-    <body>
-        <?php
-            if(isset($_SESSION['login'])) {
-            $login = $_SESSION['login'];
-            }
-        ?>    
+    <body>  
         <!-- Barra de navegação -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container">
@@ -79,9 +77,7 @@
                 <div class="dropdown-menu">   
                 <a class="dropdown-item">
                         <?php
-                        if(isset($login)){
                             echo "Usuário: " . $login;
-                        }
                         ?>  
                     </a>
                     <a class="dropdown-item" href="../../Cadastro/config/logout.php">Logout</a>
@@ -102,14 +98,14 @@
                 <p>                   
                     <?php
                         echo "<p>Logado como " . $_SESSION['login'] . "</p>";
-                        if (isset($descStatus)) {
-                            echo $descStatus;
-                        } else {
-                            echo "<p><a href='Alteracoes'>Ver meus dados</a></p>";
-                            echo "<p><a href='../../Pedido/criarPedido.php'>Criar novo pedido</a></p>";
-                            echo "<p><a href='../../Pedido/meusPedidos.php'>Meus pedidos</a></p>";
-                            echo "<p>Consultar pedidos de outros órgãos públicos</p>";
-                        }
+                    if (isset($descStatus)) {
+                        echo $descStatus;
+                    } else {
+                        echo "<p><a href='Alteracoes'>Ver meus dados</a></p>";
+                        echo "<p><a href='../../Pedido/criarPedido.php'>Criar novo pedido</a></p>";
+                        echo "<p><a href='../../Pedido/meusPedidos.php'>Meus pedidos</a></p>";
+                        echo "<p>Consultar pedidos de outros órgãos públicos</p>";
+                    }
                     ?>                   
                 </p>
             </div>
@@ -130,48 +126,48 @@
             <hr class="featurette-divider">
 
         <!-- Nossos diferenciais -->
-		<div class="container"> 
+        <div class="container"> 
             <div class="row mar-bot5">
-                <div class="col-md-offset-3 col-md-12">						
-                    <div class="centro">					
+                <div class="col-md-offset-3 col-md-12">                     
+                    <div class="centro">                    
                         <h2>Nossos serviços</h2>
-                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>						
-                    </div>						
+                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>                       
+                    </div>                      
                 </div>
             </div></br>
 
-			<div class="row mar-bot40">
-				<div class="col-lg-4" >
-					<div class="align-center service-col">					
+            <div class="row mar-bot40">
+                <div class="col-lg-4" >
+                    <div class="align-center service-col">                  
                         <div class="service-icon centro">
                             <figure><i class="fa fa-chart-line"></i></figure>
                         </div>
                             <h2>Facilidade</h2>
-                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>		
-					</div>
-				</div>
-					
-				<div class="col-lg-4" >
-                    <div class="align-center service-col">					
+                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>        
+                    </div>
+                </div>
+                    
+                <div class="col-lg-4" >
+                    <div class="align-center service-col">                  
                         <div class="service-icon centro">
                             <figure><i class="fa fa-business-time"></i></figure>
                         </div>
                             <h2>Agilidade</h2>
                             <p>Otimize seu tempo e reduza o período gasto no processo de coleta de orçamentos para Licitações.</p>
                     </div>
-                </div>	
+                </div>  
 
                 <div class="col-lg-4" >
-                    <div class="align-center service-col">					
+                    <div class="align-center service-col">                  
                         <div class="service-icon centro">
                             <figure><i class="fa fa-search-location"></i></figure>
                         </div>
                             <h2>Eficiência</h2>
                             <p>Disponha de ferramentas como o delimitador de distância para definir uma área de atuação.</p>
                     </div>
-                </div>			
+                </div>          
             </div>
-        </div>	
+        </div>  
         <hr class="featurette-divider">
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">

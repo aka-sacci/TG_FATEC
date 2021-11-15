@@ -18,6 +18,7 @@
     },
     "require": {
         "aka-sacci/getcnpj-php": "^2.2",
-        "curl/curl": "^2.3"
+        "curl/curl": "^2.3",
+        "mpdf/mpdf": "^8.0"
     }
 }

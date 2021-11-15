@@ -1,6 +1,20 @@
 <?php
     require_once "../../../vendor/autoload.php";
-    session_start();
+    include_once "../../scripts/validaLogin.php";
+    $connection  = require "../../scripts/connectionClass.php";
+    validarLogin("PRI");
+    $login = $_SESSION['login'];
+    $cnpj = $_SESSION['cnpj'];
+
+    //faz o select do número de notificações
+    $sqlPedidos = "SELECT COUNT(notificacao_pedido.cod) FROM notificacao_pedido 
+    WHERE notificacao_pedido.empresa = $cnpj AND
+    notificacao_pedido.status = 1";
+    $nroNotificacoes = 0;
+foreach ($connection->query($sqlPedidos) as $key => $value) {
+    $nroNotificacoes = $value['COUNT(notificacao_pedido.cod)'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,19 +30,14 @@
         <link rel="stylesheet" href="../../scripts/utils/style.css">
         <!-- Lista de icones -->
         <link  rel="stylesheet" href="../../scripts/utils/fontawesome/css/all.css">
-		<!-- skin -->
-		<link rel="stylesheet" href="../../scripts/utils/default.css">
+        <!-- skin -->
+        <link rel="stylesheet" href="../../scripts/utils/default.css">
         <!-- jQuery e Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
 
-    <body>
-        <?php
-            if(isset($_SESSION['login'])) {
-            $login = $_SESSION['login'];
-            }
-        ?>    
+    <body> 
         <!-- Barra de navegação -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container">
@@ -67,12 +76,14 @@
                 <div class="dropdown-menu">   
                 <a class="dropdown-item">
                         <?php
-                        if(isset($login)){
                             echo "Usuário: <b><cite> " . $login . "</cite></b>";
-                        }
+
                         ?>  
                     </a>
                     <a class="dropdown-item" href="../../Cadastro/config/logout.php">Logout</a>
+                    <?php
+                    echo '<a class="dropdown-item" href="">Notificações (' . $nroNotificacoes . ')</a>';
+                    ?>
                     </div>
                 </li>
                 </ul>
@@ -89,13 +100,12 @@
                 <h4 class="alert-heading">Bem vindo!</h4>
                 <p>                   
                     <?php
-                        if (isset($_SESSION['login'])) {
-                            echo "<p>Logado como <b><cite>" . $_SESSION['login'] . "</cite></b>.</p>";
-                        } else {
-                            header('location:../../../index.php');
-                        }
+
+                        echo "<p>Logado como <b><cite>" . $_SESSION['login'] . "</cite></b>.</p>";
+
                     ?>                   
                 </p>
+                <p><a href='Alteracoes'>Ver meus dados</a></p>
             </div>
 
             <!-- Container Corpo do Index -->
@@ -114,48 +124,48 @@
             <hr class="featurette-divider">
 
         <!-- Nossos diferenciais -->
-		<div class="container"> 
+        <div class="container"> 
             <div class="row mar-bot5">
-                <div class="col-md-offset-3 col-md-12">						
-                    <div class="centro">					
+                <div class="col-md-offset-3 col-md-12">                     
+                    <div class="centro">                    
                         <h2>Nossos serviços</h2>
-                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>						
-                    </div>						
+                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>                       
+                    </div>                      
                 </div>
             </div></br>
 
-			<div class="row mar-bot40">
-				<div class="col-lg-4" >
-					<div class="align-center service-col">					
+            <div class="row mar-bot40">
+                <div class="col-lg-4" >
+                    <div class="align-center service-col">                  
                         <div class="service-icon centro">
                             <figure><i class="fa fa-chart-line"></i></figure>
                         </div>
                             <h2>Facilidade</h2>
-                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>		
-					</div>
-				</div>
-					
-				<div class="col-lg-4" >
-                    <div class="align-center service-col">					
+                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>        
+                    </div>
+                </div>
+                    
+                <div class="col-lg-4" >
+                    <div class="align-center service-col">                  
                         <div class="service-icon centro">
                             <figure><i class="fa fa-business-time"></i></figure>
                         </div>
                             <h2>Agilidade</h2>
                             <p>Otimize seu tempo e reduza o período gasto no processo de coleta de orçamentos para Licitações.</p>
                     </div>
-                </div>	
+                </div>  
 
                 <div class="col-lg-4" >
-                    <div class="align-center service-col">					
+                    <div class="align-center service-col">                  
                         <div class="service-icon centro">
                             <figure><i class="fa fa-search-location"></i></figure>
                         </div>
                             <h2>Eficiência</h2>
                             <p>Disponha de ferramentas como o delimitador de distância para definir uma área de atuação.</p>
                     </div>
-                </div>			
+                </div>          
             </div>
-        </div>		
+        </div>      
         <hr class="featurette-divider">
             <div class="row align-items-md-stretch">
                 <div class="col-md-6">

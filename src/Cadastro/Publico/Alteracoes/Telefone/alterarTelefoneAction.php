@@ -1,6 +1,8 @@
 <?php
 
 include_once "../../../../scripts/validaLogin.php";
+validarLogin("PUB");
+$connection  = require "../../../../scripts/connectionClass.php";
 $novoTelefone = $_POST['txtTelefone'];
 $connection  = require '../../../../scripts/connectionClass.php';
 $sql = "update instituicao_publica set telefone = '" . $novoTelefone . "' where cnpj = " . $_SESSION['cnpj'] . "";

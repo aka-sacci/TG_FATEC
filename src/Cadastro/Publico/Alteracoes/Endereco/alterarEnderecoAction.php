@@ -1,6 +1,8 @@
 <?php
 
 include_once "../../../../scripts/validaLogin.php";
+validarLogin("PUB");
+$connection  = require "../../../../scripts/connectionClass.php";
 $sql = "update endereco_instituicao_publica set
 logradouro = '" . $_POST["txtLogradouro"] . "', 
 numero = '" . $_POST["txtNumero"] . "', 
