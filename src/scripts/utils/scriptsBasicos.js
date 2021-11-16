@@ -94,3 +94,8 @@ function enableCategoria()
     $wrapper.insertBefore(newInput, $wrapper.lastChild);
     sessionStorage.clear();
 }
+
+function goBack()
+{
+    window.history.back()
+}

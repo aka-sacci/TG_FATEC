@@ -1,7 +1,5 @@
 <?php
-
 use function PHPSTORM_META\type;
-
 require_once "vendor/autoload.php";
     session_start();
     $connection  = require 'src/scripts/connectionClass.php';
@@ -12,7 +10,6 @@ require_once "vendor/autoload.php";
         if($type == "PRI") header("location: src/Cadastro/Privado");
         
     }
-
 ?>
 
 <!DOCTYPE html>
