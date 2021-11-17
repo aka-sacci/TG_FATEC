@@ -1,6 +1,6 @@
 - Ir para empresa  privada -> Notificações, acessar pedidos e criar cotações
-- Upar documentos?
-- Rever escopo e RFs
-- Falar pro joão refazer oq a chris falou
 - Esperar o vitor terminar o front da parte do "Meus Pedidos"
-- E se a gente tirar a parte debaixo do bem vindo?
+- conteúdo da parte debaixo do bem vindo?
+- Falar pro vitor tirar o "concluir alterações" e o "x" da caixa  verde;
+- Adicionar adição de documentos nos pedidos, mas aonde? no próprio pedido? ou depois de criado?
+- falar com o vitor sobre a porra das notificações

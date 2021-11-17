@@ -92,6 +92,35 @@ $enderecoPrincipal = $connection->query($sql);
     <a href="Endereco/inserirEndereco.php">Inserir novo endereço</a>
 
 
+
+    <br><br><h2><b>MEUS DOCUMENTOS</b></h2>
+    <?php
+    //seleciona os documentos cadastrados
+    $validateDocs = false;
+    $conteudoDocsNull = "<p>Não há documentos registrados!</p>";
+    $sql = "select data_upload, descricao, descricao_doc, documento_empresa_privada.cod from documento_empresa_privada
+    INNER JOIN documento_tipo ON 
+    documento_empresa_privada.tipo = documento_tipo.cod
+    WHERE cnpj = $myCnpj";
+    $conteudoDocs = "";
+
+    foreach ($connection->query($sql) as $key => $value) {
+        $validateDocs = true;
+        $conteudoDocs .= "<p><a href='../../../scripts/abrirArquivoPDF.php?filename=" . $value['cod'] .  ".pdf&";
+        $conteudoDocs .= "dir=Documentos/&titulo=" . $value['descricao'] . " - $myCnpj'>" . $value['descricao_doc'] ;
+        $conteudoDocs .= "</a> <a href='Documentos/alterarDocumento.php?cod=" . $value['cod'] .  "'><img src='../../../Imagens/icons/edit-icon.png' width='15' height='15'></a>";
+        $conteudoDocs .= "</a> <a href='Documentos/deletarDocumento.php?cod=" . $value['cod'] .  "'><img src='../../../Imagens/icons/delete-icon.png' width='15' height='15'></a></p>";
+    }
+    if (!$validateDocs) {
+        //se não houverem documentos cadastrados...
+        echo $conteudoDocsNull;
+    } else {
+        //se houverem documentos cadastrados...
+        echo $conteudoDocs;
+    }
+
+    ?>
+    <a href="Documentos/inserirDocumento.php">Inserir novo documento</a>
     </body>
 
 

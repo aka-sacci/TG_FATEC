@@ -1,10 +1,10 @@
 <?php
 
 session_start();
+$myCnpj = $_SESSION['cnpj'];
 $connection  = require '../../../../scripts/connectionClass.php';
 $validate = false;
-$codEndereco = $_POST["txtCod"];
-$myCnpj = $_SESSION['cnpj'];
+$codDoc = $_POST["txtCod"];
 
 $sql = "select * from login_empresa_privada where login = '" . $_SESSION['login'] . "' and senha = '" . $_POST['txtSenha'] . "' limit 1";
 foreach ($connection->query($sql) as $key => $value) {
@@ -14,8 +14,9 @@ foreach ($connection->query($sql) as $key => $value) {
 if (!$validate) {
     echo "Senha incorreta!";
 } else {
-    $sql = "delete from endereco_empresa_privada where cod = $codEndereco and cnpj = $myCnpj";
+    $sql = "delete from documento_empresa_privada where cod = $codDoc and cnpj = $myCnpj";
     $prepare = $connection->prepare($sql);
     $prepare->execute();
-    echo "O endereço foi excluído com sucesso! Clique <a href='../'> aqui </a> para voltar.";
+    unlink("../../../../../files/Documentos/$codDoc.pdf");
+    echo "O documento foi excluído com sucesso! Clique <a href='../'> aqui </a> para voltar.";
 }

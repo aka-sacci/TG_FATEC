@@ -119,7 +119,7 @@
                         header('Content-type: text/html; charset=utf-8');
                         foreach ($connection->query($sqlCadHist) as $key => $value) {
                         $dataStatusRaw = strtotime($value['data']);
-                        $dataStatus = strftime('%A, %d/%m/%Y', $dataStatusRaw);
+                        $dataStatus = strftime('%d/%m/%Y', $dataStatusRaw);
                         $horaStatus = strftime('%H:%M', $dataStatusRaw);
                         echo '<p>' . $dataStatus . ' às ' . $horaStatus . ' - ' . $value['status'] . ': ' . $value['descricao'] . '</p>';
                     }
