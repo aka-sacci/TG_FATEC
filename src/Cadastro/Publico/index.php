@@ -1,10 +1,12 @@
 <?php
     require_once "../../../vendor/autoload.php";
     include_once "../../scripts/validaLogin.php";
+    include_once "indexBody.php";
     $connection  = require "../../scripts/connectionClass.php";
     validarLogin("PUB");
     $login = $_SESSION['login'];
     $cnpj = $_SESSION['cnpj'];
+
 
             $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
 foreach ($connection->query($sql) as $key => $value) {
@@ -97,88 +99,20 @@ if ($statusConta == "2") {
                         echo "<p>Logado como " . $_SESSION['login'] . "</p>";
                         if (isset($descStatus)) {
                             echo $descStatus;
-                        } else {}
+                        } else {
+                        }
                     ?>                   
                 </p>
             </div>
 
         <!-- Container Corpo do Index -->
-        <hr class="featurette-divider">
-        <div class="container"> 
-            <div class="row mar-bot5">
-                <div class="col-md-offset-3 col-md-12">                     
-                    <div class="centro">                    
-                        <h2>Nossas ferramentas para você</h2>
-                        <p class="pprincipal">Aqui você pode Consultar e alterar seus dados cadastrais, além de criar e consultar seus pedidos e ainda ficar por dentro dos pedidos abertos de outras Instituições públicas.</p>                       
-                    </div>                      
-                </div>
-            </div></br>
-
-            <div class="row mar-bot40">
-                <div class="col-lg-3" >
-                    <a href='Alteracoes'>
-                    <div class="align-center service-col centro">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-database"></i></figure>
-                        </div></a>
-                            <h3>Consultar seus dados</h3></br></br>
-                            <a class="btn btn-md buttoncad" type="button" href='Alteracoes'>Clique aqui</a>     
-                    </div>
-                </div>
-                    
-                <div class="col-lg-3">
-                    <a href='../../Pedido/criarPedido.php'>
-                    <div class="align-center service-col centro">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-folder-plus"></i></figure>
-                        </div></a>
-                            <h3>Criar novo pedido</h3></br></br>
-                            <a class="btn btn-md buttoncad" type="button" href='../../Pedido/criarPedido.php'>Clique aqui</a>
-                    </div>
-                </div>  
-
-                <div class="col-lg-3" >
-                    <a href='../../Pedido/meusPedidos.php'>
-                    <div class="align-center service-col centro">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-list-alt"></i></figure>
-                        </div></a>
-                            <h3>Ver meus pedidos</h3></br></br>
-                            <a class="btn btn-md buttoncad" type="button" href='../../Pedido/meusPedidos.php'>Clique aqui</a>
-                    </div>
-                </div>  
-                
-                <div class="col-lg-3" >
-                    <a href='../../Pedido/meusPedidos.php'>
-                    <div class="align-center service-col centro">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-building"></i></figure>
-                        </div></a>
-                            <h3>Ver outros pedidos</h3></br></br>
-                            <a class="btn btn-md buttoncad" type="button" href='../../Pedido/meusPedidos.php'>Clique aqui</a>
-                    </div>
-                </div> 
-            </div>
-        </div>  
-        <hr class="featurette-divider">
-            <div class="row align-items-md-stretch">
-                <div class="col-md-6">
-                    <div class="back-medio h-90 p-5 text-white">
-                    <h2>Para você Fornecedor</h2>
-                    <p>Faça como muitas outras empresas e simplifique a forma de oferecer orçamentos produtos e serviços para órgãos públicos, além de ficar por dentro das licitações em aberto.</p>
-                    <a class="btn btn-outline-light" type="button" href="../../Cadastro/Privado/novoCadastro.php">Cadastrar agora</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="h-90 p-5 bg-light border">
-                    <h2>Para sua Instituição Pública</h2>
-                    <p>Obtenha os orçamentos necessários para sua compra pública em menor tempo e com maior qualidade. Agilize os processos de compra direta e licitações de forma fácil. </p>
-                    <a class="btn btn-outline-secondary" type="button" href="../../Cadastro/Publico/novoCadastro.php">Cadastrar agora</a>
-                    </div>
-                </div>
-            </div>
-            <hr class="featurette-divider">
-
+        <?php
+           if (isset($descStatus)) {            
+        } else {
+            echo returnBody();
+        }
+        ?>
+       
             <!-- footer da página -->
             <div class="container center col-md-3">
              <p class="text-muted">&copy; Licitatudo  2020 – 2021</p>

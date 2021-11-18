@@ -6,7 +6,12 @@ validarLogin("PUB");
 $connection  = require '../scripts/connectionClass.php';
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 $cnpj = $_SESSION["cnpj"];
-$sql = "select * from pedido where cnpj = '$cnpj' order by data_abertura DESC";
+$sql = "select pedido.cod, titulo, data_abertura, data_fechamento,
+modo_pedido.modo, status_pedido.status
+from pedido
+INNER JOIN modo_pedido ON pedido.modo = modo_pedido.cod
+INNER JOIN status_pedido ON pedido.status = status_pedido.cod
+where cnpj = '$cnpj' order by data_abertura DESC";
 $dados = $connection->query($sql);
 
 
@@ -26,16 +31,15 @@ $dados = $connection->query($sql);
 
     <?php
     foreach ($dados as $key => $value) {
-     /*$dataAberturaToTime = strtotime( $value['data_abertura'] );
-    $dataAbertura = strftime( '%A, %d/%m/%Y', $dataAberturaToTime );
+    $dataAberturaToTime = strtotime( $value['data_abertura'] );
+    $dataAbertura = strftime( '%d/%m/%Y', $dataAberturaToTime );
     $horaAbertura = strftime( '%H:%M', $dataAberturaToTime );
 
-       echo '<div id="' . $value['cod'] . '" onclick="redirecionarPedido()">
-       <h4>' . $value['titulo'] . '</h4>
-        <p> ' . $value['descricao'] . ' </p>
-        <p> Pedido aberto em ' . $dataAbertura . ' às ' . $horaAbertura .'</p>
-       </div>';
-        */
+       echo '<div>
+        <a href="visualisarMeuPedido.php?cod=' . $value['cod'] . '"><h4>' . $value['titulo'] . '</h4></a>
+        <p>Pedido aberto no dia ' . $dataAbertura . ' às ' . $horaAbertura .'</p>
+       </div><br>';
+        
     }
 
     ?>
