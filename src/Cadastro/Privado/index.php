@@ -50,14 +50,14 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
                 <li class="nav-item dropdown"><!-- dropdown Login -->
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="../../Cadastro/Privado/login.php">Conta Privada</a>
                     <a class="dropdown-item" href="../../Cadastro/Publico/login.php">Conta Pública</a>
                     </div>    
                 </li>
                 <li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="../../Cadastro/Privado/novoCadastro.php">Conta Privada</a>
                     <a class="dropdown-item" href="../../Cadastro/Publico/novoCadastro.php">Conta Pública</a>
@@ -69,23 +69,29 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contato</a>
                 </li>
-                <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
-                                
-                <li class="nav-item dropdown"> <!-- adicionei isso: navbar-nav ml-aut -->
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                
+                <li class="nav-item dropdown nav-item active"> <!-- adicionei isso: navbar-nav ml-aut -->
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Conta</a>
                 <div class="dropdown-menu">   
-                <a class="dropdown-item">
+                    <a class="dropdown-item">
                         <?php
                             echo "Usuário: <b><cite> " . $login . "</cite></b>";
 
                         ?>  
                     </a>
                     <a class="dropdown-item" href="../../Cadastro/config/logout.php">Logout</a>
-                    <?php
-                    echo '<a class="dropdown-item" href="">Notificações (' . $nroNotificacoes . ')</a>';
-                    ?>
-                    </div>
+                </div>
                 </li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item dropdown nav-item active">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i></a>
+                        <div class="dropdown-menu">   
+                            <?php
+                            echo '<a class="dropdown-item" href="">Notificações (' . $nroNotificacoes . ')</a>';
+                            ?>
+                        </div>
+                </li>  
                 </ul>
             </div>
             </div>
@@ -94,9 +100,6 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
         <!-- Container Corpo do Index / Alert Login -->
         <div class="container py-4" id="container-corpoindex">
             <div class="alert alert-success" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></br>
-                    <span aria-hidden="true">&times;</span>
-                </button>
                 <h4 class="alert-heading">Bem vindo!</h4>
                 <p>                   
                     <?php
@@ -112,7 +115,7 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
             <div class="container marketing">
                 <div class="row featurette back-claro">
                     <div class="col-md-8 ">
-                        <h2 class="featurette-heading">Licitações é com o <span class="text-primary">LicitaTudo.</span></h2>
+                        <h2 class="featurette-heading">O portal <span class="text-primary">LicitaTudo </span> facilita as coisas para a sua empresa.</h2>
                         <p class="pprincipal">Facilite o processo de localização e registro de fornecedores, obtenção de orçamentos e cotações de qualidade com o portal LicitaTudo. Transações B2G de um jeito que você nunca viu e com a facilidade que só a gente pode te oferecer.</p>
                         <button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>
                     </div>

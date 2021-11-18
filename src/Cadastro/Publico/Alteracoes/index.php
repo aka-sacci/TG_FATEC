@@ -47,11 +47,6 @@
     </head>
 
     <body>
-        <script>
-        function goBack() {
-        window.history.back()
-        }
-        </script>
         </br>
         <a class="home" href="#" onclick="goBack()">
             <i class="fa fa-arrow-circle-left"> Voltar</i>

@@ -51,14 +51,14 @@ if ($statusConta == "2") {
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
                 <li class="nav-item dropdown"><!-- dropdown Login -->
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="../../Cadastro/Privado/login.php">Conta Privada</a>
                     <a class="dropdown-item" href="../../Cadastro/Publico/login.php">Conta Pública</a>
                     </div>    
                 </li>
                 <li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="../../Cadastro/Privado/novoCadastro.php">Conta Privada</a>
                     <a class="dropdown-item" href="../../Cadastro/Publico/novoCadastro.php">Conta Pública</a>
@@ -72,7 +72,7 @@ if ($statusConta == "2") {
                 </li>
                 <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
                                 
-                <li class="nav-item dropdown"> <!-- adicionei isso: navbar-nav ml-aut -->
+                <li class="nav-item dropdown active"> <!-- adicionei isso: navbar-nav ml-aut -->
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Conta</a>
                 <div class="dropdown-menu">   
                 <a class="dropdown-item">
@@ -91,81 +91,73 @@ if ($statusConta == "2") {
         <!-- Container Corpo do Index / Alert Login -->
         <div class="container py-4" id="container-corpoindex">
             <div class="alert alert-success" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></br>
-                    <span aria-hidden="true">&times;</span>
-                </button>
                 <h4 class="alert-heading">Bem vindo!</h4>
                 <p>                   
                     <?php
                         echo "<p>Logado como " . $_SESSION['login'] . "</p>";
-                    if (isset($descStatus)) {
-                        echo $descStatus;
-                    } else {
-                        echo "<p><a href='Alteracoes'>Ver meus dados</a></p>";
-                        echo "<p><a href='../../Pedido/criarPedido.php'>Criar novo pedido</a></p>";
-                        echo "<p><a href='../../Pedido/meusPedidos.php'>Meus pedidos</a></p>";
-                        echo "<p>Consultar pedidos de outros órgãos públicos</p>";
-                    }
+                        if (isset($descStatus)) {
+                            echo $descStatus;
+                        } else {}
                     ?>                   
                 </p>
             </div>
 
-            <!-- Container Corpo do Index -->
-            <div class="container marketing">
-                <div class="row featurette back-claro">
-                    <div class="col-md-8 ">
-                        <h2 class="featurette-heading">Licitações é com o <span class="text-primary">LicitaTudo.</span></h2>
-                        <p class="pprincipal">Facilite o processo de localização e registro de fornecedores, obtenção de orçamentos e cotações de qualidade com o portal LicitaTudo. Transações B2G de um jeito que você nunca viu e com a facilidade que só a gente pode te oferecer.</p>
-                        <button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>
-                    </div>
-                    <div class="col-md-4 img">
-                        <img src="../../Imagens/holding-money.PNG" alt="abacate" width=250 height=250>
-                    </div>
-                </div></br>
-            </div> 
-            <hr class="featurette-divider">
-
-        <!-- Nossos diferenciais -->
+        <!-- Container Corpo do Index -->
+        <hr class="featurette-divider">
         <div class="container"> 
             <div class="row mar-bot5">
                 <div class="col-md-offset-3 col-md-12">                     
                     <div class="centro">                    
-                        <h2>Nossos serviços</h2>
-                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>                       
+                        <h2>Nossas ferramentas para você</h2>
+                        <p class="pprincipal">Aqui você pode Consultar e alterar seus dados cadastrais, além de criar e consultar seus pedidos e ainda ficar por dentro dos pedidos abertos de outras Instituições públicas.</p>                       
                     </div>                      
                 </div>
             </div></br>
 
             <div class="row mar-bot40">
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
+                <div class="col-lg-3" >
+                    <a href='Alteracoes'>
+                    <div class="align-center service-col centro">                  
                         <div class="service-icon centro">
-                            <figure><i class="fa fa-chart-line"></i></figure>
-                        </div>
-                            <h2>Facilidade</h2>
-                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>        
+                            <figure><i class="fa fa-database"></i></figure>
+                        </div></a>
+                            <h3>Consultar seus dados</h3></br></br>
+                            <a class="btn btn-md buttoncad" type="button" href='Alteracoes'>Clique aqui</a>     
                     </div>
                 </div>
                     
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
+                <div class="col-lg-3">
+                    <a href='../../Pedido/criarPedido.php'>
+                    <div class="align-center service-col centro">                  
                         <div class="service-icon centro">
-                            <figure><i class="fa fa-business-time"></i></figure>
-                        </div>
-                            <h2>Agilidade</h2>
-                            <p>Otimize seu tempo e reduza o período gasto no processo de coleta de orçamentos para Licitações.</p>
+                            <figure><i class="fa fa-folder-plus"></i></figure>
+                        </div></a>
+                            <h3>Criar novo pedido</h3></br></br>
+                            <a class="btn btn-md buttoncad" type="button" href='../../Pedido/criarPedido.php'>Clique aqui</a>
                     </div>
                 </div>  
 
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
+                <div class="col-lg-3" >
+                    <a href='../../Pedido/meusPedidos.php'>
+                    <div class="align-center service-col centro">                  
                         <div class="service-icon centro">
-                            <figure><i class="fa fa-search-location"></i></figure>
-                        </div>
-                            <h2>Eficiência</h2>
-                            <p>Disponha de ferramentas como o delimitador de distância para definir uma área de atuação.</p>
+                            <figure><i class="fa fa-list-alt"></i></figure>
+                        </div></a>
+                            <h3>Ver meus pedidos</h3></br></br>
+                            <a class="btn btn-md buttoncad" type="button" href='../../Pedido/meusPedidos.php'>Clique aqui</a>
                     </div>
-                </div>          
+                </div>  
+                
+                <div class="col-lg-3" >
+                    <a href='../../Pedido/meusPedidos.php'>
+                    <div class="align-center service-col centro">                  
+                        <div class="service-icon centro">
+                            <figure><i class="fa fa-building"></i></figure>
+                        </div></a>
+                            <h3>Ver outros pedidos</h3></br></br>
+                            <a class="btn btn-md buttoncad" type="button" href='../../Pedido/meusPedidos.php'>Clique aqui</a>
+                    </div>
+                </div> 
             </div>
         </div>  
         <hr class="featurette-divider">
