@@ -12,6 +12,7 @@ $categoriasSelecionadas = array();
 $dadosEnderecosPrivados = array();
 $empresasNotificadas = array();
 $distancia = null;
+$enderecoEntrega = $_POST['selectEndereco'];
 
 //var_dump($_POST);
 if (isset($_POST['cbDistancia'])) {
@@ -19,8 +20,8 @@ if (isset($_POST['cbDistancia'])) {
 }
 
 //insere o pedido
-$sql = 'INSERT INTO pedido (titulo, descricao, data_abertura, status, modo, cnpj, distancia) VALUES ("' . $_POST['txtTituloPedido'] . '", "' . $_POST['txtDescricaoPedido'] . '",
-now(), 1, "' . $_POST['selectModoPedido'] . '", "' . $_SESSION['cnpj'] . '", "' . $distancia . '");';
+$sql = 'INSERT INTO pedido (titulo, descricao, data_abertura, status, modo, cnpj, distancia, endereco_entrega) VALUES ("' . $_POST['txtTituloPedido'] . '", "' . $_POST['txtDescricaoPedido'] . '",
+now(), 1, "' . $_POST['selectModoPedido'] . '", "' . $_SESSION['cnpj'] . '", "' . $distancia . '", "' . $enderecoEntrega .  '");';
 $prepare = $connection->prepare($sql);
 $prepare->execute();
 $idPedido = $connection->lastInsertId();
@@ -91,7 +92,7 @@ foreach ($cnpjEmpresasFiltradas as $key => $empresa) {
 if (isset($_POST['cbDistancia'])) {
     array_splice($empresasNotificadas, 0);
 //prepara e executa o SQL para selecionar os endereços dos órgãos públicos
-    $sql = "select * from endereco_instituicao_publica where cnpj='" . $_SESSION['cnpj'] . "'";
+    $sql = "select * from endereco_instituicao_publica where cod=$enderecoEntrega";
     $dadosEnderecosPublicos = $connection->query($sql);
     $cnpjEmpresasFiltradasEnderecos = $connection->query($baseSQL);
 //prepara e executa o SQL para selecionar os endereços das empresas filtradas
@@ -146,13 +147,20 @@ foreach ($connection->query($selectIntelTitle) as $key => $value) {
     $modoPedido = $value["modo"];
 }
 
+$sqlEndereco = "select * from endereco_instituicao_publica where cod=$enderecoEntrega";
+$descEndEntrega;
+foreach ($connection->query($sqlEndereco) as $key => $value) {
+    $descEndEntrega = $value['logradouro'] . ", " . $value['numero'] . ", " . $value['bairro'] . " - " .  $value['cidade'] . " (" . $value['uf'] . ")";
+}
+
 $dataAB = date("d/m/Y", $data_abertura);
 $horaAB = strftime('%H:%M', $data_abertura);
 //prepara o conteúdo para ser salvo
 $conteudo = "<p>ÓRGÃO EMISSOR: <b>$razaoSocial</b><br>";
 $conteudo .= "PEDIDO N° <b>#$idPedido</b><br>";
 $conteudo .= "MODO: <b>$modoPedido</b><br>";
-$conteudo .= "DATA DE EMISSÃO: <b>$dataAB</b> às <b>$horaAB</b></p><br>";
+$conteudo .= "DATA DE EMISSÃO: <b>$dataAB</b> às <b>$horaAB</b><br>";
+$conteudo .= "ENDEREÇO: $descEndEntrega</p><br>";
 $conteudo .= "<h2 ALIGN='LEFT'>" . $_POST['txtTituloPedido'] . "</h2>";
 $conteudo .= "<p align='justify'>" . $_POST['txtDescricaoPedido'] . "</p><BR>";
 $conteudo .= "<h2 ALIGN='CENTER'>LISTA DOS ITENS DESCRITOS</h2>";

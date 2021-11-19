@@ -15,13 +15,37 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
     $nroNotificacoes = $value['COUNT(notificacao_pedido.cod)'];
 }
 
+$sqlNovasNotificacoes = "SELECT pedido,
+notificacao_pedido.cod,
+pedido.data_abertura,
+instituicao_publica.razao_social,
+pedido.titulo
+FROM notificacao_pedido
+INNER JOIN pedido ON notificacao_pedido.pedido = pedido.cod
+INNER JOIN instituicao_publica ON pedido.cnpj = instituicao_publica.cnpj
+WHERE notificacao_pedido.empresa = $cnpj AND
+notificacao_pedido.status = 1
+";
+
+$sqlVelhasNotificacoes = "SELECT pedido,
+notificacao_pedido.cod,
+pedido.data_abertura,
+instituicao_publica.razao_social,
+pedido.titulo
+FROM notificacao_pedido
+INNER JOIN pedido ON notificacao_pedido.pedido = pedido.cod
+INNER JOIN instituicao_publica ON pedido.cnpj = instituicao_publica.cnpj
+WHERE notificacao_pedido.empresa = $cnpj AND
+notificacao_pedido.status = 2
+";
+
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>LicitaTudo - Privado</title>
+        <title>LicitaTudo - Notificações</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" type="image/x-icon" href="../../Imagens/Logo-Licita.ico">
         <!-- Bootstrap CSS -->
@@ -88,7 +112,7 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bell"></i></a>
                         <div class="dropdown-menu">   
                             <?php
-                            echo '<a class="dropdown-item" href="notificacoes.php">Notificações (' . $nroNotificacoes . ')</a>';
+                            echo '<a class="dropdown-item" href="">Notificações (' . $nroNotificacoes . ')</a>';
                             ?>
                         </div>
                 </li>  
@@ -100,92 +124,42 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
         <!-- Container Corpo do Index / Alert Login -->
         <div class="container py-4" id="container-corpoindex">
             <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Bem vindo!</h4>
+                <h4 class="alert-heading">Notificações</h4>
                 <p>                   
                     <?php
 
-                        echo "<p>Logado como <b><cite>" . $_SESSION['login'] . "</cite></b>.</p>";
+                    if ($nroNotificacoes == 0) {
+                    } else {
+                        //exibe as novas notificações
+                        echo "<BR><h5 class='alert-heading'>Notificações Novas</h5><hr>";
+                        foreach ($connection->query($sqlNovasNotificacoes) as $key => $value) {
+                            $tituloPedido = $value['titulo'];
+                            $valorData = strtotime($value['data_abertura']);
+                            $data = strftime('%d/%m/%Y', $valorData);
+                            $hora = strftime('%H:%M', $valorData);
+                            echo  "<p> " . $value["razao_social"] .  " emitiu um novo Pedido de Cotação para a sua área de atuação! - $tituloPedido no dia $data às $hora";
+                            echo "<br><a href='alteraNotificacao.php?codNotificacao=" . $value["cod"] . "&codPedido=" . $value["pedido"] . "'>CONFERIR AGORA</a></p><hr>";
+                        }
+                    }
+
+                    echo "<BR><h5 class='alert-heading'>Notificações Antigas</h5>";
+                    $nullNotificacoesAntigas = "<p>NÃO HÁ NOTIFICAÇÕES!</p>";
+                    foreach ($connection->query($sqlVelhasNotificacoes) as $key => $value) {
+                        $nullNotificacoesAntigas = "";
+                        $tituloPedido = $value['titulo'];
+                        $valorData = strtotime($value['data_abertura']);
+                        $data = strftime('%d/%m/%Y', $valorData);
+                        $hora = strftime('%H:%M', $valorData);
+                        echo  "<p> " . $value["razao_social"] .  " emitiu um novo Pedido de Cotação para a sua área de atuação! - $tituloPedido no dia $data às $hora";
+                        echo "<br><a href='../../Perfis/Pedidos/visualizarPedido.php?cod=" . $value["pedido"] . "'>CONFERIR AGORA</a></p><hr>";
+                    }
+
+                    echo $nullNotificacoesAntigas;
 
                     ?>                   
                 </p>
-                <p><a href='Alteracoes'>Ver meus dados</a></p>
             </div>
 
-            <!-- Container Corpo do Index -->
-            <div class="container marketing">
-                <div class="row featurette back-claro">
-                    <div class="col-md-8 ">
-                        <h2 class="featurette-heading">O portal <span class="text-primary">LicitaTudo </span> facilita as coisas para a sua empresa.</h2>
-                        <p class="pprincipal">Facilite o processo de localização e registro de fornecedores, obtenção de orçamentos e cotações de qualidade com o portal LicitaTudo. Transações B2G de um jeito que você nunca viu e com a facilidade que só a gente pode te oferecer.</p>
-                        <button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>
-                    </div>
-                    <div class="col-md-4 img">
-                        <img src="../../Imagens/holding-money.PNG" alt="abacate" width=250 height=250>
-                    </div>
-                </div></br>
-            </div> 
-            <hr class="featurette-divider">
-
-        <!-- Nossos diferenciais -->
-        <div class="container"> 
-            <div class="row mar-bot5">
-                <div class="col-md-offset-3 col-md-12">                     
-                    <div class="centro">                    
-                        <h2>Nossos serviços</h2>
-                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>                       
-                    </div>                      
-                </div>
-            </div></br>
-
-            <div class="row mar-bot40">
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-chart-line"></i></figure>
-                        </div>
-                            <h2>Facilidade</h2>
-                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>        
-                    </div>
-                </div>
-                    
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-business-time"></i></figure>
-                        </div>
-                            <h2>Agilidade</h2>
-                            <p>Otimize seu tempo e reduza o período gasto no processo de coleta de orçamentos para Licitações.</p>
-                    </div>
-                </div>  
-
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-search-location"></i></figure>
-                        </div>
-                            <h2>Eficiência</h2>
-                            <p>Disponha de ferramentas como o delimitador de distância para definir uma área de atuação.</p>
-                    </div>
-                </div>          
-            </div>
-        </div>      
-        <hr class="featurette-divider">
-            <div class="row align-items-md-stretch">
-                <div class="col-md-6">
-                    <div class="back-medio h-90 p-5 text-white">
-                    <h2>Para você Fornecedor</h2>
-                    <p>Faça como muitas outras empresas e simplifique a forma de oferecer orçamentos produtos e serviços para órgãos públicos, além de ficar por dentro das licitações em aberto.</p>
-                    <a class="btn btn-outline-light" type="button" href="../../Cadastro/Privado/novoCadastro.php">Cadastrar agora</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="h-90 p-5 bg-light border">
-                    <h2>Para sua Instituição Pública</h2>
-                    <p>Obtenha os orçamentos necessários para sua compra pública em menor tempo e com maior qualidade. Agilize os processos de compra direta e licitações de forma fácil. </p>
-                    <a class="btn btn-outline-secondary" type="button" href="../../Cadastro/Publico/novoCadastro.php">Cadastrar agora</a>
-                    </div>
-                </div>
-            </div>
             <hr class="featurette-divider">
 
             <!-- footer da página -->

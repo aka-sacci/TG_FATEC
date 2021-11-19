@@ -11,26 +11,26 @@
 
     //pega os dados do BD referentes ao CNPJ informado
     $sql = "select * from instituicao_publica where cnpj = '" . $_SESSION["cnpj"] . "'";
-    foreach ($connection->query($sql) as $key => $value) {
-        $razaoSocialBD = $value["razao_social"];
-        $nomeFantasiaBD = $value["nome_fantasia"];
-        $efrBD = $value["efr"];
-        $naturezaBD = $value["natureza"];
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $razaoSocialBD = $value["razao_social"];
+    $nomeFantasiaBD = $value["nome_fantasia"];
+    $efrBD = $value["efr"];
+    $naturezaBD = $value["natureza"];
+}
 
     $statusConsulta = $data['status'];
     //confere se a requisição à API retornou normal
-    if ($statusConsulta == "OK") {
-        //Substitui os campos que retornam com NULL por NA
-        $dataReplaceble = $data;
-        foreach ($dataReplaceble as $k1 => $row) {
-            if ($row == "") {
-                if ($k1 == "telefone" || $k1 == "email") {
-                } else {
-                    $data[$k1] = "NA";
-                }
+if ($statusConsulta == "OK") {
+    //Substitui os campos que retornam com NULL por NA
+    $dataReplaceble = $data;
+    foreach ($dataReplaceble as $k1 => $row) {
+        if ($row == "") {
+            if ($k1 == "telefone" || $k1 == "email") {
+            } else {
+                $data[$k1] = "NA";
             }
         }
+    }
 
     //compara todos os dados
     if (
@@ -53,8 +53,6 @@
         $prepare->execute();
         echo "O cadastro foi atualizado com sucesso! Clique <a href='../'> aqui </a> para voltar.";
     }
-    } else {
-        echo $data['message'];
-    }
-    
-?>
+} else {
+    echo $data['message'];
+}

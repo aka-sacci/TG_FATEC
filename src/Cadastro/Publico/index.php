@@ -97,17 +97,17 @@ if ($statusConta == "2") {
                 <p>                   
                     <?php
                         echo "<p>Logado como " . $_SESSION['login'] . "</p>";
-                        if (isset($descStatus)) {
-                            echo $descStatus;
-                        } else {
-                        }
+                    if (isset($descStatus)) {
+                        echo $descStatus;
+                    } else {
+                    }
                     ?>                   
                 </p>
             </div>
 
         <!-- Container Corpo do Index -->
         <?php
-           if (isset($descStatus)) {            
+        if (isset($descStatus)) {
         } else {
             echo returnBody();
         }

@@ -15,5 +15,3 @@
     $prepare = $connection->prepare($sql);
     $prepare->execute();
     echo "O endereço foi atualizado com sucesso! Clique <a href='../'> aqui </a> para voltar.";
-
-?>

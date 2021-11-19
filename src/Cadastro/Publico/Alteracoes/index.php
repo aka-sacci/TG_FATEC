@@ -17,9 +17,9 @@
     //DADOS DO ENDEREÇO
     //checka a quantidade de endereços
     $sql = "SELECT COUNT(cod) FROM endereco_instituicao_publica WHERE cnpj = " . $myCnpj . "";
-    foreach ($connection->query($sql) as $key => $value) {
-        $nroEnderecos = $value["COUNT(cod)"];
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $nroEnderecos = $value["COUNT(cod)"];
+}
     //pega o endereco principal (sempre o primeiro a ser inserido)
     $sql = "select * from endereco_instituicao_publica where cnpj = '" . $myCnpj . "' order by cod ASC limit 1";
     $enderecoPrincipal = $connection->query($sql);
@@ -38,8 +38,8 @@
         <link rel="stylesheet" href="../../../scripts/utils/style.css">
         <!-- Lista de icones -->
         <link  rel="stylesheet" href="../../../scripts/utils/fontawesome/css/all.css">
-		<!-- skin -->
-		<link rel="stylesheet" href="../../../scripts/utils/default.css">
+        <!-- skin -->
+        <link rel="stylesheet" href="../../../scripts/utils/default.css">
         <!-- jQuery, JS e Bootstrap JS -->
         <script type="text/javascript" src="../../../scripts/utils/scriptsBasicos.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -57,7 +57,7 @@
                 <a href="DadosCadastrais/atualizarDadosCadastrais.php">clique aqui para atualizar os dados cadastrais</a></p>
 
                     <?php
-                        foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
+                    foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
                         echo '<p><b>CNPJ: </b>' .  converterCNPJ($value['cnpj']) . '</p>';
                         echo '<p><b>Razão Social: </b>' . $value['razao_social'] . '</p>';
                         echo '<p><b>Nome Fantasia: </b>' . $value['nome_fantasia'] . '</p>';
@@ -83,7 +83,7 @@
                 <a href="Endereco/atualizarEnderecoPrincipal.php">clique aqui para atualizar o endereço</a></p>
                     
                     <?php
-                        foreach ($enderecoPrincipal as $key => $value) {
+                    foreach ($enderecoPrincipal as $key => $value) {
                         echo "<p>" . $value['logradouro'] . ", " . $value['numero'] . ", " . $value['bairro'] . " - " .  $value['cidade'] . " (" . $value['uf'] . ") </p>";
                     }
                     ?>
@@ -91,10 +91,10 @@
             <h4>Outros endereços</h4>
 
                     <?php
-                        if ($nroEnderecos == 1) {
+                    if ($nroEnderecos == 1) {
                         //caso a empresa só tenha um endereço cadastrado
                         echo "<p>Não há outros endereços!</p>";
-                        } else {
+                    } else {
                         $limit = $nroEnderecos - 1;
                         $sql = "select * from endereco_instituicao_publica where cnpj = '" . $myCnpj . "' order by cod DESC LIMIT $limit";
                         //caso tenha mais que um, é retornado todos os endereços EXCETO o primeiro a ser inserido (o principal);
@@ -112,7 +112,7 @@
 
                     <?php
                         header('Content-type: text/html; charset=utf-8');
-                        foreach ($connection->query($sqlCadHist) as $key => $value) {
+                    foreach ($connection->query($sqlCadHist) as $key => $value) {
                         $dataStatusRaw = strtotime($value['data']);
                         $dataStatus = strftime('%d/%m/%Y', $dataStatusRaw);
                         $horaStatus = strftime('%H:%M', $dataStatusRaw);

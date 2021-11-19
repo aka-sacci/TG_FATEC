@@ -7,7 +7,8 @@ validarLogin("PUB");
 $connection  = require '../scripts/connectionClass.php';
 $arrayCategoria = array();
 $arrayModo = array();
-
+$arrayEnderecos = array();
+$cnpj = $_SESSION["cnpj"];
 
 //dados das caixas de seleção
 //categoria
@@ -22,6 +23,16 @@ foreach ($connection->query($sql) as $key => $value) {
     $thisModo = array("cod" => $value["cod"], "modo" => $value["modo"]);
     array_push($arrayModo, $thisModo);
 }
+//enderecos
+$sql = "select * from endereco_instituicao_publica where cnpj=$cnpj order by cod ASC";
+foreach ($connection->query($sql) as $key => $value) {
+    if (!$value["descricao"]) {
+        $value["descricao"] = "MATRIZ";
+    }
+    $thisEndereco = array("cod" => $value["cod"], "descricao" => $value["descricao"]);
+    array_push($arrayEnderecos, $thisEndereco);
+}
+
 
 echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCategoria) . "');</script>";
 
@@ -85,6 +96,19 @@ echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCatego
         <button onclick="deletarItem()" type="button" id="removeItem" disabled>Remover último item</button></p>
     <br>
     <!--    fim itens -->
+
+    <!-- início endereco -->
+    <div>
+    <h3>Endereço de entrega</h3>
+    <select name="selectEndereco" >
+        <?php
+        foreach ($arrayEnderecos as $key => $registro) {
+            echo "<option value='" . $registro['cod'] . "'>" . $registro['descricao']  . "</option> ";
+        }
+        ?>
+    </select>
+    </div>
+    <br>
 
     <!--    início modo -->
     <p>Modo do pedido:

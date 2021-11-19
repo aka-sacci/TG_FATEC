@@ -31,15 +31,14 @@ $dados = $connection->query($sql);
 
     <?php
     foreach ($dados as $key => $value) {
-    $dataAberturaToTime = strtotime( $value['data_abertura'] );
-    $dataAbertura = strftime( '%d/%m/%Y', $dataAberturaToTime );
-    $horaAbertura = strftime( '%H:%M', $dataAberturaToTime );
+        $dataAberturaToTime = strtotime($value['data_abertura']);
+        $dataAbertura = strftime('%d/%m/%Y', $dataAberturaToTime);
+        $horaAbertura = strftime('%H:%M', $dataAberturaToTime);
 
-       echo '<div>
+        echo '<div>
         <a href="visualisarMeuPedido.php?cod=' . $value['cod'] . '"><h4>' . $value['titulo'] . '</h4></a>
-        <p>Pedido aberto no dia ' . $dataAbertura . ' às ' . $horaAbertura .'</p>
+        <p>Pedido aberto no dia ' . $dataAbertura . ' às ' . $horaAbertura . '</p>
        </div><br>';
-        
     }
 
     ?>
