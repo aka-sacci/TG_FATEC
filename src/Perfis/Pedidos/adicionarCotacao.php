@@ -92,7 +92,7 @@ echo "<script>sessionStorage.setItem('itens', '" . json_encode($arrayItens) . "'
                 }
                 ?>
                 </select></td>
-                <td align="center"><textarea placeholder="Descrição do modelo" id="txtDesc1" name="txtDesc1" rows="7" cols="60" required ></textarea></td>
+                <td align="center"><textarea placeholder="MODELO & DESCRIÇÃO" id="txtDesc1" name="txtDesc1" rows="7" cols="60" required ></textarea></td>
                 <td align="right"><input type="text" placeholder="Valor (R$)" maxlength="50" id="txtValue1" name="txtValue1" required></td>
                     </tr>
                   </tbody>
@@ -105,10 +105,10 @@ echo "<script>sessionStorage.setItem('itens', '" . json_encode($arrayItens) . "'
     <input type="text" id="txtCodPedido" name="txtCodPedido" <?php echo "value=$cod" ?> required hidden>
     <div style="width:50%; display: inline-block;">
     <p>Adicionar arquivo (Catálogos, Atas, etc) (Não-obrigatório):
-        <br><input type="file" name="file" accept=".pdf" required></p>
+        <br><input type="file" name="file" accept=".pdf" ></p>
 
         <p>Descrição do arquivo:
-        <br><input type="text" name="txtDesc" required></p>
+        <br><input type="text" name="txtDesc" ></p>
     </div>
     <div style="width: 50%; text-align: left; float:right;">
     <p>Observações (Não-obrigatório)</p>

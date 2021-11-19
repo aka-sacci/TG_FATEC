@@ -169,7 +169,17 @@ $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
 
             <br>
             <h4>COTAÇÕES</h4><hr>
-            
+            <?php
+             $sqlCotacoes = "SELECT empresa_privada.razao_social, cotacoes.cod, COUNT(cotacoes_itens.cod) FROM cotacoes
+             INNER JOIN empresa_privada ON cotacoes.empresa = empresa_privada.cnpj
+             INNER JOIN cotacoes_itens ON cotacoes.cod = cotacoes_itens.cotacao
+             INNER JOIN pedido ON cotacoes.pedido = pedido.cod
+             WHERE pedido.cod=$cod
+             GROUP BY empresa_privada.cnpj";
+             foreach ($connection->query($sqlCotacoes) as $key => $value) {
+                 echo  "<p><a href='visualizarOrcamento.php?cod=" . $value['cod'].  "'>" . $value['razao_social'] . " (" . $value['COUNT(cotacoes_itens.cod)'] . " Itens)</a></p>";
+             }
+            ?>
             <!-- footer da página --></br></br></br>
             <footer>
                 <div class="container center col-md-3">

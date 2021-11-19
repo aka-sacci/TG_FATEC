@@ -31,7 +31,7 @@ function adicionarItem()
         var newDescricao = document.createElement('textarea');
         newDescricao.id = "txtDesc" + counterItens;
         newDescricao.name = "txtDesc" + counterItens;
-        newDescricao.placeholder = "Descrição do modelo";
+        newDescricao.placeholder = "MODELO & DESCRIÇÃO";
         newDescricao.rows = "7";
         newDescricao.cols="60";
 
