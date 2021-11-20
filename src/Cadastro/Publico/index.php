@@ -52,25 +52,23 @@ if ($statusConta == "2") {
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
-                <li class="nav-item dropdown"><!-- dropdown Login -->
-                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="../../Cadastro/Privado/login.php">Conta Privada</a>
-                    <a class="dropdown-item" href="../../Cadastro/Publico/login.php">Conta Pública</a>
-                    </div>    
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php" >Home</a>   
                 </li>
                 <li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
                     <div class="dropdown-menu">
-                    <a class="dropdown-item" href="../../Cadastro/Privado/novoCadastro.php">Conta Privada</a>
-                    <a class="dropdown-item" href="../../Cadastro/Publico/novoCadastro.php">Conta Pública</a>
+                        <a class="dropdown-item" href="Alteracoes">Consultar Dados</a>
+                        <a class="dropdown-item" href="../../Pedido/criarPedido.php">Criar Pedido</a>
+                        <a class="dropdown-item" href="../../Pedido/meusPedidos.php">Ver Pedidos</a>
+                        <a class="dropdown-item" href="../../Pedido/meusPedidos.php">Outros Pedidos</a>
                     </div>    
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sobre Nós</a>
+                    <a class="nav-link" href="../../../sobrenos.html">Sobre Nós</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contato</a>
+                    <a class="nav-link" href="../../../contato.html">Contato</a>
                 </li>
                 <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
                                 
@@ -107,16 +105,19 @@ if ($statusConta == "2") {
 
         <!-- Container Corpo do Index -->
         <?php
-        if (isset($descStatus)) {
-        } else {
-            echo returnBody();
-        }
+            if (isset($descStatus)) {
+            } else {
+                echo returnBody();
+            }
         ?>
-       
+
+            <hr class="featurette-divider">
             <!-- footer da página -->
-            <div class="container center col-md-3">
-             <p class="text-muted">&copy; Licitatudo  2020 – 2021</p>
-            </div>
+            <footer>
+                <div class="container centro col-md-12">
+                    <p class="text-muted">Copyright &copy; Licitatudo 2021 - Todos os direitos reservados</p>
+                </div> 
+            </footer>
         </div>       
     </body>
 </html>

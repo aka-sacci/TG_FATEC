@@ -55,14 +55,6 @@ Componentes index.php
     color: #363636ee;
     }
 
-    .footer{
-    position: fixed;
-    bottom: 0;
-    height: 4rem;
-    right: 32%;
-    }
-
-
     th {
     border: 4px solid rgb(160, 34, 34);
     padding: 10px;
@@ -128,8 +120,8 @@ Componentes Cadastro.php
 /* Marketing Conteudo
 -------------------------------------------------- */
     .img{
-    margin-bottom: 1.5rem;
-    margin-top: 4.5rem;
+    margin-bottom: 2rem;
+    margin-top: 5rem;
     }
     .marketing .col-lg-4 {
     margin-bottom: 1.5rem;
@@ -225,3 +217,410 @@ Componentes service
     -moz-animation: serviceiconhover 0.5s ease-in-out;
     animation: serviceiconhover 0.5s ease-in-out;
     }
+
+    
+/*************************/
+/*     02. Preloader     */
+/*************************/
+.spinner-wrapper {
+	position: fixed;
+	z-index: 999999;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #fff;
+}
+
+.spinner {
+	position: absolute;
+	top: 50%; /* centers the loading animation vertically one the screen */
+	left: 50%; /* centers the loading animation horizontally one the screen */
+	width: 3.75rem;
+	height: 1.25rem;
+	margin: -0.625rem 0 0 -1.875rem; /* is width and height divided by two */ 
+	text-align: center;
+}
+
+.spinner > div {
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	border-radius: 100%;
+	background-color: #00bfd8;
+	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+	0%, 80%, 100% { -webkit-transform: scale(0); }
+	40% { -webkit-transform: scale(1.0); }
+}
+
+@keyframes sk-bouncedelay {
+	0%, 80%, 100% { 
+		-webkit-transform: scale(0);
+		-ms-transform: scale(0);
+		transform: scale(0);
+	} 40% { 
+		-webkit-transform: scale(1.0);
+		-ms-transform: scale(1.0);
+		transform: scale(1.0);
+	}
+}
+
+
+
+/************************/
+/*     06. Services     */
+/************************/
+.cards-1 {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	text-align: center;
+}
+
+.cards-1 h2 {
+	margin-bottom: 1rem;
+}
+
+.cards-1 .card {
+	max-width: 21rem;
+	margin-right: auto;
+	margin-bottom: 4.5rem;
+	margin-left: auto;
+	padding: 3.25rem 2rem 2rem 2rem;
+	border: 1px solid #c4d8dc;
+	border-radius: 0.8rem;
+	background: transparent;
+}
+
+.cards-1 .card-image {
+	width: 6rem;
+	height: 6rem;
+	margin-right: auto;
+	margin-bottom: 2rem;
+	margin-left: auto;
+}
+
+.cards-1 .card-title {
+	margin-bottom: 0.875rem;
+}
+
+.cards-1 .card-body {
+	padding: 0;
+}
+
+/* Video Play Button */
+.video-corp {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	text-align: center;
+}
+
+.video-corp .video-play-button {
+	position: absolute;
+	z-index: 10;
+	top: 50%;
+	left: 50%;
+	display: block;
+	box-sizing: content-box;
+	width: 2rem;
+	height: 2.75rem;
+	padding: 1.125rem 1.25rem 1.125rem 1.75rem;
+	border-radius: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+  
+.video-corp .video-play-button:before {
+	content: "";
+	position: absolute;
+	z-index: 0;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: 4.75rem;
+	height: 4.75rem;
+	border-radius: 50%;
+	background: #00bfd8;
+	animation: pulse-border 1500ms ease-out infinite;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+  
+.video-corp .video-play-button:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	left: 50%;
+	display: block;
+	width: 4.375rem;
+	height: 4.375rem;
+	border-radius: 50%;
+	background: #00bfd8;
+	transition: all 200ms;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+}
+  
+.video-corp .video-play-button span {
+	position: relative;
+	display: block;
+	z-index: 3;
+	top: 0.375rem;
+	left: 0.25rem;
+	width: 0;
+	height: 0;
+	border-left: 1.625rem solid #fff;
+	border-top: 1rem solid transparent;
+	border-bottom: 1rem solid transparent;
+}
+  
+@keyframes pulse-border {
+	0% {
+		transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1.5);
+		opacity: 0;
+	}
+}
+/* end of video play button */
+
+/*********************/
+/*     14. About     */
+/*********************/
+.Time {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
+	text-align: center;
+}
+
+.Time h2 {
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.Time .team-member {
+	max-width: 12.5rem;
+	margin-right: auto;
+	margin-bottom: 3.5rem;
+	margin-left: auto;
+}
+
+/* Hover Animation */
+.Time .image-wrapper {
+	overflow: hidden;
+	margin-bottom: 1.5rem;
+	border-radius: 50%;
+}
+
+.Time .image-wrapper img {
+	margin: 0;
+	transition: all 0.3s;
+}
+
+.Time .image-wrapper:hover img {
+	-moz-transform: scale(1.15);
+	-webkit-transform: scale(1.15);
+	transform: scale(1.15);
+} 
+/* end of hover animation */
+
+.Time .team-member .p-large {
+	margin-bottom: 0.25rem;
+	font-size: 1.125rem;
+}
+
+.Time .team-member .job-title {
+	margin-bottom: 0.375rem;
+}
+
+.Time .fa-stack {
+	margin-top: 0.375rem;
+	margin-right: 0.125rem;
+	margin-left: 0.125rem;
+	font-size: 0.875rem;
+}
+
+.Time .fa-stack-2x {
+	color: #00bfd8;
+	transition: all 0.2s ease;
+}
+
+.Time .fa-stack-1x {
+	color: #fff;
+	transition: all 0.2s ease;
+}
+
+.Time .fa-stack:hover .fa-stack-2x {
+	color: #00a7bd;
+}
+
+.Time .fa-stack:hover .fa-stack-1x {
+	color: #fff;
+}
+
+/***********************/
+/*     15. Contact     */
+/***********************/
+.Contato-mapa {
+	padding-top: 7rem;
+	padding-bottom: 6.25rem;
+	background: url('../images/contact-background.jpg') center center no-repeat;
+	background-size: cover; 
+}
+
+.Contato-mapa h2 {
+	margin-bottom: 1rem;
+	text-align: center;
+}
+
+.Contato-mapa .list-unstyled {
+	margin-bottom: 3.75rem;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	text-align: center;
+}
+
+.Contato-mapa .list-unstyled .fas,
+.Contato-mapa .list-unstyled .fab {
+	margin-right: 0.5rem;
+	font-size: 0.875rem;
+	color: #00bfd8;
+}
+
+.Contato-mapa .list-unstyled .fa-phone {
+	vertical-align: 3%;
+}
+
+.Contato-mapa .map-responsive {
+	position: relative;
+	overflow: hidden;
+	height: 0;
+	margin-bottom: 4rem;
+	padding-bottom: 70%;
+	border-radius: 0.25rem;
+}
+
+.Contato-mapa .map-responsive iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none; 
+}
+
+/* Contact */
+.Contato-mapa .map-responsive {
+    max-width: 31rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.Contato-mapa #contactForm {
+    max-width: 31rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.form-group {
+	position: relative;
+	margin-bottom: 1.25rem;
+}
+
+.form-control-input:focus + .label-control,
+.form-control-input.notEmpty + .label-control,
+.form-control-textarea:focus + .label-control,
+.form-control-textarea.notEmpty + .label-control {
+	top: 0.125rem;
+	opacity: 1;
+	font-size: 0.75rem;
+	font-weight: 700;
+}
+
+.form-control-input,
+.form-control-select {
+	display: block; /* needed for proper display of the label in Firefox, IE, Edge */
+	width: 100%;
+	padding-top: 1.0625rem;
+	padding-bottom: 0.0625rem;
+	padding-left: 1.3125rem;
+	border: 1px solid #c4d8dc;
+	border-radius: 0.25rem;
+	background-color: #fff;
+	color: #626262;
+	font: 400 0.875rem/1.875rem "Raleway", sans-serif;
+	transition: all 0.2s;
+	-webkit-appearance: none; /* removes inner shadow on form inputs on ios safari */
+}
+
+.form-control-select {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	height: 3rem;
+}
+
+.form-control-textarea {
+	display: block; /* used to eliminate a bottom gap difference between Chrome and IE/FF */
+	width: 100%;
+	height: 6rem; /* used instead of html rows to normalize height between Chrome and IE/FF */
+	padding-top: 1rem;
+	padding-left: 1rem;
+	border: 1px solid #c4d8dc;
+	border-radius: 0.25rem;
+	background-color: #fff;
+	color: #626262;
+	font: 400 0.875rem/1.75rem "Raleway", sans-serif;
+	transition: all 0.2s;
+}
+
+.form-control-submit-button {
+	display: inline-block;
+	width: 100%;
+	height: 3rem;
+	border: 1px solid #00bfd8;
+	border-radius: 1.5rem;
+	background-color: #00bfd8;
+	color: #fff;
+	font: 700 0.75rem/1.75rem "Raleway", sans-serif;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+
+.form-control-submit-button:hover {
+	background-color: transparent;
+	color: #00bfd8;
+}
+
+.form-control-input:hover,
+.form-control-select:hover,
+.form-control-textarea:hover {
+	border: 1px solid #a1a1a1;
+}
+
+.form-group.has-error.has-danger {
+	margin-bottom: 0.625rem;
+}
+
+.form-group.has-error.has-danger .help-block.with-errors ul {
+	margin-top: 0.375rem;
+}
+/* end of contact */

@@ -34,7 +34,7 @@ if (isset($_SESSION['login'])) {
         <a class="home" href="../../../index.php">
             <i class="fa fa-home"> Início</i>
         </a>
-        <div class="text-center loginphp">
+        <div class="text-center loginphp"><br><br>
             <main class="form-signin">
                 <form action="../config/loginAction.php" method="post"> 
                     <a href="../../../index.php"><img class="mb-4" src="../../Imagens/Logo-Licita.png" alt="" width="72" height="71"></a>
@@ -60,9 +60,15 @@ if (isset($_SESSION['login'])) {
                             ?>
                     </div></br>
                     <p><input type="submit" class="w-100 btn btn-lg btn-primary" value="Prosseguir" id="btnSubmit"/></p>
-                    <p class="mt-5 mb-3 text-muted">&copy; Licitatudo  2020 – 2021</p>
                 </form> 
             </main> 
-        </div>   
+        </div>
+        <hr class="featurette-divider">
+        <!-- footer da página -->
+        <footer>
+            <div class="container centro col-md-12">
+                <p class="text-muted">Copyright &copy; Licitatudo 2021 - Todos os direitos reservados</p>
+            </div> 
+        </footer>    
     </body>
 </html>

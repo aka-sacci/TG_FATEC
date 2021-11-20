@@ -42,9 +42,16 @@ if (isset($_SESSION['login'])) {
                         <input name="typeCNPJ" type="hidden" value="PUB">
                     </div>
                     <p><input type="submit" class="w-100 btn btn-lg btn-primary" value="Buscar" id="btnSubmit"/></p>
-                    <p class="mt-5 mb-3 text-muted">&copy;Licitatudo  2020 – 2021</p>
                 </form> 
             </main> 
-        </div>   
+        </div> 
+
+        <hr class="featurette-divider">
+        <!-- footer da página -->
+        <footer>
+            <div class="container centro col-md-12">
+                <p class="text-muted">Copyright &copy; Licitatudo 2021 - Todos os direitos reservados</p>
+            </div> 
+        </footer> 
     </body>
 </html>
