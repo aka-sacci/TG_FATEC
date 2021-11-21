@@ -30,7 +30,7 @@ if (!$validate) {
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>Atualizar Cadastro</title>
+        <title>Alterar Endereço</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" type="image/x-icon" href="../../../../Imagens/Logo-Licita.ico">
         <!-- Bootstrap CSS -->
@@ -48,38 +48,39 @@ if (!$validate) {
     </head>
 
     <body>
-        <script>
-            function goBack() {
-            window.history.back()
-            }
-        </script>
         </br>
         <a class="home" href="#" onclick="goBack()">
             <i class="fa fa-arrow-circle-left"> Voltar</i>
         </a>
-        <div class="container" id="container-corpoindex">
-        <hr>
-        <h3>Atualizar endereço</h3></br>
-            <form action="alterarEnderecoAction.php" method="post"> 
+        <div class="container col-lg-6" id="container-corpoindex">
+            <div class="img centro">
+                <img src="../../../../Imagens/logo-LT.png" alt="alternative" width=80 height=80>
+            </div><br>
+                <h3><b>ALTERAR O ENDEREÇO</b></h3><hr><br>
+                
+                <form action="alterarEnderecoAction.php" method="post"> 
 
-                <?php
-                    echo "<input name='txtCod' value='$codEndereco' hidden>";
-                    echo "<p><b>Logradouro: </b><input name='txtLogradouro' value='$logradouro' required></p>";
-                    echo "<p><b>Número: </b><input name='txtNumero' value='$numero' required>";
-                    echo "<p><b>Bairro: </b><input name='txtBairro' value='$bairro' required>";
-                    echo "<p><b>CEP: </b><input name='txtCEP' value='$cep' required>";
-                    echo "<p><b>Cidade: </b><input name='txtCidade' value='$cidade' required>";
-                    echo "<p><b>UF: </b><input name='txtUF' value='$uf' required>";
-                    echo "<p><b>Descrição do endereço: </b></p><textarea placeholder='Descrição do endereço' name='txtDescricao' required>$descricao</textarea>";
-                ?>
+                    <?php
+                        echo "<input name='txtCod' value='$codEndereco' hidden>";
+                        echo "<p><b>Logradouro</b><input class='form-control-input' name='txtLogradouro' value='$logradouro' required></p>";
+                        echo "<p><b>Número</b><input class='form-control-input' name='txtNumero' value='$numero' required>";
+                        echo "<p><b>Bairro</b><input class='form-control-input' name='txtBairro' value='$bairro' required>";
+                        echo "<p><b>CEP</b><input class='form-control-input' name='txtCEP' value='$cep' required>";
+                        echo "<p><b>Cidade</b><input class='form-control-input' name='txtCidade' value='$cidade' required>";
+                        echo "<p><b>UF</b><input class='form-control-input' name='txtUF' value='$uf' required>";
+                        echo "<p><b>Descrição do endereço</b></p><textarea class='form-control-textarea' placeholder='Descrição do endereço' name='txtDescricao' required>$descricao</textarea>";
+                    ?>
 
-            </br></br><button type='submit' value="Atualizar" id="btnSubmit" class="btn btn-md buttoncad" >Concluir Alterações</button></br>              
-            </form> 
-            <hr></br></br>
+                </br><button type='submit' value="Atualizar" id="btnSubmit" class="btn btn-md buttoncad" >Concluir Alterações</button></br>              
+                </form>
+
+            <hr class="featurette-divider">
             <!-- footer da página -->
-            <div class="container center col-md-3">
-            <p class="text-muted">&copy; Licitatudo  2020 – 2021</p>
-            </div>
+            <footer>
+                <div class="container centro col-md-12">
+                    <p class="text-muted">Copyright &copy; Licitatudo 2021 - Todos os direitos reservados</p>
+                </div> 
+            </footer> 
         </div>
     </body>
 </html>

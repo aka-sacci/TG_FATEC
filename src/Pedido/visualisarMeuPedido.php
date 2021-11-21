@@ -1,74 +1,73 @@
 <?php
 
-require_once "../../vendor/autoload.php";
-include_once "../scripts/validaLogin.php";
-validarLogin("PUB");
-$connection  = require '../scripts/connectionClass.php';
-setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+    require_once "../../vendor/autoload.php";
+    include_once "../scripts/validaLogin.php";
+    validarLogin("PUB");
+    $connection  = require '../scripts/connectionClass.php';
+    setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 
-//variáveis globais
-$cnpj = $_SESSION["cnpj"];
-$cod = $_GET['cod'];
-$validation = false;
-$tabelaItens = "";
+    //variáveis globais
+    $cnpj = $_SESSION["cnpj"];
+    $cod = $_GET['cod'];
+    $validation = false;
+    $tabelaItens = "";
 
-//checka se o pedido pertence ao órgão público logado
-$sqlConfirmaDados = "select cod from pedido where cod = $cod and cnpj=$cnpj";
-foreach ($connection->query($sqlConfirmaDados) as $key => $value) {
-    $validation = true;
-}
-if (!$validation) {
-    header("Location:meusPedidos.php");
-}
+    //checka se o pedido pertence ao órgão público logado
+    $sqlConfirmaDados = "select cod from pedido where cod = $cod and cnpj=$cnpj";
+    foreach ($connection->query($sqlConfirmaDados) as $key => $value) {
+        $validation = true;
+    }
+    if (!$validation) {
+        header("Location:meusPedidos.php");
+    }
 
-//executa a consulta de dados básicos do pedido
-$sqlConsulta = "select titulo, data_abertura, data_fechamento, descricao, pedido.status AS cod_status,
-modo_pedido.modo, status_pedido.status, instituicao_publica.razao_social, endereco_entrega
-from pedido
-INNER JOIN modo_pedido ON pedido.modo = modo_pedido.cod
-INNER JOIN status_pedido ON pedido.status = status_pedido.cod
-INNER JOIN instituicao_publica ON pedido.cnpj = instituicao_publica.cnpj
-where pedido.cod = $cod";
-foreach ($connection->query($sqlConsulta) as $key => $value) {
-    $titulo = $value['titulo'];
-    $abertura = strtotime($value['data_abertura']);
-    $fechamento = strtotime($value['data_fechamento']);
-    $descricao = $value['descricao'];
-    $modo = $value['modo'];
-    $status = $value['status'];
-    $razaoSocial = $value['razao_social'];
-    $statusCod = $value['cod_status'];
-    $enderecoEntrega = $value["endereco_entrega"];
-}
+    //executa a consulta de dados básicos do pedido
+    $sqlConsulta = "select titulo, data_abertura, data_fechamento, descricao, pedido.status AS cod_status,
+    modo_pedido.modo, status_pedido.status, instituicao_publica.razao_social, endereco_entrega
+    from pedido
+    INNER JOIN modo_pedido ON pedido.modo = modo_pedido.cod
+    INNER JOIN status_pedido ON pedido.status = status_pedido.cod
+    INNER JOIN instituicao_publica ON pedido.cnpj = instituicao_publica.cnpj
+    where pedido.cod = $cod";
+    foreach ($connection->query($sqlConsulta) as $key => $value) {
+        $titulo = $value['titulo'];
+        $abertura = strtotime($value['data_abertura']);
+        $fechamento = strtotime($value['data_fechamento']);
+        $descricao = $value['descricao'];
+        $modo = $value['modo'];
+        $status = $value['status'];
+        $razaoSocial = $value['razao_social'];
+        $statusCod = $value['cod_status'];
+        $enderecoEntrega = $value["endereco_entrega"];
+    }
 
-$dataAbertura = strftime('%d/%m/%Y', $abertura);
-$horaAbertura = strftime('%H:%M', $abertura);
-$dataFechamento = strftime('%d/%m/%Y', $fechamento);
-$horaFechamento = strftime('%H:%M', $fechamento);
+    $dataAbertura = strftime('%d/%m/%Y', $abertura);
+    $horaAbertura = strftime('%H:%M', $abertura);
+    $dataFechamento = strftime('%d/%m/%Y', $fechamento);
+    $horaFechamento = strftime('%H:%M', $fechamento);
 
-//executa consulta dos itens do pedido
-$sqlItens = "select * from item_pedido where pedido_cod = $cod";
-foreach ($connection->query($sqlItens) as $key => $value) {
-    $tabelaItens .= '
-    <tr>
-    <th scope="row">' . $value["item"] . '</th>
-    <td align="justify">' . $value["descricao"] . '</td>
-    <td>' . $value["quantidade"] . '</td>
-    <td>' . $value["unidade"] . '</td>
-    </tr>';
-}
+    //executa consulta dos itens do pedido
+    $sqlItens = "select * from item_pedido where pedido_cod = $cod";
+    foreach ($connection->query($sqlItens) as $key => $value) {
+        $tabelaItens .= '
+        <tr>
+        <th scope="row">' . $value["item"] . '</th>
+        <td align="justify">' . $value["descricao"] . '</td>
+        <td>' . $value["quantidade"] . '</td>
+        <td>' . $value["unidade"] . '</td>
+        </tr>';
+    }
 
-//executa consulta dos anexos do pedido
-$sqlAnexos = "select * from anexos_pedido where pedido = $cod";
-
-
-
+    //executa consulta dos anexos do pedido
+    $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
+        
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>LicitaTudo - Meus Pedidos</title>
+        <title>Informações do Pedido</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" type="image/x-icon" href="../Imagens/Logo-Licita.ico">
         <!-- Bootstrap CSS -->
@@ -100,8 +99,8 @@ $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
         <div style="width: 50%; text-align: Right; float:right;">
         <?php
         if ($statusCod == "1") {
-            echo "<a href='alterarStatusPedido.php?cod=$cod&alteracao=2'><button style='background-color: #41d92e;'><b>FINALIZAR PEDIDO</b></button></a> ";
-            echo "<a href='alterarStatusPedido.php?cod=$cod&alteracao=3'><button style='background-color: #e32738;'><b>CANCELAR PEDIDO</b></button></a>";
+            echo "<a href='alterarStatusPedido.php?cod=$cod&alteracao=2'><button class='btn btn-outline-success'><b>Finalizar Pedido</b></button></a> ";
+            echo "<a href='alterarStatusPedido.php?cod=$cod&alteracao=3'><button class='btn btn-outline-danger'><b>Cancelar Pedido</b></button></a>";
         }
         ?>
         </div>
@@ -126,7 +125,7 @@ $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
 
                 
                 <!-- TÍTULOS & ETC -->
-                <h3><b><?php echo $titulo; ?></b></h3>
+                <h3><b><?php echo $titulo; ?></b></h3><hr>
                 <p><?php echo $descricao; ?></p></br>
 
                  
@@ -164,7 +163,7 @@ $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
             ?>
             <?php
             if ($statusCod == "1") {
-                echo "<p align='right'><a href='adicionarAnexo.php?cod=$cod'><button>Adicionar</button></a></p>";
+                echo "<p align='right'><a href='adicionarAnexo.php?cod=$cod'><button class='btn btn-info'>Adicionar</button></a></p>";
             } ?>
 
             <br>
@@ -180,7 +179,8 @@ $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
                  echo  "<p><a href='visualizarOrcamento.php?cod=" . $value['cod'].  "'>" . $value['razao_social'] . " (" . $value['COUNT(cotacoes_itens.cod)'] . " Itens)</a></p>";
              }
             ?>
-            <!-- footer da página --></br></br></br>
+            <!-- footer da página --></br>
+            <hr class="featurette-divider">
             <footer>
                 <div class="container center col-md-3">
                 <p class="text-muted">&copy; Licitatudo  2020 – 2021</p>

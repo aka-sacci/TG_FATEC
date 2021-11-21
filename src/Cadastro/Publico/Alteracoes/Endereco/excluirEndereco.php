@@ -1,5 +1,4 @@
 <?php
-
     require_once "../../../../../vendor/autoload.php";
     include_once "../../../../scripts/validaLogin.php";
     validarLogin("PUB");
@@ -9,20 +8,19 @@
     $validate = false;
 
     $sql = "select * from endereco_instituicao_publica where cod = $codEndereco and cnpj = $cnpj";
-foreach ($connection->query($sql) as $key => $value) {
-    $validate = true;
-    $logradouro = $value["logradouro"];
-    $numero = $value["numero"];
-    $bairro = $value["bairro"];
-    $cidade = $value["cidade"];
-    $uf = $value["uf"];
-    $descricao = $value["descricao"];
-}
+    foreach ($connection->query($sql) as $key => $value) {
+        $validate = true;
+        $logradouro = $value["logradouro"];
+        $numero = $value["numero"];
+        $bairro = $value["bairro"];
+        $cidade = $value["cidade"];
+        $uf = $value["uf"];
+        $descricao = $value["descricao"];
+    }
 
-if (!$validate) {
-    header("location:../");
-}
-
+    if (!$validate) {
+        header("location:../");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -47,36 +45,33 @@ if (!$validate) {
     </head>
 
     <body>
-
-        <script>
-            function goBack() {
-            window.history.back()
-            }
-        </script>
-
         </br>
         <a class="home" href="#" onclick="goBack()">
             <i class="fa fa-arrow-circle-left"> Voltar</i>
         </a>
-        <div class="container" id="container-corpoindex">
-        <hr>
-            <form action="excluirEnderecoAction.php" method="post">
-                <p><h3>Exclusão de endereço</h3></p>
+        <div class="container col-lg-6" id="container-corpoindex">
+            <div class="img centro">
+                <img src="../../../../Imagens/logo-LT.png" alt="alternative" width=80 height=80>
+            </div><br>
+                <h3><b>EXCLUIR O ENDEREÇO</b></h3><hr><br>
+                <form action="excluirEnderecoAction.php" method="post">
 
-                    <?php
-                        echo "<p>" . $logradouro . ", " . $numero . ", " . $bairro . " - " .  $cidade . " (" . $uf . ") </p>";
-                        echo "<p>Descrição: " . $descricao . ". </p>";
-                        echo "<input name='txtCod' hidden value='$codEndereco' required>";
-                    ?>
+                        <?php
+                            echo "<p>" . $logradouro . ", " . $numero . ", " . $bairro . " - " .  $cidade . " (" . $uf . ") </p>";
+                            echo "<p>Descrição: " . $descricao . ". </p>";
+                            echo "<input class='form-control-input' name='txtCod' hidden value='$codEndereco' required>";
+                        ?>
 
-                <p><b>Para confirmar a exclusão do endereço acima, digite sua senha.</b></p><input name="txtSenha" type="password" required>
-                </br></br></br><button type='submit' value="Confirmar" id="btnSubmit" class="btn btn-md buttoncad" >Confirmar Exclusão</button></br>             
-            </form> 
-                <hr></br></br></br></br></br></br>
-                <!-- footer da página -->
-                <div class="container center col-md-3">
-                <p class="text-muted">&copy; Licitatudo  2020 – 2021</p>
-                </div>
+                    <p><b>Para confirmar a exclusão do endereço acima, digite sua senha.</b></p><input class='form-control-input' name="txtSenha" type="password" required>
+                    </br></br><button type='submit' value="Confirmar" id="btnSubmit" class="btn btn-md buttoncad" >Confirmar Exclusão</button></br>             
+                </form> 
+                <hr class="featurette-divider">
+            <!-- footer da página -->
+            <footer>
+                <div class="container centro col-md-12">
+                    <p class="text-muted">Copyright &copy; Licitatudo 2021 - Todos os direitos reservados</p>
+                </div> 
+            </footer> 
         </div>
     </body>
 

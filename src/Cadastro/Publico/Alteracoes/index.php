@@ -121,10 +121,13 @@ foreach ($connection->query($sql) as $key => $value) {
                     ?>
             <hr></br>
                 <button class="btn btn-md buttoncad" onclick="goBack()">Concluir Alterações</button></br></br></br></br>
-                <!-- footer da página -->
-                <div class="container center col-md-3">
-                <p class="text-muted">&copy; Licitatudo  2020 – 2021</p>
-                </div>
+            <hr class="featurette-divider">
+            <!-- footer da página -->
+            <footer>
+                <div class="container centro col-md-12">
+                    <p class="text-muted">Copyright &copy; Licitatudo 2021 - Todos os direitos reservados</p>
+                </div> 
+            </footer>
         </div>
     </body>
 </html>
