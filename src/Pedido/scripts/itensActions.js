@@ -26,6 +26,7 @@ function adicionarItem()
         newItem.id = "txtItem" + counterItens;
         newItem.name = "txtItem" + counterItens;
         newItem.required = "required";
+        newItem.className = "form-control-input";
 
         //criar textarea
         var newDescricao = document.createElement('textarea');
@@ -33,6 +34,7 @@ function adicionarItem()
         newDescricao.name = "txtDesc" + counterItens;
         newDescricao.placeholder = "Descrição detalhada do item #" + counterItens;
         newDescricao.maxLength = "400";
+        newDescricao.className = "form-control-textarea";
 
         //criar input qtde
         var newItemQtde = document.createElement('input');
@@ -42,6 +44,7 @@ function adicionarItem()
         newItemQtde.name = "txtQtde" + counterItens;
         newItemQtde.value = "1";
         newItemQtde.required = "required";
+        newItemQtde.style = "margin-right: 0.25rem";
 
         //criar select
         var newSelect = document.createElement('select');
@@ -62,13 +65,24 @@ function adicionarItem()
         newSelect.appendChild(option2);
         newSelect.appendChild(option3);
 
+        //BR
+        var brTag = document.createElement("br");
+        var brTag2 = document.createElement("br");
+
+        //criar hr
+        var hrTAG = document.createElement("hr");
+        hrTAG.style = "width:60%;text-align:left;margin-left:0;height: 0.05rem;background: gray;";
 
         //insere td
         $paragraphWrapper.insertBefore(newSelect, $paragraphWrapper.firstChild);
         $paragraphWrapper.insertBefore(newItemQtde, $paragraphWrapper.firstChild);
+        $paragraphWrapper.insertBefore(brTag2, $paragraphWrapper.firstChild);
         $paragraphWrapper.insertBefore(newDescricao, $paragraphWrapper.firstChild);
+        $paragraphWrapper.insertBefore(brTag, $paragraphWrapper.firstChild);
         $paragraphWrapper.insertBefore(newItem, $paragraphWrapper.firstChild);
-
+        $paragraphWrapper.insertBefore(hrTAG, $paragraphWrapper.firstChild);
+        
+       
         sessionStorage.setItem('counterItens', counterItens);
 
         if (counterItens == 50) {
@@ -172,6 +186,7 @@ function adicionarCategoria()
             var newSelect = document.createElement('select');
             newSelect.id = "selectCategorias" + counterCategorias;
             newSelect.name = "selectCategorias" + counterCategorias;
+            newSelect.style = "margin-right: 0.45rem; margin-bottom: 0.45rem";
 
         //preenche o select com os dados filtrados
             var i = 0;

@@ -10,6 +10,7 @@ function checkaDisponibilidade($empresaPrivada, $enderecoPublico, $distancia, $p
     $useKey = require '../../Pedido/scripts/config.php';
     $arrayTiposPedido = array();
     $arrayTiposEmpresa = array();
+    $validaDistancia = false;
 
     //checkar se os tipos batem
     $sqlTiposPedido = "SELECT categoria FROM categoria_pedido WHERE pedido = $pedido ";
@@ -58,11 +59,17 @@ function checkaDisponibilidade($empresaPrivada, $enderecoPublico, $distancia, $p
         $distanciaEndPriv = $distanciaEndPriv / 1000;
 
         if ($distanciaEndPriv <= $distancia) {
-            return 2;
+            $validaDistancia = true;
+            break;
         } else {
             $_SESSION['raio'] = $distanciaEndPrivTXT;
-            return 1;
         }
+    }
+
+    if ($validaDistancia) {
+        return 2;
+    } else {
+        return 1;
     }
 }
 
@@ -71,6 +78,7 @@ function checaOrcamento($cnpj, $pedido)
     $connection  = require '../../scripts/connectionClass.php';
     $sqlCheckaPedido = "select * from cotacoes where empresa = $cnpj and pedido = $pedido";
     foreach ($connection->query($sqlCheckaPedido) as $key => $value) {
+        $_SESSION['codCotacao'] = $value['cod'];
         return 1;
         break;
     }

@@ -181,7 +181,7 @@ $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
                                     echo "<p><a href='adicionarCotacao.php?cod=$cod'>Clique aqui para inserir o seu orçamento</a></p>";
                                     break;
                                 case 1:
-                                    echo "<p>Cique aqui para alterar o orçamento já enviado</p>";
+                                    echo "<p><a href='alterarCotacao.php?cod=" . $_SESSION['codCotacao'] . "'>Cique aqui para alterar o orçamento já enviado</a></p>";
                                     break;
                             }
 

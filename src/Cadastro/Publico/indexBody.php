@@ -45,13 +45,13 @@ function returnBody()
     $content .=            '</div>';
     $content .=        '</div>' ;
     $content .=        '<div class="col-lg-3" >';
-    $content .=            '<a href="../../Pedido/meusPedidos.php">';
+    $content .=            '<a href="../../Perfis/Pedidos/buscarPedido.php">';
     $content .=            '<div class="align-center service-col centro">' ;
     $content .=                '<div class="service-icon centro">';
     $content .=                    '<figure><i class="fa fa-building"></i></figure>';
     $content .=                '</div></a>';
-    $content .=                    '<h3>Ver outros pedidos</h3></br></br>';
-    $content .=                    '<a class="btn btn-md buttoncad" type="button" href="../../Pedido/meusPedidos.php">Clique aqui</a>';
+    $content .=                    '<h3>Banco de Preços</h3></br></br>';
+    $content .=                    '<a class="btn btn-md buttoncad" type="button" href="../../Perfis/Pedidos/buscarPedido.php">Clique aqui</a>';
     $content .=            '</div>';
     $content .=        '</div>' ;
     $content .=    '</div>';

@@ -52,23 +52,20 @@ if ($statusConta == "2") {
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php" >Home</a>   
-                </li>
                 <li class="nav-item dropdown"><!-- dropdown Cadastro -->
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="Alteracoes">Consultar Dados</a>
                         <a class="dropdown-item" href="../../Pedido/criarPedido.php">Criar Pedido</a>
                         <a class="dropdown-item" href="../../Pedido/meusPedidos.php">Ver Pedidos</a>
-                        <a class="dropdown-item" href="../../Pedido/meusPedidos.php">Outros Pedidos</a>
+                        <a class="dropdown-item" href="../../Perfis/Pedidos/buscarPedido.php">Banco de Preços</a>
                     </div>    
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../../sobrenos.html">Sobre Nós</a>
+                    <a class="nav-link" href="../../../sobrenos.php">Sobre Nós</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../../contato.html">Contato</a>
+                    <a class="nav-link" href="../../../contato.php">Contato</a>
                 </li>
                 <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
                                 
@@ -105,20 +102,20 @@ if ($statusConta == "2") {
 
         <!-- Container Corpo do Index -->
         <?php
-            if (isset($descStatus)) {
-            } else {
-                echo returnBody();
-            }
+        if (isset($descStatus)) {
+        } else {
+            echo returnBody();
+        }
         ?>
             
             <hr class="featurette-divider">
             <!-- Brand -->
             <div class="row mar-bot5">
-                <div class="col-md-offset-3 col-md-12">						
-                    <div class="centro">					
+                <div class="col-md-offset-3 col-md-12">                     
+                    <div class="centro">                    
                         <h2>Nossos Parceiros Públicos</h2>
-                        <p class="pprincipal">Estes são outros Órgãos Públicos, que assim como você, utilizam o Portal Licitatudo.</p>						
-                    </div>						
+                        <p class="pprincipal">Estes são outros Órgãos Públicos, que assim como você, utilizam o Portal Licitatudo.</p>                      
+                    </div>                      
                 </div>
             </div></br></br>
             <section id="publi-brand">
@@ -129,7 +126,7 @@ if ($statusConta == "2") {
                         <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://www.capital.sp.gov.br/"><img src="../../Imagens/pref-sp.png" alt="sp"><br>São Paulo</a></div>
                         <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="http://www.prefeituradeatibaia.com.br/"><img src="../../Imagens/pref-atibaia.png" alt="atibaia">Atibaia</a></div>
                         <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://santaisabel.sp.gov.br/portal/"><img src="../../Imagens/pref-sta-isabel.png" alt="sta-isabel">Santa Isabel</a></div>
-                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://prefeitura.rio/"><img src="../../Imagens/pref-rio.png" alt="rio">Rio de Janeiro</a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://prefeitura.rio/"><img src="../../Imagens/pref-rio.png" alt="rio"><br>Rio de Janeiro</a></div>
                     </div>
                 </div>
             </section><!--/#publi-brand -->

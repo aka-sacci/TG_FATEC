@@ -64,7 +64,7 @@ echo "<script>sessionStorage.setItem('itens', '" . json_encode($arrayItens) . "'
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </head>
     
-    <body onload="loadCriarOrcamento()">
+    <body onload="loadCriarOrcamento(1)">
         <!-- Botao de Retorno -->
         </br>
         <a class="home" href="#" onclick="goBack()">
@@ -88,12 +88,12 @@ echo "<script>sessionStorage.setItem('itens', '" . json_encode($arrayItens) . "'
                 <td><select id="selectItem1" name="selectItem1">
                 <?php
                 foreach ($arrayItens as $key => $value) {
-            echo "<option value='" . $value["cod"] . "'>" . $value["item"] . "</option>";
+                    echo "<option value='" . $value["cod"] . "'>" . $value["item"] . "</option>";
                 }
                 ?>
                 </select></td>
                 <td align="center"><textarea placeholder="MODELO & DESCRIÇÃO" id="txtDesc1" name="txtDesc1" rows="7" cols="60" required ></textarea></td>
-                <td align="right"><input type="text" placeholder="Valor (R$)" maxlength="50" id="txtValue1" name="txtValue1" required></td>
+                <td align="right"><input type="number" step="0.1" placeholder="Valor (R$)" maxlength="50" id="txtValue1" name="txtValue1" required></td>
                     </tr>
                   </tbody>
                 </table>

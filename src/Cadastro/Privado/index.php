@@ -64,10 +64,10 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
                     </div>    
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../sobrenos.html">Sobre Nós</a>
+                    <a class="nav-link" href="../../sobrenos.php">Sobre Nós</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../contato.html">Contato</a>
+                    <a class="nav-link" href="../../contato.php">Contato</a>
                 </li>
                 <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
                 
@@ -109,6 +109,9 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
                     ?>                   
                 </p>
                 <p><a href='Alteracoes'>Ver meus dados</a></p>
+                <p><a href='../../Pedido/meusOrcamentos.php'>Meus orçamentos</a></p>
+                <p><a href='../../Pedido/buscarPedido.php'>Buscar por pedidos</a></p>
+
             </div>
 
             <!-- Container Corpo do Index -->

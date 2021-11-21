@@ -66,10 +66,10 @@ require_once "vendor/autoload.php";
                     </div>    
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="sobrenos.html">Sobre Nós</a>
+                    <a class="nav-link" href="sobrenos.php">Sobre Nós</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contato.html">Contato</a>
+                    <a class="nav-link" href="contato.php">Contato</a>
                 </li>
                 </ul>
             </div>

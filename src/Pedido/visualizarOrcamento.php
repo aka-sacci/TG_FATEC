@@ -16,6 +16,7 @@ $tabelaItens = "";
 $sqlConfirmaDados = "select pedido.cod from pedido
 INNER JOIN cotacoes ON pedido.cod = cotacoes.pedido
 where cotacoes.cod = $codCotacao and cnpj = $cnpj";
+
 foreach ($connection->query($sqlConfirmaDados) as $key => $value) {
     $validation = true;
 }
@@ -24,17 +25,18 @@ if (!$validation) {
 }
 
 //executa a consulta de dados básicos do pedido
-$sql = "SELECT empresa_privada.razao_social, cotacoes.last_update, cotacoes.observacao, pedido.titulo, pedido.cod
+$sql = "SELECT empresa_privada.razao_social, cotacoes.last_update, cotacoes.observacao, pedido.titulo, pedido.cod, empresa_privada.cnpj
 FROM cotacoes
 INNER JOIN empresa_privada ON cotacoes.empresa = empresa_privada.cnpj
 INNER JOIN pedido ON cotacoes.pedido = pedido.cod
 where cotacoes.cod = $codCotacao";
-foreach($connection->query($sql) as $key => $value){
-$razaoSocial = $value['razao_social'];
-$data_abertura = strtotime($value["last_update"]);
-$titulo_pedido = $value['titulo'];
-$observacaoPedido = $value['observacao'];
-$codPedido = $value['cod'];
+foreach ($connection->query($sql) as $key => $value) {
+    $razaoSocial = $value['razao_social'];
+    $data_abertura = strtotime($value["last_update"]);
+    $titulo_pedido = $value['titulo'];
+    $observacaoPedido = $value['observacao'];
+    $codPedido = $value['cod'];
+    $cnpjEmpresa = $value['cnpj'];
 }
 
 $dataAB = date("d/m/Y", $data_abertura);
@@ -43,17 +45,22 @@ $horaAB = strftime('%H:%M', $data_abertura);
 
 
 //executa consulta dos itens do pedido
-$sqlItens = "SELECT descricao_modelo, valor_un, item_pedido.item FROM cotacoes_itens
+$sqlItens = "SELECT descricao_modelo, valor_un, item_pedido.item, quantidade FROM cotacoes_itens
 INNER JOIN item_pedido
 ON cotacoes_itens.item_ref = item_pedido.cod
 WHERE cotacoes_itens.cotacao = $codCotacao";
 foreach ($connection->query($sqlItens) as $key => $value) {
+    $valUn = $value['valor_un'];
+    $qtde = $value['quantidade'];
+    $valtotal = $valUn * $qtde;
+    $valUn = number_format($valUn, 2, ',', '.');
+    $valtotal = number_format($valtotal, 2, ',', '.');
     $tabelaItens .= '
     <tr>
     <th scope="row">' . $value["item"] . '</th>
     <td align="justify">' . $value["descricao_modelo"] . '</td>
-    <td>' . $value["valor_un"] . '</td>
-    <td>' . $value["valor_un"] . '</td>
+    <td>R$' . $valUn . '</td>
+    <td>R$' . $valtotal . '</td>
     </tr>';
 }
 
@@ -91,7 +98,7 @@ foreach ($connection->query($sqlItens) as $key => $value) {
         <div style="width:50%; display: inline-block;"><H3><b>INFORMAÇÕES DO PEDIDO</b></H3></div>
             <hr>
         
-                <p><b>EMPRESSA EMISSORA: </b><?php echo $razaoSocial; ?></p>
+                <p><b>EMPRESSA EMISSORA: </b><?php echo "<a href='../Perfis/Privado/visualizarEmpresa.php?cnpj=$cnpjEmpresa'> $razaoSocial </a>"; ?></p>
                 <p>ORÇAMENTO <b>N°# <?php echo $codCotacao; ?></b>, REFERENTE AO PEDIDO <b>N° #<?php echo $codPedido; ?></b></p>
                 <p><b>DATA DE EMISSÃO: </b> <?php echo $dataAB . ' às ' . $horaAB ?></p></br>
                 <!-- TÍTULOS & ETC -->

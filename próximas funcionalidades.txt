@@ -1,6 +1,2 @@
-- Ir para empresa  privada -> Notificações, acessar pedidos e criar cotações
-- Esperar o vitor terminar o front da parte do "Meus Pedidos"
-- conteúdo da parte debaixo do bem vindo?
-- Falar pro vitor tirar o "concluir alterações" e o "x" da caixa  verde;
-- Adicionar adição de documentos nos pedidos, mas aonde? no próprio pedido? ou depois de criado?
-- falar com o vitor sobre a porra das notificações
+- Alterar tipos?
+- api pra inserir endereços

@@ -14,12 +14,12 @@
 
     //checka se o pedido pertence ao órgão público logado
     $sqlConfirmaDados = "select cod from pedido where cod = $cod and cnpj=$cnpj";
-    foreach ($connection->query($sqlConfirmaDados) as $key => $value) {
-        $validation = true;
-    }
-    if (!$validation) {
-        header("Location:meusPedidos.php");
-    }
+foreach ($connection->query($sqlConfirmaDados) as $key => $value) {
+    $validation = true;
+}
+if (!$validation) {
+    header("Location:meusPedidos.php");
+}
 
     //executa a consulta de dados básicos do pedido
     $sqlConsulta = "select titulo, data_abertura, data_fechamento, descricao, pedido.status AS cod_status,
@@ -29,17 +29,17 @@
     INNER JOIN status_pedido ON pedido.status = status_pedido.cod
     INNER JOIN instituicao_publica ON pedido.cnpj = instituicao_publica.cnpj
     where pedido.cod = $cod";
-    foreach ($connection->query($sqlConsulta) as $key => $value) {
-        $titulo = $value['titulo'];
-        $abertura = strtotime($value['data_abertura']);
-        $fechamento = strtotime($value['data_fechamento']);
-        $descricao = $value['descricao'];
-        $modo = $value['modo'];
-        $status = $value['status'];
-        $razaoSocial = $value['razao_social'];
-        $statusCod = $value['cod_status'];
-        $enderecoEntrega = $value["endereco_entrega"];
-    }
+foreach ($connection->query($sqlConsulta) as $key => $value) {
+    $titulo = $value['titulo'];
+    $abertura = strtotime($value['data_abertura']);
+    $fechamento = strtotime($value['data_fechamento']);
+    $descricao = $value['descricao'];
+    $modo = $value['modo'];
+    $status = $value['status'];
+    $razaoSocial = $value['razao_social'];
+    $statusCod = $value['cod_status'];
+    $enderecoEntrega = $value["endereco_entrega"];
+}
 
     $dataAbertura = strftime('%d/%m/%Y', $abertura);
     $horaAbertura = strftime('%H:%M', $abertura);
@@ -48,19 +48,19 @@
 
     //executa consulta dos itens do pedido
     $sqlItens = "select * from item_pedido where pedido_cod = $cod";
-    foreach ($connection->query($sqlItens) as $key => $value) {
-        $tabelaItens .= '
+foreach ($connection->query($sqlItens) as $key => $value) {
+    $tabelaItens .= '
         <tr>
         <th scope="row">' . $value["item"] . '</th>
         <td align="justify">' . $value["descricao"] . '</td>
         <td>' . $value["quantidade"] . '</td>
         <td>' . $value["unidade"] . '</td>
         </tr>';
-    }
+}
 
     //executa consulta dos anexos do pedido
     $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
-        
+
 ?>
 
 <!DOCTYPE html>
@@ -175,9 +175,9 @@
              INNER JOIN pedido ON cotacoes.pedido = pedido.cod
              WHERE pedido.cod=$cod
              GROUP BY empresa_privada.cnpj";
-             foreach ($connection->query($sqlCotacoes) as $key => $value) {
-                 echo  "<p><a href='visualizarOrcamento.php?cod=" . $value['cod'].  "'>" . $value['razao_social'] . " (" . $value['COUNT(cotacoes_itens.cod)'] . " Itens)</a></p>";
-             }
+            foreach ($connection->query($sqlCotacoes) as $key => $value) {
+                echo  "<p><a href='visualizarOrcamento.php?cod=" . $value['cod'] .  "'>" . $value['razao_social'] . " (" . $value['COUNT(cotacoes_itens.cod)'] . " Itens)</a></p>";
+            }
             ?>
             <!-- footer da página --></br>
             <hr class="featurette-divider">

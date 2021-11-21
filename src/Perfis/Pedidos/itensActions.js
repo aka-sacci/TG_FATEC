@@ -1,5 +1,5 @@
-function loadCriarOrcamento(){
-    sessionStorage.setItem('counterItens', 1);
+function loadCriarOrcamento(itens){
+    sessionStorage.setItem('counterItens', itens);
 }
 
 function adicionarItem()
