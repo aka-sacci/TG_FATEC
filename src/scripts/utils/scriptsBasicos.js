@@ -44,6 +44,7 @@ function adicionarCategoria()
             var newSelect = document.createElement('select');
             newSelect.id = "selectCategorias" + counterCategorias;
             newSelect.name = "selectCategorias" + counterCategorias;
+            newSelect.style = "margin-right: 0.45rem; margin-bottom: 0.45rem";
 
         //preenche o select com os dados filtrados
             var i = 0;

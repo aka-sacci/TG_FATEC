@@ -105,25 +105,25 @@ if(isset($_SESSION['login'])) $status=true;
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="map-responsive">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.507640204439!3d37.757814996609724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan+Francisco%2C+CA%2C+USA!5e0!3m2!1sen!2sro!4v1498231462606" allowfullscreen></iframe>
+                               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3668.927825418183!2d-46.46726508439366!3d-23.136313251919294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cebe3b1b8413ed%3A0xe2412e96b3e5009f!2sPrefeitura%20de%20Bom%20Jesus%20dos%20Perd%C3%B5es!5e0!3m2!1spt-BR!2sbr!4v1637529266252!5m2!1spt-BR!2sbr" allowfullscreen></iframe>
                             </div>
                         </div> <!-- end of col -->
                         <div class="col-lg-6">
                             
                             <!-- Contact Form -->
-                            <form id="contactForm" data-toggle="validator" data-focus="false">
+                            <form id="contactForm" data-toggle="validator" data-focus="false" action="src/scripts/insertMessage.php" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control-input" id="cname" required>
+                                    <input type="text" class="form-control-input" id="cname" name="cname" required>
                                     <label class="label-control" for="cname">Nome</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control-input" id="cemail" required>
+                                    <input type="email" class="form-control-input" id="cemail" name="cemail" required>
                                     <label class="label-control" for="cemail">Email</label>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control-textarea" id="cmessage" required></textarea>
+                                    <textarea class="form-control-textarea" id="cmessage" name="cmessage" required></textarea>
                                     <label class="label-control" for="cmessage">Sua Mensagem</label>
                                     <div class="help-block with-errors"></div>
                                 </div>

@@ -39,7 +39,7 @@ foreach ($connection->query($sql) as $key => $value) {
     ?>
         <br><p><b>A empresa trabalha com vendas/aluguel de:</b></p>
         <div id="divSelects" class="divSelects">
-        <select name="selectCategorias1" id="selectCategorias1">
+        <select name="selectCategorias1" id="selectCategorias1" style="margin-right: 0.45rem; margin-bottom: 0.45rem">
     <?php
     foreach ($arrayCategoria as $key => $registro) {
         echo "<option value='" . $registro['cod'] . "'>" . $registro['categoria']  . "</option> ";

@@ -23,6 +23,13 @@ foreach ($connection->query($sql) as $key => $value) {
 $sql = "select * from endereco_empresa_privada where cnpj = '" . $myCnpj . "' order by cod ASC limit 1";
 $enderecoPrincipal = $connection->query($sql);
 
+//pega as categorias cadastradas
+$sql = "SELECT categoria.categoria from categoria_empresa_privada
+INNER JOIN categoria ON
+categoria_empresa_privada.categoria = categoria.cod
+WHERE cnpj = $myCnpj";
+$categorias = $connection->query($sql);
+
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +46,7 @@ $enderecoPrincipal = $connection->query($sql);
     <body>
       
       <H2><b>INFORMAÇÕES GERAIS</b></H2>
-      <p>*Para alterar as informações gerais, é necessário realizar tais alterações diretamente com a Receita Federal. Se este processo já foi feito, 
+      <p>*Para alterar as informações gerais (exceto categorias), é necessário realizar tais alterações diretamente com a Receita Federal. Se este processo já foi feito, 
         <a href="DadosCadastrais/atualizarDadosCadastrais.php">clique aqui para atualizar os dados cadastrais</a></p>
 
       <?php
@@ -54,15 +61,28 @@ $enderecoPrincipal = $connection->query($sql);
         }
         ?>
 
-
+        <!-- Alterar categorias cadastradas -->
+        
+        <?php
+        echo '<p><b>Categorias cadastradas </b><a href="Categorias/alterarCategorias.php">Alterar</a></p>';
+        $countCat = 1;
+        echo "<p>";
+        foreach ($categorias as $key => $value) {
+            if ($countCat == 1) {
+                  echo $value['categoria'];
+            } else {
+                 echo ", " . $value['categoria'];
+            }
+            $countCat++;
+        }
+        echo ".</p>"
+        ?>
         <br><H2><b>INFORMAÇÕES PARA CONTATO/LOGIN</b></H2>
         <?php
         echo '<p><b>Telefone</b></p><p>' . $telefone . ' <a href="Telefone/alterarTelefone.php">Alterar</a></p>';
         echo '<p><b>Email</b></p><p>' . $email . ' <a href="Login/alterarLogin.php">Alterar</a></p>';
         ?>
       <p><a href="Login/alterarSenha.php">Alterar Senha</a></p>
-
-
 
     <br><h2><b>MEUS ENDEREÇOS</b></h2>
     <h4>Endereço principal</h4>
