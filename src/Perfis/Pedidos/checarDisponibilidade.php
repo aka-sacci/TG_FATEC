@@ -62,7 +62,13 @@ function checkaDisponibilidade($empresaPrivada, $enderecoPublico, $distancia, $p
             $validaDistancia = true;
             break;
         } else {
+            if(isset($_SESSION['raio'])){
+            if($_SESSION['raio'] > $distanciaEndPriv){
             $_SESSION['raio'] = $distanciaEndPrivTXT;
+            }
+        }else{
+            $_SESSION['raio'] = $distanciaEndPrivTXT;
+        }
         }
     }
 

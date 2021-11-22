@@ -111,7 +111,6 @@ foreach ($connection->query($sql) as $key => $value) {
             <hr><H4><b>HISTÓRICO DO CADASTRO</b></h4>
 
                     <?php
-                        header('Content-type: text/html; charset=utf-8');
                     foreach ($connection->query($sqlCadHist) as $key => $value) {
                         $dataStatusRaw = strtotime($value['data']);
                         $dataStatus = strftime('%d/%m/%Y', $dataStatusRaw);

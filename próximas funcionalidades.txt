@@ -6,3 +6,5 @@ http://localhost/TG-55/TG_FATEC/src/Cadastro/Privado/notificacoes.php alterar
 http://localhost/TG-55/TG_FATEC/src/Pedido/meusOrcamentos.php
 
 Alteracoes/Categorias/alterarCategorias.php
+
+Cadastro/Publico/confirmarCadastro.php
