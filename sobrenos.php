@@ -41,30 +41,29 @@ if(isset($_SESSION['login'])) $status=true;
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
 
                 <?php 
-                if(!$status){
-                    //se não tiver logado, retorna o menu genérico
-                    echo ' <li class="nav-item dropdown"><!-- dropdown Login -->
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="src/Cadastro/Privado/login.php">Conta Privada</a>
-                        <a class="dropdown-item" href="src/Cadastro/Publico/login.php">Conta Pública</a>
-                        </div>    
-                    </li>
-                    <li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="src/Cadastro/Privado/novoCadastro.php">Conta Privada</a>
-                        <a class="dropdown-item" href="src/Cadastro/Publico/novoCadastro.php">Conta Pública</a>
-                        </div>    
-                    </li>';
-                }else{
+                    if(!$status){
+                        //se não tiver logado, retorna o menu genérico
+                        echo ' <li class="nav-item dropdown"><!-- dropdown Login -->
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="src/Cadastro/Privado/login.php">Conta Privada</a>
+                            <a class="dropdown-item" href="src/Cadastro/Publico/login.php">Conta Pública</a>
+                            </div>    
+                        </li>
+                        <li class="nav-item dropdown"><!-- dropdown Cadastro -->
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="src/Cadastro/Privado/novoCadastro.php">Conta Privada</a>
+                            <a class="dropdown-item" href="src/Cadastro/Publico/novoCadastro.php">Conta Pública</a>
+                            </div>    
+                        </li>';
+                    }else{
                     //senão, retorna os menus pub e pri
                     if($_SESSION['type'] == "PUB"){
                         //retorna o menu pub
-                        echo '<li class="nav-item dropdown"><!-- dropdown Cadastro -->
+                        echo '<li class="nav-item dropdown"><!-- dropdown Ferramentas -->
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="src/Cadastro/Publico/Alteracoes">Consultar Dados</a>
                                 <a class="dropdown-item" href="src/Pedido/criarPedido.php">Criar Pedido</a>
                                 <a class="dropdown-item" href="src/Pedido/meusPedidos.php">Ver Pedidos</a>
                                 <a class="dropdown-item" href="src/Perfis/Pedidos/buscarPedido.php">Banco de Preços</a>
@@ -72,11 +71,17 @@ if(isset($_SESSION['login'])) $status=true;
                         </li>';
                     }else{
                         //retorna o menu priv
+                        echo '<li class="nav-item dropdown"><!-- dropdown Ferramentas -->
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="src/Pedido/meusOrcamentos.php">Meus Orçamentos</a>
+                            <a class="dropdown-item" href="src/Pedido/buscarPedido.php">Buscar por Pedidos</a>
+                            </div>    
+                        </li>';
                     }
-
-
-                }
+                    }
                 ?>
+
                 <li class="nav-item active">
                     <a class="nav-link" href="">Sobre Nós</a>
                 </li>
@@ -109,7 +114,7 @@ if(isset($_SESSION['login'])) $status=true;
                     <div class="row mar-bot5">
                         <div class="col-md-offset-3 col-md-12">						
                             <div class="centro">					
-                                <h2>Nossas Premissas</h2>
+                                <h2>NOSSAS PREMISSAS</h2>
                                 <p class="pprincipal">O portal Licitatudo foi criado com a finalidade de trazer uma maneira mais fácil, rápida e eficiente para se trabalhar com compras Públicas beneficiando ambas as partes. Fazemos isso com a finalidade de:</p>						
                             </div>						
                         </div>
@@ -155,7 +160,7 @@ if(isset($_SESSION['login'])) $status=true;
                 <div class="container col-md-8">
                     <div class="row centro">
                         <div class="col-lg-12">
-                            <h2>Veja nosso Vídeo Institucional</h2>
+                            <h2>VEJA NOSSO VIDEO INSTITUCIONAL</h2>
                         </div> 
                     </div><br> 
                     <div class="row">
@@ -163,7 +168,7 @@ if(isset($_SESSION['login'])) $status=true;
                             <!-- Video Preview -->
                             <div class="image-container">
                                 <div class="video-wrapper">
-                                    <a class="popup-youtube" target="_blank" href="https://www.youtube.com/watch?v=E65JbVN2L0A" data-effect="fadeIn">
+                                    <a class="popup-youtube" target="_blank" href="https://www.youtube.com/watch?v=_XlFvLGbly4" data-effect="fadeIn">
                                         <img class="img-fluid" src="src/Imagens/video-frame.svg" alt="alternative">
                                         <span class="video-play-button">
                                             <span></span>
@@ -183,7 +188,7 @@ if(isset($_SESSION['login'])) $status=true;
                 <div class="container">
                     <div class="row mar-bot5">
                         <div class="col-md-offset-3 col-md-12 centro">
-                            <h2>Sobre nosso Time</h2>
+                            <h2>SOBRE NOSSO TIME</h2>
                             <p>Conheça nossa equipe de profissionais de T.I. especializados em desenvolvimento Full Stack que ajudarão vocês Empresas Privadas, a alavancar e auxiliar em suas vendas, e aos funcionários de Órgãos Públicos, facilitando suas rotinas de trabalho de forma a agilizar os processos de cotação.</p>
                         </div> 
                     </div></br></br>
@@ -295,8 +300,7 @@ if(isset($_SESSION['login'])) $status=true;
                 <div class="container centro col-md-12">
                     <p class="text-muted">Copyright &copy; Licitatudo 2021 - Todos os direitos reservados</p>
                 </div> 
-            </footer> 
-            
+            </footer>     
         </div> 
     </body>
 </html>

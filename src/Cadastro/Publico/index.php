@@ -1,4 +1,5 @@
 <?php
+
     require_once "../../../vendor/autoload.php";
     include_once "../../scripts/validaLogin.php";
     include_once "indexBody.php";
@@ -9,15 +10,16 @@
 
 
             $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
-foreach ($connection->query($sql) as $key => $value) {
-    $statusConta = $value['status_cadastro'];
-}
-if ($statusConta == "1") {
-    $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
-}
-if ($statusConta == "2") {
-    $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
-}
+    foreach ($connection->query($sql) as $key => $value) {
+        $statusConta = $value['status_cadastro'];
+    }
+    if ($statusConta == "1") {
+        $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
+    }
+    if ($statusConta == "2") {
+        $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -52,10 +54,9 @@ if ($statusConta == "2") {
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
-                <li class="nav-item dropdown"><!-- dropdown Cadastro -->
+                <li class="nav-item dropdown"><!-- Dropdown Ferramentas -->
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="Alteracoes">Consultar Dados</a>
                         <a class="dropdown-item" href="../../Pedido/criarPedido.php">Criar Pedido</a>
                         <a class="dropdown-item" href="../../Pedido/meusPedidos.php">Ver Pedidos</a>
                         <a class="dropdown-item" href="../../Perfis/Pedidos/buscarPedido.php">Banco de Preços</a>
@@ -77,6 +78,7 @@ if ($statusConta == "2") {
                             echo "Usuário: " . $login;
                         ?>  
                     </a>
+                    <a class="dropdown-item" href="Alteracoes">Consultar Dados</a>
                     <a class="dropdown-item" href="../../Cadastro/config/logout.php">Logout</a>
                     </div>
                 </li>
@@ -100,20 +102,20 @@ if ($statusConta == "2") {
                 </p>
             </div>
 
-        <!-- Container Corpo do Index -->
-        <?php
-        if (isset($descStatus)) {
-        } else {
-            echo returnBody();
-        }
-        ?>
+            <!-- Container Corpo do Index -->
+            <?php
+            if (isset($descStatus)) {
+            } else {
+                echo returnBody();
+            }
+            ?>
             
             <hr class="featurette-divider">
-            <!-- Brand -->
+            <!-- Brand Publica -->
             <div class="row mar-bot5">
                 <div class="col-md-offset-3 col-md-12">                     
                     <div class="centro">                    
-                        <h2>Nossos Parceiros Públicos</h2>
+                        <h2>NOSSOS PARCEIROS PÚBLICOS</h2>
                         <p class="pprincipal">Estes são outros Órgãos Públicos, que assim como você, utilizam o Portal Licitatudo.</p>                      
                     </div>                      
                 </div>
@@ -121,12 +123,12 @@ if ($statusConta == "2") {
             <section id="publi-brand">
                 <div class="container">                   
                     <div class="row mar-bot40">
-                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://www.nazarepaulista.sp.gov.br/"><img src="../../Imagens/pref-nazare-pta.png" alt="nazare-pta">Nazaré Paulista</a></div>
-                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://www.bjperdoes.sp.gov.br/"><img src="../../Imagens/pref-bjp.png" alt="bjp">BJ Perdões</a></div>
-                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://www.capital.sp.gov.br/"><img src="../../Imagens/pref-sp.png" alt="sp"><br>São Paulo</a></div>
-                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="http://www.prefeituradeatibaia.com.br/"><img src="../../Imagens/pref-atibaia.png" alt="atibaia">Atibaia</a></div>
-                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://santaisabel.sp.gov.br/portal/"><img src="../../Imagens/pref-sta-isabel.png" alt="sta-isabel">Santa Isabel</a></div>
-                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://prefeitura.rio/"><img src="../../Imagens/pref-rio.png" alt="rio"><br>Rio de Janeiro</a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://www.nazarepaulista.sp.gov.br/"><img src="../../Imagens/logotipos/pref-nazare-pta.png" alt="nazare-pta"><br>Pref. Nazaré Paulista</a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://www.bjperdoes.sp.gov.br/"><img src="../../Imagens/logotipos/pref-bjp.png" alt="bjp"><br>Pref. BJ Perdões</a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://www.capital.sp.gov.br/"><img src="../../Imagens/logotipos/pref-sp.png" alt="sp"><br>Pref. São Paulo</a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="http://www.prefeituradeatibaia.com.br/"><img src="../../Imagens/logotipos/pref-atibaia.png" alt="atibaia"><br>Pref. Atibaia</a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://santaisabel.sp.gov.br/portal/"><img src="../../Imagens/logotipos/pref-sta-isabel.png" alt="sta-isabel"><br>Pref. Santa Isabel</a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="https://prefeitura.rio/"><img src="../../Imagens/logotipos/pref-rio.png" alt="rio"><br>Pref. Rio de Janeiro</a></div>
                     </div>
                 </div>
             </section><!--/#publi-brand -->

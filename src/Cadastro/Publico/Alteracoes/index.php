@@ -57,28 +57,28 @@ foreach ($connection->query($sql) as $key => $value) {
                 <a href="DadosCadastrais/atualizarDadosCadastrais.php">clique aqui para atualizar os dados cadastrais</a></p>
 
                     <?php
-                    foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
-                        echo '<p><b>CNPJ: </b>' .  converterCNPJ($value['cnpj']) . '</p>';
-                        echo '<p><b>Razão Social: </b>' . $value['razao_social'] . '</p>';
-                        echo '<p><b>Nome Fantasia: </b>' . $value['nome_fantasia'] . '</p>';
-                        echo '<p><b>Ente Federativo Responsável (EFR): </b>' . $value['efr'] . '</p>';
-                        echo '<p><b>Natureza Jurídica: </b>' . $value['natureza'] . '</p>';
-                        $telefone = $value['telefone'];
-                        $email = $value['email'];
-                    }
+                        foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
+                            echo '<p><b>CNPJ: </b>' .  converterCNPJ($value['cnpj']) . '</p>';
+                            echo '<p><b>Razão Social: </b>' . $value['razao_social'] . '</p>';
+                            echo '<p><b>Nome Fantasia: </b>' . $value['nome_fantasia'] . '</p>';
+                            echo '<p><b>Ente Federativo Responsável (EFR): </b>' . $value['efr'] . '</p>';
+                            echo '<p><b>Natureza Jurídica: </b>' . $value['natureza'] . '</p>';
+                            $telefone = $value['telefone'];
+                            $email = $value['email'];
+                        }
                     ?>
 
-            <hr><H4><b>INFORMAÇÕES PARA CONTATO/LOGIN</b></H4>
+                    <hr><H4><b>INFORMAÇÕES PARA CONTATO/LOGIN</b></H4>
 
                     <?php
                         echo '<p><b>Telefone: </b>' . $telefone . ' <a><b> | </b></a><a href="Telefone/alterarTelefone.php">Alterar</a></p>';
                         echo '<p><b>Email: </b>' . $email . ' <a><b> | </b></a><a href="Login/alterarLogin.php">Alterar</a></p>';
                     ?>
 
-                <p><b>Senha: </b><a href="Login/alterarSenha.php">Alterar Senha</a></p>
+                    <p><b>Senha: </b><a href="Login/alterarSenha.php">Alterar Senha</a></p>
 
-            <hr><H4><b>MEUS ENDEREÇOS</b></H4>
-            <h4>Endereço principal</h4>
+                <hr><H4><b>MEUS ENDEREÇOS</b></H4>
+                <h4>Endereço principal</h4>
                 <p>*Para alterar o endereço principal, é necessário realizar tal alteração diretamente com a Receita Federal. Se tal processo já foi feito, 
                 <a href="Endereco/atualizarEnderecoPrincipal.php">clique aqui para atualizar o endereço</a></p>
                     
@@ -88,7 +88,7 @@ foreach ($connection->query($sql) as $key => $value) {
                     }
                     ?>
 
-            <h4>Outros endereços</h4>
+                <h4>Outros endereços</h4>
 
                     <?php
                     if ($nroEnderecos == 1) {
@@ -101,14 +101,14 @@ foreach ($connection->query($sql) as $key => $value) {
                         foreach ($connection->query($sql) as $key => $value) {
                             echo "<p>" . $value['logradouro'] . ", " . $value['numero'] . ", " . $value['bairro'] . " - " .  $value['cidade'] . " (" . $value['uf'] . ") </p>";
                             echo "<p><b>Descrição: </b>" . $value['descricao'] . ". <a href='Endereco/alterarEndereco.php?cod=" . $value["cod"] . "'> Alterar </a>
-                            <a><b> | </b></a><a href='Endereco/excluirEndereco.php?cod=" . $value["cod"] . "'> Excluir </a></p>";
+                            <a><b> | </b></a><a href='Endereco/excluirEndereco.php?cod=" . $value["cod"] . "'> Excluir Endereço</a></p>";
                         }
                     }
                     ?>
 
                 <a href="Endereco/inserirEndereco.php">Inserir novo endereço</a>
 
-            <hr><H4><b>HISTÓRICO DO CADASTRO</b></H4>
+            <hr><H4><b>HISTÓRICO DO CADASTRO</b></h4>
 
                     <?php
                         header('Content-type: text/html; charset=utf-8');
@@ -119,6 +119,7 @@ foreach ($connection->query($sql) as $key => $value) {
                         echo '<p>' . $dataStatus . ' às ' . $horaStatus . ' - ' . $value['status'] . ': ' . $value['descricao'] . '</p>';
                     }
                     ?>
+                    
             <hr></br>
                 <button class="btn btn-md buttoncad" onclick="goBack()">Concluir Alterações</button></br></br></br></br>
             <hr class="featurette-divider">

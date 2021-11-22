@@ -1,4 +1,5 @@
 <?php
+
     require_once "../../../vendor/autoload.php";
     include_once "../../scripts/validaLogin.php";
     $connection  = require "../../scripts/connectionClass.php";
@@ -11,9 +12,9 @@
     WHERE notificacao_pedido.empresa = $cnpj AND
     notificacao_pedido.status = 1";
     $nroNotificacoes = 0;
-foreach ($connection->query($sqlPedidos) as $key => $value) {
+    foreach ($connection->query($sqlPedidos) as $key => $value) {
     $nroNotificacoes = $value['COUNT(notificacao_pedido.cod)'];
-}
+    }
 
 ?>
 
@@ -49,27 +50,20 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
-                <li class="nav-item dropdown"><!-- dropdown Login -->
-                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+                <li class="nav-item dropdown"><!-- Dropdown Ferramentas -->
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
                     <div class="dropdown-menu">
-                    <a class="dropdown-item" href="../../Cadastro/Privado/login.php">Conta Privada</a>
-                    <a class="dropdown-item" href="../../Cadastro/Publico/login.php">Conta Pública</a>
-                    </div>    
-                </li>
-                <li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="../../Cadastro/Privado/novoCadastro.php">Conta Privada</a>
-                    <a class="dropdown-item" href="../../Cadastro/Publico/novoCadastro.php">Conta Pública</a>
+                        <a class="dropdown-item" href="../../Pedido/meusOrcamentos.php">Meus Orçamentos</a>
+                        <a class="dropdown-item" href="../../Pedido/buscarPedido.php">Buscar por Pedidos</a>
                     </div>    
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../sobrenos.php">Sobre Nós</a>
+                    <a class="nav-link" href="../../../sobrenos.php">Sobre Nós</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../../contato.php">Contato</a>
+                    <a class="nav-link" href="../../../contato.php">Contato</a>
                 </li>
-                <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
                 
                 <li class="nav-item dropdown nav-item active"> <!-- adicionei isso: navbar-nav ml-aut -->
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Conta</a>
@@ -77,9 +71,9 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
                     <a class="dropdown-item">
                         <?php
                             echo "Usuário: <b><cite> " . $login . "</cite></b>";
-
                         ?>  
                     </a>
+                    <a class="dropdown-item" href="Alteracoes">Consultar Dados</a>
                     <a class="dropdown-item" href="../../Cadastro/config/logout.php">Logout</a>
                 </div>
                 </li>
@@ -103,92 +97,96 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
                 <h4 class="alert-heading">Bem vindo!</h4>
                 <p>                   
                     <?php
-
                         echo "<p>Logado como <b><cite>" . $_SESSION['login'] . "</cite></b>.</p>";
-
                     ?>                   
                 </p>
-                <p><a href='Alteracoes'>Ver meus dados</a></p>
-                <p><a href='../../Pedido/meusOrcamentos.php'>Meus orçamentos</a></p>
-                <p><a href='../../Pedido/buscarPedido.php'>Buscar por pedidos</a></p>
-
             </div>
 
+            <!-- ESPAÇO EMPRESA PRIVADA -->
+            <hr class="featurette-divider">
+            <div class="container">
+            <div class="row mar-bot5">
+                <div class="col-md-offset-3 col-md-12">
+                    <div class="centro">
+                            <h2>ESPAÇO EMPRESA PRIVADA</h2>
+                            <p class="pprincipal">Aqui você pode Consultar e Alterar seus dados cadastrais, além de consultar seus orçamentos já encaminhados no portal e ainda buscar de forma fácil por pedidos em aberto.</p>
+                        </div>
+                    </div>
+                </div></br>
+                <div class="row mar-bot40">
+                <div class="col-lg-1"></div>
+                    <div class="col-lg-3" >
+                        <a href="Alteracoes">
+                        <div class="align-center service-col centro">
+                            <div class="service-icon centro">
+                                <figure><i class="fa fa-database"></i></figure>
+                            </div></a>
+                                <h3>Consultar seus dados</h3></br></br>
+                            <a class="btn btn-md buttoncad" type="button" href="Alteracoes">Clique aqui</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                    <a href="../../Pedido/meusOrcamentos.php">
+                    <div class="align-center service-col centro">
+                            <div class="service-icon centro">
+                            <figure><i class="fa fa-folder-open"></i></figure>
+                            </div></a>
+                            <h3>Ver meus orçamentos</h3></br></br>
+                            <a class="btn btn-md buttoncad" type="button" href="../../Pedido/criarPedido.php">Clique aqui</a>
+                        </div>
+                    </div>  
+                    <div class="col-lg-3">
+                        <a href="../../Pedido/buscarPedido.php">
+                        <div class="align-center service-col centro">
+                            <div class="service-icon centro">
+                                <figure><i class="fa fa-search-plus"></i></figure>
+                            </div></a>
+                                <h3>Buscar por pedidos</h3></br></br>
+                                <a class="btn btn-md buttoncad" type="button" href="../../Pedido/meusPedidos.php">Clique aqui</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+            </div>  
+            
+            <hr class="featurette-divider">
             <!-- Container Corpo do Index -->
             <div class="container marketing">
                 <div class="row featurette back-claro">
-                    <div class="col-md-8 ">
+                    <div class="col-md-7">
                         <h2 class="featurette-heading">O portal <span class="text-primary">LicitaTudo </span> facilita as coisas para a sua empresa.</h2>
                         <p class="pprincipal">Facilite o processo de localização e registro de fornecedores, obtenção de orçamentos e cotações de qualidade com o portal LicitaTudo. Transações B2G de um jeito que você nunca viu e com a facilidade que só a gente pode te oferecer.</p>
-                        <button class="btn btn-lg buttoncad" type="button">Saiba mais aqui</button>
                     </div>
-                    <div class="col-md-4 img">
-                        <img src="../../Imagens/holding-money.PNG" alt="abacate" width=250 height=250>
+                    
+                    <div class="col-md-5 img">
+                        <img src="../../Imagens/equipe-sem-fundo.png" alt="abacate" width=460 height=270>
                     </div>
                 </div></br>
             </div> 
-            <hr class="featurette-divider">
 
-        <!-- Nossos diferenciais -->
-        <div class="container"> 
+            <hr class="featurette-divider">
+            <!-- Brand Privada -->
             <div class="row mar-bot5">
                 <div class="col-md-offset-3 col-md-12">                     
                     <div class="centro">                    
-                        <h2>Nossos serviços</h2>
-                        <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>                       
+                        <h2>EMPRESAS PRIVADAS PARCEIRAS</h2>
+                        <p class="pprincipal">Estas são outras Empresas Privadas, que assim como você, utilizam o Portal Licitatudo.</p>                      
                     </div>                      
                 </div>
-            </div></br>
+            </div></br></br>
+            <section id="publi-brand">
+                <div class="container">                   
+                    <div class="row mar-bot40">
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="#"><img src="../../Imagens/logotipos/customer-logo-1.png" alt="emp-1"></a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="#"><img src="../../Imagens/logotipos/customer-logo-2.png" alt="emp-2"></a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="#"><img src="../../Imagens/logotipos/customer-logo-3.png" alt="emp-3"></a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="#"><img src="../../Imagens/logotipos/customer-logo-4.png" alt="emp-4"></a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="#"><img src="../../Imagens/logotipos/customer-logo-5.png" alt="emp-5"></a></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6"><a target="_blank" href="#"><img src="../../Imagens/logotipos/customer-logo-6.png" alt="emp-6"></a></div>
+                    </div>
+                </div>
+            </section>
 
-            <div class="row mar-bot40">
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-chart-line"></i></figure>
-                        </div>
-                            <h2>Facilidade</h2>
-                            <p>Forneça, colete, Solicite e consulte diversos orçamentos de uma forma fácil e prática em um só lugar.</p>        
-                    </div>
-                </div>
-                    
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-business-time"></i></figure>
-                        </div>
-                            <h2>Agilidade</h2>
-                            <p>Otimize seu tempo e reduza o período gasto no processo de coleta de orçamentos para Licitações.</p>
-                    </div>
-                </div>  
-
-                <div class="col-lg-4" >
-                    <div class="align-center service-col">                  
-                        <div class="service-icon centro">
-                            <figure><i class="fa fa-search-location"></i></figure>
-                        </div>
-                            <h2>Eficiência</h2>
-                            <p>Disponha de ferramentas como o delimitador de distância para definir uma área de atuação.</p>
-                    </div>
-                </div>          
-            </div>
-        </div>      
-        <hr class="featurette-divider">
-            <div class="row align-items-md-stretch">
-                <div class="col-md-6">
-                    <div class="back-medio h-90 p-5 text-white">
-                    <h2>Para você Fornecedor</h2>
-                    <p>Faça como muitas outras empresas e simplifique a forma de oferecer orçamentos produtos e serviços para órgãos públicos, além de ficar por dentro das licitações em aberto.</p>
-                    <a class="btn btn-outline-light" type="button" href="../../Cadastro/Privado/novoCadastro.php">Cadastrar agora</a>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="h-90 p-5 bg-light border">
-                    <h2>Para sua Instituição Pública</h2>
-                    <p>Obtenha os orçamentos necessários para sua compra pública em menor tempo e com maior qualidade. Agilize os processos de compra direta e licitações de forma fácil. </p>
-                    <a class="btn btn-outline-secondary" type="button" href="../../Cadastro/Publico/novoCadastro.php">Cadastrar agora</a>
-                    </div>
-                </div>
-            </div>
             <hr class="featurette-divider">
 
             <!-- footer da página -->

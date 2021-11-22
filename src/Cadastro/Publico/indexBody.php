@@ -8,7 +8,7 @@ function returnBody()
     $content .= '<div class="row mar-bot5">';
     $content .=  '<div class="col-md-offset-3 col-md-12">';
     $content .=         '<div class="centro">';
-    $content .=                '<h2>Nossas ferramentas para você</h2>';
+    $content .=                '<h2>ESPAÇO INSTITUIÇÃO PÚBLICA</h2>';
     $content .=                '<p class="pprincipal">Aqui você pode Consultar e alterar seus dados cadastrais, além de criar e consultar seus pedidos e ainda ficar por dentro dos pedidos em aberto das outras Instituições públicas.</p> ';
     $content .=            '</div>';
     $content .=        '</div>';

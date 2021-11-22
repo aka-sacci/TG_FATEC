@@ -38,43 +38,49 @@ if(isset($_SESSION['login'])) $status=true;
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
-                <?php 
-                if(!$status){
-                    //se não tiver logado, retorna o menu genérico
-                    echo ' <li class="nav-item dropdown"><!-- dropdown Login -->
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="src/Cadastro/Privado/login.php">Conta Privada</a>
-                        <a class="dropdown-item" href="src/Cadastro/Publico/login.php">Conta Pública</a>
-                        </div>    
-                    </li>
-                    <li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="src/Cadastro/Privado/novoCadastro.php">Conta Privada</a>
-                        <a class="dropdown-item" href="src/Cadastro/Publico/novoCadastro.php">Conta Pública</a>
-                        </div>    
-                    </li>';
-                }else{
-                    //senão, retorna os menus pub e pri
-                    if($_SESSION['type'] == "PUB"){
-                        //retorna o menu pub
-                        echo '<li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="src/Cadastro/Publico/Alteracoes">Consultar Dados</a>
-                                <a class="dropdown-item" href="src/Pedido/criarPedido.php">Criar Pedido</a>
-                                <a class="dropdown-item" href="src/Pedido/meusPedidos.php">Ver Pedidos</a>
-                                <a class="dropdown-item" href="src/Perfis/Pedidos/buscarPedido.php">Banco de Preços</a>
-                            </div>    
-                        </li>';
-                    }else{
-                        //retorna o menu priv
-                    }
+                    <?php 
+                        if(!$status){
+                            //se não tiver logado, retorna o menu genérico
+                            echo ' <li class="nav-item dropdown"><!-- dropdown Login -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="src/Cadastro/Privado/login.php">Conta Privada</a>
+                                <a class="dropdown-item" href="src/Cadastro/Publico/login.php">Conta Pública</a>
+                                </div>    
+                            </li>
+                            <li class="nav-item dropdown"><!-- dropdown Cadastro -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="src/Cadastro/Privado/novoCadastro.php">Conta Privada</a>
+                                <a class="dropdown-item" href="src/Cadastro/Publico/novoCadastro.php">Conta Pública</a>
+                                </div>    
+                            </li>';
+                        }else{
+                        //senão, retorna os menus pub e pri
+                        if($_SESSION['type'] == "PUB"){
+                            //retorna o menu pub
+                            echo '<li class="nav-item dropdown"><!-- dropdown Cadastro -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="src/Cadastro/Publico/Alteracoes">Consultar Dados</a>
+                                    <a class="dropdown-item" href="src/Pedido/criarPedido.php">Criar Pedido</a>
+                                    <a class="dropdown-item" href="src/Pedido/meusPedidos.php">Ver Pedidos</a>
+                                    <a class="dropdown-item" href="src/Perfis/Pedidos/buscarPedido.php">Banco de Preços</a>
+                                </div>    
+                            </li>';
+                        }else{
+                            //retorna o menu priv
+                            echo '<li class="nav-item dropdown"><!-- dropdown Ferramentas -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="src/Pedido/meusOrcamentos.php">Meus Orçamentos</a>
+                                <a class="dropdown-item" href="src/Pedido/buscarPedido.php">Buscar por Pedidos</a>
+                                </div>    
+                            </li>';
+                        }
+                        }   
+                    ?>
 
-
-                }
-                ?>
                 <li class="nav-item">
                     <a class="nav-link" href="sobrenos.php">Sobre Nós</a>
                 </li>
@@ -87,13 +93,13 @@ if(isset($_SESSION['login'])) $status=true;
         </nav>
 
         <!-- Container Corpo do Index -->
-        <div class="container py-4" id="container-corpoindex">  
+        <div class="container py-3" id="container-corpoindex">  
             <!-- Contact -->
             <div class="Contato-mapa">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2>Informações de Contato</h2>
+                            <h2>INFORMAÇÕES DE CONTATO</h2><hr><br>
                             <div class="list-unstyled li-space-lg">
                                 <p class="pprincipal">Não hesite em nos ligar ou enviar uma mensagem através do formulário de contato.</p>
                                 <p><i class="fas fa-map-marker-alt"></i>R. Dom Duarte Leopoldo, 83 - Centro, Bom Jesus dos Perdões - SP, 12955-000</p>
