@@ -12,9 +12,9 @@
     WHERE notificacao_pedido.empresa = $cnpj AND
     notificacao_pedido.status = 1";
     $nroNotificacoes = 0;
-    foreach ($connection->query($sqlPedidos) as $key => $value) {
+foreach ($connection->query($sqlPedidos) as $key => $value) {
     $nroNotificacoes = $value['COUNT(notificacao_pedido.cod)'];
-    }
+}
 
 ?>
 

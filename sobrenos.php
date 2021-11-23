@@ -2,7 +2,11 @@
 session_start();
 //checka se ta logado
 $status = false;
-if(isset($_SESSION['login'])) $status=true;
+if(isset($_SESSION['login'])) {
+    $status=true;
+    $connection  = require "src/scripts/connectionClass.php";
+    $cnpj = $_SESSION['cnpj'];
+}
 
 ?>
 
@@ -28,8 +32,8 @@ if(isset($_SESSION['login'])) $status=true;
     </head>
 
     <body>
-        <!-- Barra de navegação -->
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+         <!-- Barra de navegação -->
+         <nav class="navbar navbar-expand-md navbar-dark fixed-top">
             <div class="container">
             <a class="navbar-brand" href="index.php" id="nav-img">
                 <img src="src/Imagens/Logo-Licita.png" alt="" width="30" height="30" class="d-inline-block align-text-center"> LicitaTudo            
@@ -39,60 +43,131 @@ if(isset($_SESSION['login'])) $status=true;
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
-
-                <?php 
-                    if(!$status){
-                        //se não tiver logado, retorna o menu genérico
-                        echo ' <li class="nav-item dropdown"><!-- dropdown Login -->
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
-                            <div class="dropdown-menu">
-                            <a class="dropdown-item" href="src/Cadastro/Privado/login.php">Conta Privada</a>
-                            <a class="dropdown-item" href="src/Cadastro/Publico/login.php">Conta Pública</a>
-                            </div>    
-                        </li>
-                        <li class="nav-item dropdown"><!-- dropdown Cadastro -->
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
-                            <div class="dropdown-menu">
-                            <a class="dropdown-item" href="src/Cadastro/Privado/novoCadastro.php">Conta Privada</a>
-                            <a class="dropdown-item" href="src/Cadastro/Publico/novoCadastro.php">Conta Pública</a>
-                            </div>    
-                        </li>';
-                    }else{
-                    //senão, retorna os menus pub e pri
-                    if($_SESSION['type'] == "PUB"){
-                        //retorna o menu pub
-                        echo '<li class="nav-item dropdown"><!-- dropdown Ferramentas -->
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="src/Pedido/criarPedido.php">Criar Pedido</a>
-                                <a class="dropdown-item" href="src/Pedido/meusPedidos.php">Ver Pedidos</a>
-                                <a class="dropdown-item" href="src/Perfis/Pedidos/buscarPedido.php">Banco de Preços</a>
-                            </div>    
-                        </li>';
-                    }else{
-                        //retorna o menu priv
-                        echo '<li class="nav-item dropdown"><!-- dropdown Ferramentas -->
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
-                            <div class="dropdown-menu">
-                            <a class="dropdown-item" href="src/Pedido/meusOrcamentos.php">Meus Orçamentos</a>
-                            <a class="dropdown-item" href="src/Pedido/buscarPedido.php">Buscar por Pedidos</a>
-                            </div>    
-                        </li>';
-                    }
-                    }
-                ?>
+                    <?php 
+                        if(!$status){
+                            //se não tiver logado, retorna o menu genérico
+                            echo ' <li class="nav-item dropdown"><!-- dropdown Login -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Login</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="src/Cadastro/Privado/login.php">Conta Privada</a>
+                                <a class="dropdown-item" href="src/Cadastro/Publico/login.php">Conta Pública</a>
+                                </div>    
+                            </li>
+                            <li class="nav-item dropdown"><!-- dropdown Cadastro -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cadastro</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="src/Cadastro/Privado/novoCadastro.php">Conta Privada</a>
+                                <a class="dropdown-item" href="src/Cadastro/Publico/novoCadastro.php">Conta Pública</a>
+                                </div>    
+                            </li>';
+                        }else{
+                        //senão, retorna os menus pub e pri
+                        if($_SESSION['type'] == "PUB"){
+                            //retorna o menu pub
+                            $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
+                            foreach ($connection->query($sql) as $key => $value) {
+                            $statusConta = $value['status_cadastro'];
+                            }
+                            if ($statusConta != 3) $statusConta = 'disabled';
+                            else $statusConta = "";
+                            echo '<li class="nav-item dropdown"><!-- dropdown Cadastro -->
+                            <a class="nav-link dropdown-toggle '.$statusConta.'" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="src/Cadastro/Publico/Alteracoes">Consultar Dados</a>
+                                    <a class="dropdown-item" href="src/Pedido/criarPedido.php">Criar Pedido</a>
+                                    <a class="dropdown-item" href="src/Pedido/meusPedidos.php">Ver Pedidos</a>
+                                    <a class="dropdown-item" href="src/Perfis/Pedidos/buscarPedido.php">Banco de Preços</a>
+                                </div>    
+                            </li>';
+                        }else{
+                            //retorna o menu priv
+                            echo '<li class="nav-item dropdown"><!-- dropdown Ferramentas -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
+                                <div class="dropdown-menu">
+                                <a class="dropdown-item" href="src/Pedido/meusOrcamentos.php">Meus Orçamentos</a>
+                                <a class="dropdown-item" href="src/Pedido/buscarPedido.php">Buscar por Pedidos</a>
+                                </div>    
+                            </li>';
+                        }
+                        }   
+                    ?>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Sobre Nós</a>
+                    <a class="nav-link" href="#">Sobre Nós</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contato.php">Contato</a>
                 </li>
+
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+
+
+                <?php 
+                        if(!$status){
+                            //se não tiver logado, retorna o menu genérico
+                        }else{
+                        //senão, retorna os menus pub e pri
+                        if($_SESSION['type'] == "PUB"){
+                            //retorna o menu pub
+                            $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
+                            foreach ($connection->query($sql) as $key => $value) {
+                            $statusConta = $value['status_cadastro'];
+                            }
+                            if ($statusConta != 3) $statusConta = 'disabled';
+                            else $statusConta = "";
+                            echo '<li class="nav-item dropdown active"> <!-- adicionei isso: navbar-nav ml-aut -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Conta</a>
+                            <div class="dropdown-menu">   
+                            <a class="dropdown-item">
+                            Usuário: ' . $_SESSION['login'] . '  
+                                </a>
+                                <a class="dropdown-item '.$statusConta.'" href="src/Cadastro/Publico/Alteracoes">Consultar Dados</a>
+                                <a class="dropdown-item" href="src/Cadastro/config/logout.php">Logout</a>
+                                </div>
+                            </li>';
+                        }else{
+                            //retorna o menu priv
+                            echo '<li class="nav-item dropdown active"> <!-- adicionei isso: navbar-nav ml-aut -->
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Conta</a>
+                            <div class="dropdown-menu">   
+                            <a class="dropdown-item">
+                            Usuário: ' . $_SESSION['login'] . '  
+                                </a>
+                                <a class="dropdown-item" href="src/Cadastro/Privado/Alteracoes">Consultar Dados</a>
+                                <a class="dropdown-item" href="src/Cadastro/config/logout.php">Logout</a>
+                                </div>
+                            </li>';
+                        }
+                        }   
+                    ?>
+
                 </ul>
             </div>
             </div>
         </nav>
-
         <!-- Container Corpo do Index -->
         <div class="container py-4" id="container-corpoindex">
             <div class="container marketing">

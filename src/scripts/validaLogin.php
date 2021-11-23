@@ -17,9 +17,19 @@ function validarLogin($typePage)
             foreach ($connection->query($sql) as $key => $value) {
                 $_SESSION['cnpj'] = $value['cnpj'];
                 $validatePub = true;
+                $cnpj = $value['cnpj'];
             }
 
             if (!$validatePub) {
+                session_unset();
+                header('Location: /TG_FATEC/src/Cadastro/Publico/login.php');
+            }
+
+            $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
+            foreach ($connection->query($sql) as $key => $value) {
+                $statusConta = $value['status_cadastro'];
+            }
+            if ($statusConta != "3") {
                 session_unset();
                 header('Location: /TG_FATEC/src/Cadastro/Publico/login.php');
             }

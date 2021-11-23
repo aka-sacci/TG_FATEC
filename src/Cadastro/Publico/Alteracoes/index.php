@@ -57,15 +57,15 @@ foreach ($connection->query($sql) as $key => $value) {
                 <a href="DadosCadastrais/atualizarDadosCadastrais.php">clique aqui para atualizar os dados cadastrais</a></p>
 
                     <?php
-                        foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
-                            echo '<p><b>CNPJ: </b>' .  converterCNPJ($value['cnpj']) . '</p>';
-                            echo '<p><b>Razão Social: </b>' . $value['razao_social'] . '</p>';
-                            echo '<p><b>Nome Fantasia: </b>' . $value['nome_fantasia'] . '</p>';
-                            echo '<p><b>Ente Federativo Responsável (EFR): </b>' . $value['efr'] . '</p>';
-                            echo '<p><b>Natureza Jurídica: </b>' . $value['natureza'] . '</p>';
-                            $telefone = $value['telefone'];
-                            $email = $value['email'];
-                        }
+                    foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
+                        echo '<p><b>CNPJ: </b>' .  converterCNPJ($value['cnpj']) . '</p>';
+                        echo '<p><b>Razão Social: </b>' . $value['razao_social'] . '</p>';
+                        echo '<p><b>Nome Fantasia: </b>' . $value['nome_fantasia'] . '</p>';
+                        echo '<p><b>Ente Federativo Responsável (EFR): </b>' . $value['efr'] . '</p>';
+                        echo '<p><b>Natureza Jurídica: </b>' . $value['natureza'] . '</p>';
+                        $telefone = $value['telefone'];
+                        $email = $value['email'];
+                    }
                     ?>
 
                     <hr><H4><b>INFORMAÇÕES PARA CONTATO/LOGIN</b></H4>

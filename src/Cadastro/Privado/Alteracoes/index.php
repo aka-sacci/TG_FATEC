@@ -14,9 +14,9 @@
     //DADOS DO ENDEREÇO
     //checka a quantidade de endereços
     $sql = "SELECT COUNT(cod) FROM endereco_empresa_privada WHERE cnpj = " . $myCnpj . "";
-    foreach ($connection->query($sql) as $key => $value) {
-        $nroEnderecos = $value["COUNT(cod)"];
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $nroEnderecos = $value["COUNT(cod)"];
+}
     //pega o endereco principal (sempre o primeiro a ser inserido)
     $sql = "select * from endereco_empresa_privada where cnpj = '" . $myCnpj . "' order by cod ASC limit 1";
     $enderecoPrincipal = $connection->query($sql);
@@ -61,28 +61,28 @@
             <a href="DadosCadastrais/atualizarDadosCadastrais.php">clique aqui para atualizar os dados cadastrais</a></p>
 
                 <?php
-                    foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
-                            echo '<p><b>CNPJ: </b>' .  converterCNPJ($value['cnpj']) . '</p>';
-                            echo '<p><b>Razão Social: </b>' . $value['razao_social'] . '</p>';
-                            echo '<p><b>Nome Fantasia: </b>' . $value['nome_fantasia'] . '</p>';
-                            echo '<p><b>Ente Federativo Responsável (EFR): </b>' . $value['efr'] . '</p>';
-                            echo '<p><b>Natureza Jurídica: </b>' . $value['natureza'] . '</p>';
-                            $telefone = $value['telefone'];
-                            $email = $value['email'];
-                    }
+                foreach ($connection->query($sqlDadosCadastro) as $key => $value) {
+                        echo '<p><b>CNPJ: </b>' .  converterCNPJ($value['cnpj']) . '</p>';
+                        echo '<p><b>Razão Social: </b>' . $value['razao_social'] . '</p>';
+                        echo '<p><b>Nome Fantasia: </b>' . $value['nome_fantasia'] . '</p>';
+                        echo '<p><b>Ente Federativo Responsável (EFR): </b>' . $value['efr'] . '</p>';
+                        echo '<p><b>Natureza Jurídica: </b>' . $value['natureza'] . '</p>';
+                        $telefone = $value['telefone'];
+                        $email = $value['email'];
+                }
                 ?>
                 <!-- Alterar categorias cadastradas -->                   
                 <?php
                     echo '<p><b>Categorias cadastradas: </b>';
                     $countCat = 1;
-                    foreach ($categorias as $key => $value) {
-                        if ($countCat == 1) {
-                            echo $value['categoria'];
-                        } else {
-                            echo ", " . $value['categoria'];
-                        }
-                        $countCat++;
+                foreach ($categorias as $key => $value) {
+                    if ($countCat == 1) {
+                        echo $value['categoria'];
+                    } else {
+                        echo ", " . $value['categoria'];
                     }
+                    $countCat++;
+                }
                     echo ". <a><b> | </b></a><a href='Categorias/alterarCategorias.php'>Alterar</a></p>"
                 ?>
 
@@ -101,27 +101,27 @@
                 <a href="Endereco/atualizarEnderecoPrincipal.php">clique aqui para atualizar o endereço</a></p>
                 
                 <?php
-                    foreach ($enderecoPrincipal as $key => $value) {
-                        echo "<p>" . $value['logradouro'] . ", " . $value['numero'] . ", " . $value['bairro'] . " - " .  $value['cidade'] . " (" . $value['uf'] . ") </p>";
-                    }
+                foreach ($enderecoPrincipal as $key => $value) {
+                    echo "<p>" . $value['logradouro'] . ", " . $value['numero'] . ", " . $value['bairro'] . " - " .  $value['cidade'] . " (" . $value['uf'] . ") </p>";
+                }
                 ?>
 
                 <h4>Outros endereços</h4>
 
                 <?php
-                    if ($nroEnderecos == 1) {
-                        //caso a empresa só tenha um endereço cadastrado
-                        echo "<p>Não há outros endereços!</p>";
-                    } else {
-                        $limit = $nroEnderecos - 1;
-                        $sql = "select * from endereco_empresa_privada where cnpj = '" . $myCnpj . "' order by cod DESC LIMIT $limit";
-                        //caso tenha mais que um, é retornado todos os endereços EXCETO o primeiro a ser inserido (o principal);
-                        foreach ($connection->query($sql) as $key => $value) {
-                            echo "<p>" . $value['logradouro'] . ", " . $value['numero'] . ", " . $value['bairro'] . " - " .  $value['cidade'] . " (" . $value['uf'] . ") </p>";
-                            echo "<p>Descrição: " . $value['descricao'] . ". <a href='Endereco/alterarEndereco.php?cod=" . $value["cod"] . "'>Alterar endereço</a>
+                if ($nroEnderecos == 1) {
+                    //caso a empresa só tenha um endereço cadastrado
+                    echo "<p>Não há outros endereços!</p>";
+                } else {
+                    $limit = $nroEnderecos - 1;
+                    $sql = "select * from endereco_empresa_privada where cnpj = '" . $myCnpj . "' order by cod DESC LIMIT $limit";
+                    //caso tenha mais que um, é retornado todos os endereços EXCETO o primeiro a ser inserido (o principal);
+                    foreach ($connection->query($sql) as $key => $value) {
+                        echo "<p>" . $value['logradouro'] . ", " . $value['numero'] . ", " . $value['bairro'] . " - " .  $value['cidade'] . " (" . $value['uf'] . ") </p>";
+                        echo "<p>Descrição: " . $value['descricao'] . ". <a href='Endereco/alterarEndereco.php?cod=" . $value["cod"] . "'>Alterar endereço</a>
                             <a><b> | </b></a><a href='Endereco/excluirEndereco.php?cod=" . $value["cod"] . "'>Excluir endereço</a></p><br>";
-                        }
                     }
+                }
                 ?>
 
                 <a href="Endereco/inserirEndereco.php">Inserir novo endereço</a>
@@ -138,20 +138,20 @@
                     WHERE cnpj = $myCnpj";
                     $conteudoDocs = "";
 
-                    foreach ($connection->query($sql) as $key => $value) {
-                        $validateDocs = true;
-                        $conteudoDocs .= "<p><a href='../../../scripts/abrirArquivoPDF.php?filename=" . $value['cod'] .  ".pdf&";
-                        $conteudoDocs .= "dir=Documentos/&titulo=" . $value['descricao'] . " - $myCnpj'>" . $value['descricao_doc'] ;
-                        $conteudoDocs .= "</a> <a href='Documentos/alterarDocumento.php?cod=" . $value['cod'] .  "'><img src='../../../Imagens/icons/edit-icon.png' width='15' height='15'></a>";
-                        $conteudoDocs .= "</a> <a href='Documentos/deletarDocumento.php?cod=" . $value['cod'] .  "'><img src='../../../Imagens/icons/delete-icon.png' width='15' height='15'></a></p>";
-                    }
-                    if (!$validateDocs) {
-                        //se não houverem documentos cadastrados...
-                        echo $conteudoDocsNull;
-                    } else {
-                        //se houverem documentos cadastrados...
-                        echo $conteudoDocs;
-                    }
+                foreach ($connection->query($sql) as $key => $value) {
+                    $validateDocs = true;
+                    $conteudoDocs .= "<p><a href='../../../scripts/abrirArquivoPDF.php?filename=" . $value['cod'] .  ".pdf&";
+                    $conteudoDocs .= "dir=Documentos/&titulo=" . $value['descricao'] . " - $myCnpj'>" . $value['descricao_doc'] ;
+                    $conteudoDocs .= "</a> <a href='Documentos/alterarDocumento.php?cod=" . $value['cod'] .  "'><img src='../../../Imagens/icons/edit-icon.png' width='15' height='15'></a>";
+                    $conteudoDocs .= "</a> <a href='Documentos/deletarDocumento.php?cod=" . $value['cod'] .  "'><img src='../../../Imagens/icons/delete-icon.png' width='15' height='15'></a></p>";
+                }
+                if (!$validateDocs) {
+                    //se não houverem documentos cadastrados...
+                    echo $conteudoDocsNull;
+                } else {
+                    //se houverem documentos cadastrados...
+                    echo $conteudoDocs;
+                }
 
                 ?>
 

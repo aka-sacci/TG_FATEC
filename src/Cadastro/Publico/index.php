@@ -1,24 +1,33 @@
 <?php
-
+    session_start();
     require_once "../../../vendor/autoload.php";
-    include_once "../../scripts/validaLogin.php";
     include_once "indexBody.php";
     $connection  = require "../../scripts/connectionClass.php";
-    validarLogin("PUB");
+    $validatePub = false;
     $login = $_SESSION['login'];
     $cnpj = $_SESSION['cnpj'];
+    $senha = $_SESSION['pwd'];
 
+    $sql = "select * from login_instituicao_publica where login = '" . $login . "' and senha = '" . $senha . "' limit 1";
+            foreach ($connection->query($sql) as $key => $value) {
+                $validatePub = true;
+            }
 
-            $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
-    foreach ($connection->query($sql) as $key => $value) {
-        $statusConta = $value['status_cadastro'];
-    }
-    if ($statusConta == "1") {
-        $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
-    }
-    if ($statusConta == "2") {
-        $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
-    }
+            if (!$validatePub) {
+                session_unset();
+                header('Location: /TG_FATEC/src/Cadastro/Publico/login.php');
+            }
+
+    $sql = "select status_cadastro from instituicao_publica where cnpj = '" . $cnpj . "' limit 1";
+foreach ($connection->query($sql) as $key => $value) {
+    $statusConta = $value['status_cadastro'];
+}
+if ($statusConta == "1") {
+    $descStatus = "Seu cadastro foi solicitado com sucesso! Em breve, a equipe da Licitatudo entrará em contato!";
+}
+if ($statusConta == "2") {
+    $descStatus = "Seu cadastro está sendo analisado! Em breve, a equipe da Licitatudo entrará em contato para confirmar seu cadastro!";
+}
 
 ?>
 
@@ -55,7 +64,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0"><!-- nav-item active -->
                 <li class="nav-item dropdown"><!-- Dropdown Ferramentas -->
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
+                <a class="nav-link dropdown-toggle <?php  if (isset($descStatus)) echo 'disabled'?>" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ferramentas</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="../../Pedido/criarPedido.php">Criar Pedido</a>
                         <a class="dropdown-item" href="../../Pedido/meusPedidos.php">Ver Pedidos</a>
@@ -68,7 +77,30 @@
                 <li class="nav-item">
                     <a class="nav-link" href="../../../contato.php">Contato</a>
                 </li>
-                <li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li><li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
+                <li class="nav-item"><a class="nav-link disable" href="#"></a></li>
                                 
                 <li class="nav-item dropdown active"> <!-- adicionei isso: navbar-nav ml-aut -->
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Conta</a>
@@ -78,7 +110,7 @@
                             echo "Usuário: " . $login;
                         ?>  
                     </a>
-                    <a class="dropdown-item" href="Alteracoes">Consultar Dados</a>
+                    <a class="dropdown-item <?php  if (isset($descStatus)) echo 'disabled'?>" href="Alteracoes">Consultar Dados</a>
                     <a class="dropdown-item" href="../../Cadastro/config/logout.php">Logout</a>
                     </div>
                 </li>
