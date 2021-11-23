@@ -9,7 +9,7 @@
     $validate = false;
 
     $sql = "select * from endereco_instituicao_publica where cod = $codEndereco and cnpj = $cnpj";
-foreach ($connection->query($sql) as $key => $value) {
+    foreach ($connection->query($sql) as $key => $value) {
     $validate = true;
     $logradouro = $value["logradouro"];
     $numero = $value["numero"];
@@ -18,11 +18,11 @@ foreach ($connection->query($sql) as $key => $value) {
     $cidade = $value["cidade"];
     $uf = $value["uf"];
     $descricao = $value["descricao"];
-}
+    }
 
-if (!$validate) {
-    header("location:../");
-}
+    if (!$validate) {
+        header("location:../");
+    }
 
 ?>
 
@@ -68,10 +68,10 @@ if (!$validate) {
                         echo "<p><b>CEP</b><input class='form-control-input' name='txtCEP' value='$cep' required>";
                         echo "<p><b>Cidade</b><input class='form-control-input' name='txtCidade' value='$cidade' required>";
                         echo "<p><b>UF</b><input class='form-control-input' name='txtUF' value='$uf' required>";
-                        echo "<p><b>Descrição do endereço</b></p><textarea class='form-control-textarea' placeholder='Descrição do endereço' name='txtDescricao' required>$descricao</textarea>";
+                        echo "<p><b>Descrição do endereço</b><textarea class='form-control-textarea' placeholder='Descrição do endereço' name='txtDescricao' required>$descricao</textarea></p>";
                     ?>
 
-                </br><button type='submit' value="Atualizar" id="btnSubmit" class="btn btn-md buttoncad" >Concluir Alterações</button></br>              
+                </br><button type='submit' value="Atualizar" id="btnSubmit" class="btn btn-md buttoncad">Concluir Alterações</button></br>              
                 </form>
 
             <hr class="featurette-divider">

@@ -13,7 +13,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>Inserir Documento</title>
+        <title>Adicionar Anexo</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" type="image/x-icon" href="../Imagens/Logo-Licita.ico">
         <!-- Bootstrap CSS -->

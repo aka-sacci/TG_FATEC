@@ -29,7 +29,7 @@
 
     <body>
         </br>
-        <a class="home" href="#" onclick="goBack()">
+        <a class="home" href="../">
             <i class="fa fa-arrow-circle-left"> Voltar</i>
         </a>
         <div class="container col-lg-6" id="container-corpoindex">

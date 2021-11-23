@@ -38,9 +38,9 @@ foreach ($pedidosCodArray as $key => $nroPedido) {
     <head>
         <meta charset="utf-8">
         <meta charset="utf-8">
-        <title>Banco de preços</title>
+        <title>Banco de Preços</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" type="image/x-icon" href="../../Imagens/Logo-Licita.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="../Imagens/Logo-Licita.ico">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!-- Lista de Estilos CSS -->
@@ -57,6 +57,9 @@ foreach ($pedidosCodArray as $key => $nroPedido) {
             <i class="fa fa-arrow-circle-left"> Voltar</i>
         </a>
         <div class="container col-lg-7" id="container-corpoindex">
+            <div class="img centro">
+                <img src="../Imagens/logo-LT.png" alt="alternative" width=80 height=80>
+            </div></br>
             <H5><b>Resultados para '<?php echo $_SESSION["termoPesquisa"]?>'</b></H5><hr>
             <p><b></b></p><br>
                 <?php

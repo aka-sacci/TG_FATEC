@@ -49,7 +49,16 @@ if ($statusConsulta == "OK") {
         $data['uf'] == $ufBD
     ) {
         //se todos os dados forem iguais, não há necessidade de fazer alterações
-        echo "Não foi necessário atualizar!";
+        echo "<link rel='shortcut icon' type='image/x-icon' href='../../../../Imagens/Logo-Licita.ico'>
+                <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous'>
+                <link rel='stylesheet' href='../../../../scripts/utils/style.css'>
+                <script type='text/javascript' src='../../../../scripts/utils/scriptsBasicos.js'></script>
+                <div class='container py-4 col-lg-4' id='container-corpoindex'>
+                    <div class='alert alert-info' role='alert'>
+                    <h4 class='alert-heading'>Não foi necessário atualizar!</h4>
+                    </div></br>          
+                    <button class='btn btn-md buttoncad' onclick='goBack()'>Voltar</button>
+                </div>";
     } else {
         //se tiver algum dado diferente, atualiza
         $sql = "update endereco_empresa_privada set
@@ -62,7 +71,16 @@ uf = '" . $data['uf'] . "'
 where cod = " . $cod . "";
         $prepare = $connection->prepare($sql);
         $prepare->execute();
-        echo "O endereço foi atualizado com sucesso! Clique <a href='../'> aqui </a> para voltar.";
+        echo "<link rel='shortcut icon' type='image/x-icon' href='../../../../Imagens/Logo-Licita.ico'>
+                <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous'>
+                <link rel='stylesheet' href='../../../../scripts/utils/style.css'>
+                <script type='text/javascript' src='../../../../scripts/utils/scriptsBasicos.js'></script>
+                <div class='container py-4 col-lg-4' id='container-corpoindex'>
+                    <div class='alert alert-info' role='alert'>
+                    <h4 class='alert-heading'>O endereço foi atualizado com sucesso!</h4>
+                    </div></br>          
+                    <button class='btn btn-md buttoncad' onclick='goBack()'>Voltar</button>
+                </div>";
     }
 } else {
     echo $data['message'];

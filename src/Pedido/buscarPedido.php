@@ -64,7 +64,7 @@ echo "<script>sessionStorage.setItem('categorias', '" . json_encode($arrayCatego
                 </form> 
             </main>
 
-            </br><hr class="featurette-divider">
+            </br></br></br><hr class="featurette-divider">
             <!-- footer da página -->
             <footer>
                 <div class="container centro col-md-12">

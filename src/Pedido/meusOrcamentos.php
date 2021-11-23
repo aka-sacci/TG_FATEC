@@ -45,6 +45,9 @@
             <i class="fa fa-arrow-circle-left"> Voltar</i>
         </a>
         <div class="container col-lg-7" id="container-corpoindex">
+            <div class="img centro">
+                <img src="../Imagens/logo-LT.png" alt="alternative" width=80 height=80>
+            </div></br>
             <H3><b>MEUS ORÇAMENTOS</b></H3><hr>
             <p>Veja aqui os últimos pedidos que sua empresa forneceu orçamentos.<br>
             <b>* Para ver informações detalhas de um pedido clique em cima do seu nome.</b></p><br>
@@ -65,7 +68,7 @@
                 }
 
                 ?>
-
+            <br><br><br><br><br><br><br><br>
             <hr class="featurette-divider">
             <!-- footer da página -->
             <footer>

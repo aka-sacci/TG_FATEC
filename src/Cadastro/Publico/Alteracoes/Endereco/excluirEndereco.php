@@ -8,26 +8,26 @@
     $validate = false;
 
     $sql = "select * from endereco_instituicao_publica where cod = $codEndereco and cnpj = $cnpj";
-foreach ($connection->query($sql) as $key => $value) {
-    $validate = true;
-    $logradouro = $value["logradouro"];
-    $numero = $value["numero"];
-    $bairro = $value["bairro"];
-    $cidade = $value["cidade"];
-    $uf = $value["uf"];
-    $descricao = $value["descricao"];
-}
+    foreach ($connection->query($sql) as $key => $value) {
+        $validate = true;
+        $logradouro = $value["logradouro"];
+        $numero = $value["numero"];
+        $bairro = $value["bairro"];
+        $cidade = $value["cidade"];
+        $uf = $value["uf"];
+        $descricao = $value["descricao"];
+    }
 
-if (!$validate) {
-    header("location:../");
-}
+    if (!$validate) {
+        header("location:../");
+    }
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
-        <title>Atualizar Cadastro</title>
+        <title>Excluir Endereço</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" type="image/x-icon" href="../../../../Imagens/Logo-Licita.ico">
         <!-- Bootstrap CSS -->
@@ -64,7 +64,7 @@ if (!$validate) {
 
                     <p><b>Para confirmar a exclusão do endereço acima, digite sua senha.</b></p><input class='form-control-input' name="txtSenha" type="password" required>
                     </br></br><button type='submit' value="Confirmar" id="btnSubmit" class="btn btn-md buttoncad" >Confirmar Exclusão</button></br>             
-                </form> 
+                </form></br></br> 
                 <hr class="featurette-divider">
             <!-- footer da página -->
             <footer>
@@ -74,6 +74,4 @@ if (!$validate) {
             </footer> 
         </div>
     </body>
-
-
 </html>

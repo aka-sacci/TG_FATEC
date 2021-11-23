@@ -48,7 +48,7 @@ foreach ($connection->query($sql) as $key => $value) {
 
     <body>
         </br>
-        <a class="home" href="#" onclick="goBack()">
+        <a class="home" href="../index.php">
             <i class="fa fa-arrow-circle-left"> Voltar</i>
         </a>
         <div class="container" id="container-corpoindex">

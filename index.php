@@ -1,6 +1,6 @@
 <?php
-use function PHPSTORM_META\type;
-require_once "vendor/autoload.php";
+    use function PHPSTORM_META\type;
+    require_once "vendor/autoload.php";
     session_start();
     $connection  = require 'src/scripts/connectionClass.php';
 
@@ -97,7 +97,7 @@ require_once "vendor/autoload.php";
                 <div class="row mar-bot5">
                     <div class="col-md-offset-3 col-md-12">						
                         <div class="centro">					
-                            <h2>Nossos serviços</h2>
+                            <h2>NOSSOS SERVIÇOS</h2>
                             <p class="pprincipal">O portal do Licitatudo está aqui para agilizar o processo de licitação, oferecendo:</p>						
                         </div>						
                     </div>
@@ -142,7 +142,7 @@ require_once "vendor/autoload.php";
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="text-container"></br></br>
-                            <h2>Para você Fornecedor</h2>
+                            <h2>PARA VOCÊ FORNECEDOR</h2>
                             <p class="pprincipal">Faça como muitas outras empresas e simplifique a forma de oferecer orçamentos dos seus produtos e serviços para os órgãos públicos, além de ser notificado pelos pedidos que forem sendo abertos.</p>
                             <a class="btn btn-outline-dark" type="button" href="src/Cadastro/Privado/novoCadastro.php">Cadastrar agora</a>
                         </div>
@@ -165,7 +165,7 @@ require_once "vendor/autoload.php";
                     </div>
                     <div class="col-lg-6"></br></br>
                         <div class="text-container">
-                            <h2>Para sua Instituição Pública</h2>
+                            <h2>PARA SUA INSTITUIÇÃO PÚBLICA</h2>
                             <p class="pprincipal">Obtenha os orçamentos necessários para sua compra pública em menor tempo e com maior qualidade. Agilize os processos de compra direta e licitação de forma simples e fácil e ainda veja os processos em aberto de outros Órgãos Públicos.</p>
                             <a class="btn btn-outline-dark" type="button" href="src/Cadastro/Publico/novoCadastro.php">Cadastrar agora</a>
                         </div>
