@@ -132,7 +132,7 @@ foreach ($connection->query($sqlPedidos) as $key => $value) {
                             <figure><i class="fa fa-folder-open"></i></figure>
                             </div></a>
                             <h3>Ver meus orçamentos</h3></br></br>
-                            <a class="btn btn-md buttoncad" type="button" href="../../Pedido/criarPedido.php">Clique aqui</a>
+                            <a class="btn btn-md buttoncad" type="button" href="../../Pedido/meusOrcamentos.php">Clique aqui</a>
                         </div>
                     </div>  
                     <div class="col-lg-3">

@@ -1,6 +1,2 @@
 (isso ce pode fazer) -> revisar o goBack e considerar usar um voltar estático em algumas situações (amanhã eu explico)
-- Centralizar as telas secundárias de aviso que alguma tarefa foi concluída (Eu faço)
 
-
-- Alterar o banco de preços -> exibir só pedidos que foram fechados ou cancelados; - Mudado http://localhost/TG_FATEC/src/Perfis/Pedidos/buscarPedidoAction.php
-- Alterar a navbar -> inserir o conta mesmo quando tiver no contato e sobre nos, além de considerar o status do cadastro do órgão público

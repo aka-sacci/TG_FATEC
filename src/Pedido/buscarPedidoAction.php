@@ -11,28 +11,28 @@ if (isset($_GET['buscaTXT'])) {
     $sql = "SELECT pedido.cod FROM pedido
 INNER JOIN item_pedido
 ON pedido.cod = item_pedido.pedido_cod
-WHERE item_pedido.item LIKE '%$busca%'";
+WHERE item_pedido.item LIKE '%$busca%' and status=1";
     foreach ($connection->query($sql) as $key => $value) {
         array_push($arrayPedidosCod, $value['cod']);
     }
 
 //seleciona por titulo do pedido
     $sql = "SELECT pedido.cod FROM pedido
-WHERE titulo LIKE '%$busca%'";
+WHERE titulo LIKE '%$busca%' and status=1";
     foreach ($connection->query($sql) as $key => $value) {
         array_push($arrayPedidosCod, $value['cod']);
     }
 
 //seleciona por cod do pedido
     $sql = "SELECT pedido.cod FROM pedido
-WHERE cod='$busca'";
+WHERE cod='$busca' and status=1";
     foreach ($connection->query($sql) as $key => $value) {
         array_push($arrayPedidosCod, $value['cod']);
     }
 
 //seleciona por cnpj da pub
     $sql = "SELECT pedido.cod FROM pedido
-WHERE cnpj='$busca'";
+WHERE cnpj='$busca' and status=1";
     foreach ($connection->query($sql) as $key => $value) {
         array_push($arrayPedidosCod, $value['cod']);
     }
@@ -41,7 +41,7 @@ WHERE cnpj='$busca'";
     $sql = "SELECT pedido.cod FROM pedido
 INNER JOIN cotacoes ON
 pedido.cod = cotacoes.pedido
-WHERE cotacoes.empresa='$busca'";
+WHERE cotacoes.empresa='$busca' and status=1";
     foreach ($connection->query($sql) as $key => $value) {
         array_push($arrayPedidosCod, $value['cod']);
     }
@@ -55,7 +55,7 @@ WHERE cotacoes.empresa='$busca'";
         pedido.cod = categoria_pedido.pedido
         INNER JOIN categoria ON 
         categoria_pedido.categoria = categoria.cod
-        WHERE categoria_pedido.categoria = $busca";
+        WHERE categoria_pedido.categoria = $busca and status=1";
         foreach ($connection->query($sql) as $key => $value) {
             array_push($arrayPedidosCod, $value['pedido']);
             $descCategoria = $value['categoria'];

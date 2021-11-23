@@ -100,4 +100,7 @@ $tabelaItens .= "</table>";
 $conteudo .= $tabelaItens;
 
 generatePDF($conteudo, $FINAL);
-echo "<p>Seu orçamento foi enviado com sucesso! Clique <a href=visualizarPedido.php?cod=$cod>aqui</a> para retornar</p>";
+$_SESSION["message"] = "Seu orçamento foi enviado com sucesso!";
+$_SESSION["href"] = "../Perfis/Pedidos/visualizarPedido.php?cod=$cod";
+header("Location:../../scripts/redirectTo.php");
+

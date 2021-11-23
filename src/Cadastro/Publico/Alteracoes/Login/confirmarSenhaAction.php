@@ -12,7 +12,9 @@ foreach ($connection->query($sql) as $key => $value) {
 }
 
 if (!$validate) {
-    echo "Senha incorreta!";
+    $_SESSION["message"] = "Senha incorreta!";
+    $_SESSION["href"] = "../Cadastro/Publico/Alteracoes/Login/ConfirmarSenha.php";
+    header("Location:../../../../scripts/redirectToError.php");
 } else {
     switch ($alteracao) {
         case "PWD":
@@ -29,5 +31,7 @@ if (!$validate) {
     $prepare = $connection->prepare($sql);
     $prepare->execute();
     session_unset();
-    echo "Seu cadastro foi alterado com sucesso! Clique <a href='/TG_FATEC/src/Cadastro/Publico/login.php'> aqui </a> para se relogar.";
+    $_SESSION["message"] = "Seu cadastro foi alterado com sucesso!";
+    $_SESSION["href"] = "../Cadastro/Publico/login.php";
+    header("Location:../../../../scripts/redirectTo.php");
 }

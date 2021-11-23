@@ -6,7 +6,9 @@ $novaSenha = $_POST['txtSenha'];
 $senhaAntiga = $_SESSION['pwd'];
 if ($novaSenha == $senhaAntiga) {
 //emails iguais! erro;
-    echo "A nova senha é idêntica à senha atual! Por favor, tente outra senha!";
+    $_SESSION["message"] = "A senha fornecida é identica à salva no banco de dados! Por favor, insira outra senha!";
+        $_SESSION["href"] = "../Cadastro/Publico/Alteracoes/Login/alterarSenha.php";
+        header("Location:../../../../scripts/redirectToError.php");
 } else {
     $_SESSION['novaSenha'] = $novaSenha;
     $_SESSION['thisAlteracao'] = "PWD";

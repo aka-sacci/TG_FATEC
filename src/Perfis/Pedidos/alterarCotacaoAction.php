@@ -38,12 +38,15 @@ for ($i = $qtdeItens; $i > 0; $i--) {
 //checka se há arquivos upados
 if ($_FILES['file']['name']) {
     if ($existeAnexoBD == "naoexiste") {
-        $sql = "INSERT INTO anexos_cotacoes (descricao, cotacao) VALUES ('$descDoc', '$idCotacao');";
+        $sql = "INSERT INTO anexos_cotacoes (descricao, cotacao) VALUES ('$descDoc', '$cod')";
         $prepare = $connection->prepare($sql);
         $prepare->execute();
         $idDoc = $connection->lastInsertId();
     } else {
         $idDoc = $existeAnexoBD;
+        $sql = "update anexos_cotacoes set descricao = '$descDoc' where cod = $idDoc";
+        $prepare = $connection->prepare($sql);
+        $prepare->execute();
     }
     //insere o doc
     $targetfolder = "../../../files/Pedidos/Anexos/AnexosCotacoes/";
@@ -112,4 +115,6 @@ $tabelaItens .= "</table>";
 $conteudo .= $tabelaItens;
 
 generatePDF($conteudo, $FINAL);
-echo "<p>Seu orçamento foi atualizado com sucesso! Clique <a href=visualizarPedido.php?cod=$codPed>aqui</a> para retornar</p>";
+$_SESSION["message"] = "Seu orçamento foi atualizado com sucesso!";
+$_SESSION["href"] = "../Perfis/Pedidos/visualizarPedido.php?cod=$codPed";
+header("Location:../../scripts/redirectTo.php");

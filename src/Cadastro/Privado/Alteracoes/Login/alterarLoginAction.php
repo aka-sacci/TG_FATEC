@@ -7,7 +7,9 @@ $novoEmail = $_POST['txtEmail'];
 $emailAntigo = $_SESSION['login'];
 if ($emailAntigo == $novoEmail) {
 //emails iguais! erro;
-    echo "Emails Iguais!!!";
+$_SESSION["message"] = "O Email fornecido é identico ao email cadastrado!";
+$_SESSION["href"] = "../Cadastro/Privado/Alteracoes/Login/AlterarLogin.php";
+header("Location:../../../../scripts/redirectToError.php");
 } else {
     $validationEmail = false;
     $sql = "select * from login_empresa_privada where login = '" . $novoEmail . "' limit 1";
@@ -20,6 +22,8 @@ if ($emailAntigo == $novoEmail) {
         $_SESSION['thisAlteracao'] = "LOG";
         header("location:confirmarSenha.php");
     } else {
-        echo "Email já existente!!!";
+        $_SESSION["message"] = "O email já foi cadastrado e vinculado à outra empresa!";
+        $_SESSION["href"] = "../Cadastro/Privado/Alteracoes/Login/AlterarLogin.php";
+        header("Location:../../../../scripts/redirectToError.php");
     }
 }
