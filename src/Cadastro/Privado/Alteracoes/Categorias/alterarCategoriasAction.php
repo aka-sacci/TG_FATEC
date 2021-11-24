@@ -16,7 +16,7 @@ for ($i = 1; $i <= $_POST['qtdeCategorias']; $i++) {
 $prepare = $connection->prepare($sqlDelete);
 $prepare->execute();
 foreach ($arrayCategorias as $key => $register) {
-    $sql = "insert into categoria_empresa_privada(categoria, cnpj)  values($register ,$myCnpj)";
+    $sql = "insert into categoria_empresa_privada(categoria, cnpj)  values('$register', '$myCnpj')";
     $prepare = $connection->prepare($sql);
     $prepare->execute();
 }
