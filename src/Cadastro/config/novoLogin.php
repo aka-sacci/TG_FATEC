@@ -69,7 +69,7 @@
                 <p><b>Criação de Login</b></p>
                 <hr>      
                     <?php
-                        echo '<p><b>Email: </b><input name="txtEmail" required value=' . $_SESSION["cadEmail"] . '></p>';
+                        echo '<p><b>Email: </b><input name="txtEmail" readonly value=' . $_SESSION["cadEmail"] . '></p>';
                     ?>        
                 <p><b>Senha: </b><input oninput="validarSenha('txtSenha', 'txtSenhaConfirmar')" name="txtSenha" type="password" id="txtSenha" required></p>
                 <p><b>Confirmar Senha: </b><input oninput="validarSenha('txtSenha', 'txtSenhaConfirmar')" name="txtSenhaConfirmar" id="txtSenhaConfirmar" type="password" required></p>

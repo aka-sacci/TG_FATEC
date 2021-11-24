@@ -22,7 +22,7 @@ function adicionarItem()
         var newItem = document.createElement('input');
         newItem.type = "text";
         newItem.placeholder = "Título do Item #" + counterItens;
-        newItem.maxLength = "50";
+        newItem.maxLength = "100";
         newItem.id = "txtItem" + counterItens;
         newItem.name = "txtItem" + counterItens;
         newItem.required = "required";
@@ -33,7 +33,6 @@ function adicionarItem()
         newDescricao.id = "txtDesc" + counterItens;
         newDescricao.name = "txtDesc" + counterItens;
         newDescricao.placeholder = "Descrição detalhada do item #" + counterItens;
-        newDescricao.maxLength = "400";
         newDescricao.className = "form-control-textarea";
 
         //criar input qtde

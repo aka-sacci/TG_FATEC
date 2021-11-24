@@ -72,7 +72,7 @@ if (!$validate) {
                         echo "<p><b>Logradouro</b><input class='form-control-input' name='txtLogradouro' value='$logradouro' required></p>";
                         echo "<p><b>Número</b><input class='form-control-input' name='txtNumero' value='$numero' required>";
                         echo "<p><b>Bairro</b><input class='form-control-input' name='txtBairro' value='$bairro' required>";
-                        echo '<p><b>CEP</b><input class="form-control-input" name="txtCEP" value="'.$cep.'" maxlength="8" onkeypress="'.$okp.'" required>';
+                        echo '<p><b>CEP</b><input class="form-control-input" name="txtCEP" value="' . $cep . '" maxlength="8" onkeypress="' . $okp . '" required>';
                         echo "<p><b>Cidade</b><input class='form-control-input' name='txtCidade' value='$cidade' required>";
                         echo "<p><b>UF</b><input class='form-control-input' name='txtUF' value='$uf' maxlength='2' required>";
                         echo "<p><b>Descrição do endereço</b><textarea class='form-control-textarea' placeholder='Descrição do endereço' name='txtDescricao' required>$descricao</textarea></p>";

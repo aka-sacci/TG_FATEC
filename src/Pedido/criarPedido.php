@@ -91,8 +91,8 @@ foreach ($connection->query($sql) as $key => $value) {
                     <br><H4><b>ITENS</b></H4><hr>
                     <div class="divItens">
                         <p class="p1" id="p1">
-                        <input type="text" placeholder="Título do Item #1" maxlength="50" id="txtItem1" name="txtItem1" class="form-control-input" required><br>
-                        <textarea placeholder="Descrição detalhada do item #1" maxlength="400" id="txtDesc1" name="txtDesc1" class="form-control-textarea" required></textarea><br>
+                        <input type="text" placeholder="Título do Item #1" maxlength="100" id="txtItem1" name="txtItem1" class="form-control-input" required><br>
+                        <textarea placeholder="Descrição detalhada do item #1" id="txtDesc1" name="txtDesc1" class="form-control-textarea" required></textarea><br>
                         <input type="number" placeholder="Quantidade" id="txtQtde1" name="txtQtde1" value="1"  required>
                         <select id="selectQtde1" name="selectQtde1">
                             <option value="un">Unidade</option>

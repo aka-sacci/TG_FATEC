@@ -5,6 +5,7 @@ require_once '../../scripts/utils/converterPontuacaoCNPJ.php';
 session_start();
 $login = $_POST['txtEmail'];
 $pwd = $_POST['txtSenha'];
+$meuCNPJ = $_SESSION['cadCNPJ'];
 
 
 if ($_SESSION['cadType'] == "PUB") {
@@ -45,6 +46,7 @@ if ($_SESSION['cadType'] == "PUB") {
     session_unset();
     $_SESSION['login'] = $login;
     $_SESSION['pwd'] = $pwd;
+    $_SESSION['cnpj'] = $meuCNPJ;
     $_SESSION['type'] = "PUB";
     //var_dump($_SESSION);
     header("location:cadastroConcluido.php");
@@ -92,6 +94,7 @@ if ($_SESSION['cadType'] == "PUB") {
     $_SESSION['login'] = $login;
     $_SESSION['pwd'] = $pwd;
     $_SESSION['type'] = "PRI";
+    
 
 
     //var_dump($values);
