@@ -12,14 +12,14 @@
     INNER JOIN pedido ON anexos_pedido.pedido = pedido.cod
     INNER JOIN instituicao_publica ON pedido.cnpj = instituicao_publica.cnpj
     where anexos_pedido.cod = $codDoc and instituicao_publica.cnpj = $cnpj";
-    foreach ($connection->query($sql) as $key => $value) {
-        $validate = true;
-        $descricaoDoc = $value['descricao'];
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $validate = true;
+    $descricaoDoc = $value['descricao'];
+}
 
-    if (!$validate) {
-        header("location:visualisarMeuPedido.php?cod=$codDoc");
-    }
+if (!$validate) {
+    header("location:visualisarMeuPedido.php?cod=$codDoc");
+}
 
 ?>
 

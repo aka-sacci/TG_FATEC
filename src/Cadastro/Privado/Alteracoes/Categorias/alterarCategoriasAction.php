@@ -23,4 +23,3 @@ foreach ($arrayCategorias as $key => $register) {
 $_SESSION["message"] = "Categorias alteradas com sucesso!";
 $_SESSION["href"] = "../Cadastro/Privado/Alteracoes";
 header("Location:../../../../scripts/redirectTo.php");
-

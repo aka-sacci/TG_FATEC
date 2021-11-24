@@ -103,4 +103,3 @@ generatePDF($conteudo, $FINAL);
 $_SESSION["message"] = "Seu orçamento foi enviado com sucesso!";
 $_SESSION["href"] = "../Perfis/Pedidos/visualizarPedido.php?cod=$cod";
 header("Location:../../scripts/redirectTo.php");
-

@@ -12,15 +12,15 @@
     INNER JOIN documento_tipo
     on documento_empresa_privada.tipo = documento_tipo.cod 
     where documento_empresa_privada.cod = $codDoc and cnpj = $cnpj";
-    foreach ($connection->query($sql) as $key => $value) {
-        $validate = true;
-        $descricaoDoc = $value['descricao_doc'];
-        $doc = $value['descricao'];
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $validate = true;
+    $descricaoDoc = $value['descricao_doc'];
+    $doc = $value['descricao'];
+}
 
-    if (!$validate) {
-        header("location:../");
-    }
+if (!$validate) {
+    header("location:../");
+}
 
 ?>
 

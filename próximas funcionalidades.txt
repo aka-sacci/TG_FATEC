@@ -1,2 +1,2 @@
-(isso ce pode fazer) -> revisar o goBack e considerar usar um voltar estático em algumas situações (amanhã eu explico)
-
+- Alterar tipos?
+- api pra inserir endereços

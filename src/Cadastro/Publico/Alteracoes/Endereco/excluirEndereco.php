@@ -8,19 +8,19 @@
     $validate = false;
 
     $sql = "select * from endereco_instituicao_publica where cod = $codEndereco and cnpj = $cnpj";
-    foreach ($connection->query($sql) as $key => $value) {
-        $validate = true;
-        $logradouro = $value["logradouro"];
-        $numero = $value["numero"];
-        $bairro = $value["bairro"];
-        $cidade = $value["cidade"];
-        $uf = $value["uf"];
-        $descricao = $value["descricao"];
-    }
+foreach ($connection->query($sql) as $key => $value) {
+    $validate = true;
+    $logradouro = $value["logradouro"];
+    $numero = $value["numero"];
+    $bairro = $value["bairro"];
+    $cidade = $value["cidade"];
+    $uf = $value["uf"];
+    $descricao = $value["descricao"];
+}
 
-    if (!$validate) {
-        header("location:../");
-    }
+if (!$validate) {
+    header("location:../");
+}
 ?>
 
 <!DOCTYPE html>

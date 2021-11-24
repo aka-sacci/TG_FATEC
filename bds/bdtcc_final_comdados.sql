@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `categoria_empresa_privada` (
   KEY `FK_categoria_empresa_privada-empresa_privada` (`cnpj`),
   CONSTRAINT `FK_categoria_empresa_privada-categoria` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_categoria_empresa_privada-empresa_privada` FOREIGN KEY (`cnpj`) REFERENCES `empresa_privada` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela database_portal.categoria_empresa_privada: ~41 rows (aproximadamente)
 /*!40000 ALTER TABLE `categoria_empresa_privada` DISABLE KEYS */;
@@ -102,9 +102,6 @@ INSERT INTO `categoria_empresa_privada` (`cod`, `categoria`, `cnpj`) VALUES
 	(20, 3, '25072293000143'),
 	(24, 1, '24846428000118'),
 	(25, 2, '24846428000118'),
-	(26, 8, '10176707000107'),
-	(27, 7, '10176707000107'),
-	(28, 9, '10176707000107'),
 	(29, 6, '17750569000177'),
 	(30, 13, '17750569000177'),
 	(31, 10, '17750569000177'),
@@ -131,7 +128,11 @@ INSERT INTO `categoria_empresa_privada` (`cod`, `categoria`, `cnpj`) VALUES
 	(52, 3, '10242721000161'),
 	(53, 20, '25063214000138'),
 	(54, 21, '56097645000149'),
-	(55, 1, '56097645000149');
+	(55, 1, '56097645000149'),
+	(60, 20, '10918425000138'),
+	(61, 7, '10176707000107'),
+	(62, 8, '10176707000107'),
+	(63, 2, '10176707000107');
 /*!40000 ALTER TABLE `categoria_empresa_privada` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.categoria_pedido
@@ -201,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `documento_empresa_privada` (
   KEY `FK__empresa_privada` (`cnpj`),
   CONSTRAINT `FK__documento_tipo` FOREIGN KEY (`tipo`) REFERENCES `documento_tipo` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK__empresa_privada` FOREIGN KEY (`cnpj`) REFERENCES `empresa_privada` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela database_portal.documento_empresa_privada: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `documento_empresa_privada` DISABLE KEYS */;
@@ -261,6 +262,7 @@ INSERT INTO `empresa_privada` (`cnpj`, `razao_social`, `nome_fantasia`, `efr`, `
 	('08914106000102', 'C. A. GASPAR INFORMATICA', 'ASM INFO', 'NA', '(11) 4012-7937/ (11) 4012-7124', 'beraldocontabil@bjpnet.com.br', '213-5 - Empresário (Individual)'),
 	('10176707000107', 'TATIANA VENTICINCO CARTUCHOS', 'H9 CARTUCHOS', 'NA', '(11) 3402-0599/ (11) 9484-7736', 'vetor.org@vetorcontabil.com', '213-5 - Empresário (Individual)'),
 	('10242721000161', 'BUYSOFT DO BRASIL LTDA', 'BUYSOFT', 'NA', '(44) 3041-8888/ (44) 3220-3300', 'administrativo@buysoft.com.br', '206-2 - Sociedade Empresária Limitada'),
+	('10918425000138', 'VOLVO CAR BRASIL IMPORTACAO E COMERCIO DE VEICULOS LTDA.', 'VOLVO CAR BRASIL', 'NA', '(11) 4174-5678/ (11) 4174-8746', 'maria.silva@volvocars.com', '206-2 - Sociedade Empresária Limitada'),
 	('11340562000109', 'SOFTWARE.COM.BR INFORMATICA LTDA', 'NA', 'NA', '(11) 3665-8550 / (11) 2143-443', 'financeiro@software.com.br', '206-2 - Sociedade Empresária Limitada'),
 	('12982965000106', 'CASA DO SERRALHEIRO LTDA', 'CASA DO SERRALHEIRO', 'NA', '(27) 3226-8045 / (27) 3343-033', 'brendo@casaserralheiro.com.br', '206-2 - Sociedade Empresária Limitada'),
 	('16579679000155', 'ATIBAIA MAQUINAS E FERRAMENTAS LTDA', 'ATIBAIA MAQUINAS E FERRAMENTAS', 'NA', '(11) 4412-1662', 'dep.legal@contabildoni.com.br', '206-2 - Sociedade Empresária Limitada'),
@@ -288,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `endereco_empresa_privada` (
   PRIMARY KEY (`cod`),
   KEY `FK_endereco_empresa_privada-empresa_privada` (`cnpj`),
   CONSTRAINT `FK_endereco_empresa_privada-empresa_privada` FOREIGN KEY (`cnpj`) REFERENCES `empresa_privada` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela database_portal.endereco_empresa_privada: ~22 rows (aproximadamente)
 /*!40000 ALTER TABLE `endereco_empresa_privada` DISABLE KEYS */;
@@ -314,7 +316,8 @@ INSERT INTO `endereco_empresa_privada` (`cod`, `logradouro`, `numero`, `bairro`,
 	(29, 'Av. Francisco Sá', '1000', 'Gutierrez', '30441018', 'BELO HORIZONTE', 'MG', '00258246000168', 'FILIAL MG'),
 	(30, 'AV ADVOGADO HORACIO RACCANELLO FILHO', '5145', 'ZONA 07', '87020035', 'MARINGA', 'PR', '10242721000161', NULL),
 	(31, 'AV IRENO DA SILVA VENANCIO', '199', 'PROTESTANTES', '18111100', 'VOTORANTIM', 'SP', '25063214000138', NULL),
-	(32, 'R VOLUNTARIOS DA PATRIA', '4857', 'SANTANA', '02401400', 'SAO PAULO', 'SP', '56097645000149', NULL);
+	(32, 'R VOLUNTARIOS DA PATRIA', '4857', 'SANTANA', '02401400', 'SAO PAULO', 'SP', '56097645000149', NULL),
+	(33, 'R SURUBIM', '577', 'CIDADE MONCOES', '04571050', 'SAO PAULO', 'SP', '10918425000138', NULL);
 /*!40000 ALTER TABLE `endereco_empresa_privada` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.endereco_instituicao_publica
@@ -331,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `endereco_instituicao_publica` (
   PRIMARY KEY (`cod`),
   KEY `FK_endereco_instituicao_publica-instituicao_publica` (`cnpj`),
   CONSTRAINT `FK_endereco_instituicao_publica-instituicao_publica` FOREIGN KEY (`cnpj`) REFERENCES `instituicao_publica` (`cnpj`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela database_portal.endereco_instituicao_publica: ~15 rows (aproximadamente)
 /*!40000 ALTER TABLE `endereco_instituicao_publica` DISABLE KEYS */;
@@ -348,7 +351,7 @@ INSERT INTO `endereco_instituicao_publica` (`cod`, `logradouro`, `numero`, `bair
 	(16, 'Rua Natale Bertucci', '1', 'Parque Valenca I', '13058525', 'Campinas', 'SP', '51885242000140', 'Sub Prefeitura Do Campo Grande'),
 	(17, 'Rua Luiz Vicentin', '177', 'Jardim Santa Genebra', '13084754', 'Campinas', 'SP', '51885242000140', 'Sub Prefeitura de Barão Geraldo'),
 	(18, 'Av. Cardeal Dom Agnello Rossi', '532', 'Conj. Hab. Padre Anchieta', '13068211', 'Campinas', 'SP', '51885242000140', 'Sub Prefeitura de Nova Aparecida'),
-	(19, 'R. Maneco Rosa', '52', 'Sousas', ' 1310600', 'Campinas', 'SP', '51885242000140', 'Subprefeitura Do Distrito De Sousas'),
+	(19, 'R. Maneco Rosa', '52', 'Sousas', '13106000', 'Campinas', 'SP', '51885242000140', 'Subprefeitura Do Distrito De Sousas'),
 	(20, 'R. José Inácio', '14', 'Joaquim Egídio', '13108006', 'Campinas', 'SP', '51885242000140', 'Subprefeitura de Joaquim Egídio'),
 	(21, 'Tv. da Liberdade', 's/n', 'Jardim Santa Rita de Cassia', '12914060', 'Bragança Paulista', 'SP', '46352746000165', 'Secretaria Municipal de Educação');
 /*!40000 ALTER TABLE `endereco_instituicao_publica` ENABLE KEYS */;
@@ -432,6 +435,7 @@ INSERT INTO `login_empresa_privada` (`login`, `cnpj`, `senha`) VALUES
 	('jm-pinheiro123@uol.com.br', '28751831000114', '123'),
 	('jm-pinheiro@uol.com.br', '17750569000177', '123'),
 	('jmtransmoraes@hotmail.com', '03376962000138', '123'),
+	('maria.silva@volvocars.com', '10918425000138', '123'),
 	('sac@xerografia.com.br', '04911191000102', '123'),
 	('vetor.org@vetorcontabil.com', '10176707000107', '123');
 /*!40000 ALTER TABLE `login_empresa_privada` ENABLE KEYS */;
@@ -470,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `mensagem` (
   CONSTRAINT `FK_mensagem_status_notificacao` FOREIGN KEY (`status`) REFERENCES `status_notificacao` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.mensagem: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.mensagem: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `mensagem` DISABLE KEYS */;
 INSERT INTO `mensagem` (`cod`, `nome`, `email`, `mensagem`, `status`) VALUES
 	(1, 'Lucas', 'saccilucas@gmail.com', 'Site muito bom!', 1),
@@ -539,10 +543,10 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   CONSTRAINT `FK_pedido_endereco_instituicao_publica` FOREIGN KEY (`endereco_entrega`) REFERENCES `endereco_instituicao_publica` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.pedido: ~1 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.pedido: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
 INSERT INTO `pedido` (`cod`, `titulo`, `descricao`, `data_abertura`, `data_fechamento`, `distancia`, `status`, `modo`, `cnpj`, `endereco_entrega`) VALUES
-	(1, 'Registro de Preços de itens de informática', 'Pregão nº 076/2021 - Eletrônico - Processo Administrativo: PMC.2020.00056837-29 - Interessado: Secretaria Municipal de Educação - Objeto: Registro de Preços de itens de informática - Recebimento das Propostas dos itens 01 a 08: das 08h do dia 26/11/2', '2021-11-22 15:40:17', NULL, 150, 1, 2, '51885242000140', 13);
+	(1, 'Registro de Preços de itens de informática', 'Pregão nº 076/2021 - Eletrônico - Processo Administrativo: PMC.2020.00056837-29 - Interessado: Secretaria Municipal de Educação - Objeto: Registro de Preços de itens de informática - Recebimento das Propostas dos itens 01 a 08: das 08h do dia 26/11/2', '2021-11-22 15:40:17', NULL, 100, 1, 2, '51885242000140', 13);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.status_cadastro

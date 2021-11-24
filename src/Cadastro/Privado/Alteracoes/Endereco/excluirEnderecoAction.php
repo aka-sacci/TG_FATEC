@@ -12,9 +12,9 @@ foreach ($connection->query($sql) as $key => $value) {
 }
 
 if (!$validate) {
-$_SESSION["message"] = "Senha incorreta!";
-$_SESSION["href"] = "../Cadastro/Privado/Alteracoes/Endereco/excluirEndereco.php?cod=$codEndereco";
-header("Location:../../../../scripts/redirectToError.php");
+    $_SESSION["message"] = "Senha incorreta!";
+    $_SESSION["href"] = "../Cadastro/Privado/Alteracoes/Endereco/excluirEndereco.php?cod=$codEndereco";
+    header("Location:../../../../scripts/redirectToError.php");
 } else {
     $sql = "delete from endereco_empresa_privada where cod = $codEndereco and cnpj = $myCnpj";
     $prepare = $connection->prepare($sql);

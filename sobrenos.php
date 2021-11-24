@@ -272,7 +272,7 @@ if(isset($_SESSION['login'])) {
                             <!-- Membro do Time 1 -->
                             <div class="team-member col-lg-3">
                                 <div class="image-wrapper">
-                                    <img class="img-fluid" src="src/Imagens/team-member-1.svg" alt="alternative">
+                                    <img class="img-fluid" src="src/Imagens/lucas-sacci.jpg" alt="alternative">
                                 </div> 
                                 <p class="p-large"><strong>Lucas Gabriel</strong></p>
                                 <p class="job-title">CEO & Desenvolvedor Back-End</p>
@@ -296,7 +296,7 @@ if(isset($_SESSION['login'])) {
                             <!-- Membro do Time 2 -->
                             <div class="team-member col-lg-3">
                                 <div class="image-wrapper">
-                                    <img class="img-fluid" src="src/Imagens/team-member-2.svg" alt="alternative">
+                                    <img class="img-fluid" src="src/Imagens/vitor-matos.jpg" alt="alternative">
                                 </div>
                                 <p class="p-large"><strong>Vitor Matos</strong></p>
                                 <p class="job-title">CTO & Desenvolvedor <br> Front-End</p>
@@ -320,7 +320,7 @@ if(isset($_SESSION['login'])) {
                             <!-- Membro do Time 3 -->
                             <div class="team-member col-lg-3">
                                 <div class="image-wrapper">
-                                    <img class="img-fluid" src="src/Imagens/team-member-3.svg" alt="alternative">
+                                    <img class="img-fluid" src="src/Imagens/joao-paulo.jpg" alt="alternative">
                                 </div>
                                 <p class="p-large"><strong>João Paulo</strong></p>
                                 <p class="job-title">Engenheiro de Software</p><br>
@@ -344,10 +344,10 @@ if(isset($_SESSION['login'])) {
                             <!-- Membro do Time 4 -->
                             <div class="team-member col-lg-3">
                                 <div class="image-wrapper">
-                                    <img class="img-fluid" src="src/Imagens/team-member-4.svg" alt="alternative">
+                                    <img class="img-fluid" src="src/Imagens/leonardo-akira.jpg" alt="alternative">
                                 </div>
                                 <p class="p-large"><strong>Leonardo Akira</strong></p>
-                                <p class="job-title">Auxiliar Técnico</p><br>
+                                <p class="job-title">Analista de Sistemas</p><br>
                                 <span class="social-icons">
                                     <span class="fa-stack">
                                         <a target="_blank" href="https://www.facebook.com/leonardo.almeida.54540">
