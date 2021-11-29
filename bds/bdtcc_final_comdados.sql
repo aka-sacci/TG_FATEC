@@ -25,10 +25,14 @@ CREATE TABLE IF NOT EXISTS `anexos_cotacoes` (
   PRIMARY KEY (`cod`),
   KEY `FK__cotacoes` (`cotacao`),
   CONSTRAINT `FK__cotacoes` FOREIGN KEY (`cotacao`) REFERENCES `cotacoes` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.anexos_cotacoes: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.anexos_cotacoes: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `anexos_cotacoes` DISABLE KEYS */;
+INSERT INTO `anexos_cotacoes` (`cod`, `cotacao`, `descricao`) VALUES
+	(1, 4, 'CATÁLOGO CARTUCHO PLOTTER'),
+	(2, 6, 'catálogo SSD PATRIOT'),
+	(3, 7, 'catalogo');
 /*!40000 ALTER TABLE `anexos_cotacoes` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.anexos_pedido
@@ -39,10 +43,12 @@ CREATE TABLE IF NOT EXISTS `anexos_pedido` (
   PRIMARY KEY (`cod`),
   KEY `FK__pedido` (`pedido`),
   CONSTRAINT `FK__pedido` FOREIGN KEY (`pedido`) REFERENCES `pedido` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela database_portal.anexos_pedido: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `anexos_pedido` DISABLE KEYS */;
+INSERT INTO `anexos_pedido` (`cod`, `descricao`, `pedido`) VALUES
+	(2, 'anexo', 6);
 /*!40000 ALTER TABLE `anexos_pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.categoria
@@ -86,13 +92,11 @@ CREATE TABLE IF NOT EXISTS `categoria_empresa_privada` (
   KEY `FK_categoria_empresa_privada-empresa_privada` (`cnpj`),
   CONSTRAINT `FK_categoria_empresa_privada-categoria` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_categoria_empresa_privada-empresa_privada` FOREIGN KEY (`cnpj`) REFERENCES `empresa_privada` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.categoria_empresa_privada: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.categoria_empresa_privada: ~41 rows (aproximadamente)
 /*!40000 ALTER TABLE `categoria_empresa_privada` DISABLE KEYS */;
 INSERT INTO `categoria_empresa_privada` (`cod`, `categoria`, `cnpj`) VALUES
-	(7, 2, '72381189000110'),
-	(8, 1, '72381189000110'),
 	(11, 7, '04911191000102'),
 	(12, 9, '04911191000102'),
 	(16, 1, '08914106000102'),
@@ -133,7 +137,10 @@ INSERT INTO `categoria_empresa_privada` (`cod`, `categoria`, `cnpj`) VALUES
 	(62, 8, '10176707000107'),
 	(63, 2, '10176707000107'),
 	(64, 10, '28751831000114'),
-	(65, 13, '28751831000114');
+	(65, 13, '28751831000114'),
+	(69, 1, '72381189000110'),
+	(70, 2, '72381189000110'),
+	(71, 18, '71684377000406');
 /*!40000 ALTER TABLE `categoria_empresa_privada` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.categoria_pedido
@@ -146,15 +153,21 @@ CREATE TABLE IF NOT EXISTS `categoria_pedido` (
   KEY `FK_categoria_pedido-categoria` (`categoria`),
   CONSTRAINT `FK_categoria_pedido-categoria` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_categoria_pedido-pedido` FOREIGN KEY (`pedido`) REFERENCES `pedido` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.categoria_pedido: ~2 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.categoria_pedido: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `categoria_pedido` DISABLE KEYS */;
 INSERT INTO `categoria_pedido` (`cod`, `pedido`, `categoria`) VALUES
 	(1, 1, 2),
 	(2, 1, 1),
 	(3, 2, 10),
-	(4, 2, 13);
+	(4, 2, 13),
+	(5, 3, 2),
+	(6, 3, 21),
+	(7, 3, 1),
+	(8, 4, 9),
+	(9, 4, 7),
+	(11, 6, 18);
 /*!40000 ALTER TABLE `categoria_pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.cotacoes
@@ -169,12 +182,15 @@ CREATE TABLE IF NOT EXISTS `cotacoes` (
   KEY `FK_cotacoes_empresa_privada` (`empresa`),
   CONSTRAINT `FK_cotacoes_empresa_privada` FOREIGN KEY (`empresa`) REFERENCES `empresa_privada` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_cotacoes_pedido` FOREIGN KEY (`pedido`) REFERENCES `pedido` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.cotacoes: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.cotacoes: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `cotacoes` DISABLE KEYS */;
 INSERT INTO `cotacoes` (`cod`, `pedido`, `empresa`, `observacao`, `last_update`) VALUES
-	(3, 2, '28751831000114', '', '2021-11-24 00:28:50');
+	(3, 2, '28751831000114', '', '2021-11-25 18:36:01'),
+	(4, 4, '04911191000102', '', '2021-11-25 18:36:01'),
+	(6, 3, '10176707000107', '', '2021-11-25 18:36:01'),
+	(7, 6, '71684377000406', '', '2021-11-25 20:39:42');
 /*!40000 ALTER TABLE `cotacoes` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.cotacoes_itens
@@ -189,14 +205,20 @@ CREATE TABLE IF NOT EXISTS `cotacoes_itens` (
   KEY `FK_cotacoes_itens_cotacoes` (`cotacao`),
   CONSTRAINT `FK_cotacoes_itens_cotacoes` FOREIGN KEY (`cotacao`) REFERENCES `cotacoes` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_cotacoes_itens_item_pedido` FOREIGN KEY (`item_ref`) REFERENCES `item_pedido` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.cotacoes_itens: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.cotacoes_itens: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `cotacoes_itens` DISABLE KEYS */;
 INSERT INTO `cotacoes_itens` (`cod`, `valor_un`, `item_ref`, `descricao_modelo`, `cotacao`) VALUES
 	(7, '0.50', 8, 'COTACAO ITEM 1', 3),
 	(8, '19.90', 7, 'COTACAO ITEM 2', 3),
-	(9, '1.50', 6, 'COTAÇÃO ITEM 3', 3);
+	(9, '1.50', 6, 'COTAÇÃO ITEM 3', 3),
+	(12, '4599.90', 16, 'Multifuncional A3 Bulk Original Brother Mfc-t4500dw T4500', 4),
+	(13, '399.90', 15, 'CARTUCHO DE TINTA HP 711 compatível', 4),
+	(24, '699.90', 11, 'SSD SATA PATRIOT 512GB', 6),
+	(25, '299.90', 12, 'SSD SATA PATRIOT 256GB', 6),
+	(26, '10.00', 19, 'Caneta Esferográfica BIC Cristal Original Dura Mais, Azul Ponta Média de 1.0mm, 835205 \r\nCANETA PRETA', 7),
+	(27, '32.00', 18, 'Grampeador 20/6 20fl O-200 Easy Office', 7);
 /*!40000 ALTER TABLE `cotacoes_itens` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.documento_empresa_privada
@@ -211,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `documento_empresa_privada` (
   KEY `FK__empresa_privada` (`cnpj`),
   CONSTRAINT `FK__documento_tipo` FOREIGN KEY (`tipo`) REFERENCES `documento_tipo` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK__empresa_privada` FOREIGN KEY (`cnpj`) REFERENCES `empresa_privada` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela database_portal.documento_empresa_privada: ~12 rows (aproximadamente)
 /*!40000 ALTER TABLE `documento_empresa_privada` DISABLE KEYS */;
@@ -227,7 +249,8 @@ INSERT INTO `documento_empresa_privada` (`cod`, `tipo`, `cnpj`, `data_upload`, `
 	(11, 1, '16579679000155', '2021-11-22 14:09:35', 'FICHA CNPJ'),
 	(12, 1, '00258246000168', '2021-11-22 15:16:47', 'Meu CNPJ'),
 	(13, 1, '10242721000161', '2021-11-22 15:20:38', 'FICHA CNPJ'),
-	(14, 1, '56097645000149', '2021-11-22 15:26:38', 'cnpj');
+	(14, 1, '56097645000149', '2021-11-22 15:26:38', 'cnpj'),
+	(16, 1, '71684377000406', '2021-11-25 20:37:41', 'CNPJ');
 /*!40000 ALTER TABLE `documento_empresa_privada` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.documento_tipo
@@ -282,6 +305,7 @@ INSERT INTO `empresa_privada` (`cnpj`, `razao_social`, `nome_fantasia`, `efr`, `
 	('28751831000114', 'BARBOSA E MENDES MATERIAIS PARA CONSTRUCAO LTDA', 'DEPOSITO DOIS IRMAOS', 'NA', '(11) 4597-4139', 'jm-pinheiro123@uol.com.br', '206-2 - Sociedade Empresária Limitada'),
 	('56097645000149', 'MW MICROWARE COMERCIO DE INFORMATICA LTDA', 'MW', 'NA', '(11) 9567-7029', 'contato@mwmicroware.com.br', '206-2 - Sociedade Empresária Limitada'),
 	('57142978000458', 'BRASOFTWARE INFORMATICA LTDA', 'BRASOFTWARE INFORMATICA LTDA', 'NA', '(11) 3179-6700 / (11) 3179-699', 'contabilidade@brasoftware.com.br', '206-2 - Sociedade Empresária Limitada'),
+	('71684377000406', 'LOJAS GLOBAL ATIBAIA LTDA', 'PAPELARIA GLOBAL', 'NA', '(11) 4411-1833 / (11) 3402-808', 'contabil@escritoriothomaz.com.br', '206-2 - Sociedade Empresária Limitada'),
 	('72381189000110', 'DELL COMPUTADORES DO BRASIL LTDA', 'NA', 'NA', '(51) 3274-5500', 'br_tax@dell.com', '206-2 - Sociedade Empresária Limitada');
 /*!40000 ALTER TABLE `empresa_privada` ENABLE KEYS */;
 
@@ -299,7 +323,7 @@ CREATE TABLE IF NOT EXISTS `endereco_empresa_privada` (
   PRIMARY KEY (`cod`),
   KEY `FK_endereco_empresa_privada-empresa_privada` (`cnpj`),
   CONSTRAINT `FK_endereco_empresa_privada-empresa_privada` FOREIGN KEY (`cnpj`) REFERENCES `empresa_privada` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
 
 -- Copiando dados para a tabela database_portal.endereco_empresa_privada: ~23 rows (aproximadamente)
 /*!40000 ALTER TABLE `endereco_empresa_privada` DISABLE KEYS */;
@@ -326,7 +350,8 @@ INSERT INTO `endereco_empresa_privada` (`cod`, `logradouro`, `numero`, `bairro`,
 	(30, 'AV ADVOGADO HORACIO RACCANELLO FILHO', '5145', 'ZONA 07', '87020035', 'MARINGA', 'PR', '10242721000161', NULL),
 	(31, 'AV IRENO DA SILVA VENANCIO', '199', 'PROTESTANTES', '18111100', 'VOTORANTIM', 'SP', '25063214000138', NULL),
 	(32, 'R VOLUNTARIOS DA PATRIA', '4857', 'SANTANA', '02401400', 'SAO PAULO', 'SP', '56097645000149', NULL),
-	(33, 'R SURUBIM', '577', 'CIDADE MONCOES', '04571050', 'SAO PAULO', 'SP', '10918425000138', NULL);
+	(33, 'R SURUBIM', '577', 'CIDADE MONCOES', '04571050', 'SAO PAULO', 'SP', '10918425000138', NULL),
+	(39, 'RUA JOSE ALVIM', '189', 'CENTRO', '12940750', 'ATIBAIA', 'SP', '71684377000406', NULL);
 /*!40000 ALTER TABLE `endereco_empresa_privada` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.endereco_instituicao_publica
@@ -343,13 +368,12 @@ CREATE TABLE IF NOT EXISTS `endereco_instituicao_publica` (
   PRIMARY KEY (`cod`),
   KEY `FK_endereco_instituicao_publica-instituicao_publica` (`cnpj`),
   CONSTRAINT `FK_endereco_instituicao_publica-instituicao_publica` FOREIGN KEY (`cnpj`) REFERENCES `instituicao_publica` (`cnpj`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.endereco_instituicao_publica: ~15 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.endereco_instituicao_publica: ~16 rows (aproximadamente)
 /*!40000 ALTER TABLE `endereco_instituicao_publica` DISABLE KEYS */;
 INSERT INTO `endereco_instituicao_publica` (`cod`, `logradouro`, `numero`, `bairro`, `cep`, `cidade`, `uf`, `cnpj`, `descricao`) VALUES
 	(1, 'RUA DOM DUARTE LEOPOLDO', '83', 'CENTRO', '12955000', 'BOM JESUS DOS PERDOES', 'SP', '52359692000162', NULL),
-	(2, 'AV SAUDADE', '252', 'NA', '12940560', 'ATIBAIA', 'SP', '45279635000108', NULL),
 	(5, 'RUA SÃO GERALDO', '279', 'CENTRO', '12955000', 'BOM JESUS DOS PERDÕES', 'SP', '52359692000162', 'SECRETARIA DE SAÚDE'),
 	(6, 'PRACA ANTONIO R DOS SANTOS', '16', 'NA', '12960000', 'NAZARE PAULISTA', 'SP', '45279643000154', NULL),
 	(11, 'AVDA ANTONIO PIRES PIMENTEL', '2015', 'B SANTO AGOSTINHO', '12900011', 'BRAGANCA PAULISTA', 'SP', '46352746000165', NULL),
@@ -363,7 +387,8 @@ INSERT INTO `endereco_instituicao_publica` (`cod`, `logradouro`, `numero`, `bair
 	(19, 'R. Maneco Rosa', '52', 'Sousas', '13106000', 'Campinas', 'SP', '51885242000140', 'Subprefeitura Do Distrito De Sousas'),
 	(20, 'R. José Inácio', '14', 'Joaquim Egídio', '13108006', 'Campinas', 'SP', '51885242000140', 'Subprefeitura de Joaquim Egídio'),
 	(21, 'Tv. da Liberdade', 's/n', 'Jardim Santa Rita de Cassia', '12914060', 'Bragança Paulista', 'SP', '46352746000165', 'Secretaria Municipal de Educação'),
-	(28, 'AV CULA MANGABEIRA', '211', 'STO EXPEDITO', '39401002', 'MONTES CLAROS', 'MG', '22678874000135', NULL);
+	(28, 'AV CULA MANGABEIRA', '211', 'STO EXPEDITO', '39401002', 'MONTES CLAROS', 'MG', '22678874000135', NULL),
+	(30, 'AV SAUDADE', '252', 'NA', '12940560', 'ATIBAIA', 'SP', '45279635000108', NULL);
 /*!40000 ALTER TABLE `endereco_instituicao_publica` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.instituicao_publica
@@ -381,11 +406,11 @@ CREATE TABLE IF NOT EXISTS `instituicao_publica` (
   CONSTRAINT `FK_instituicao_publica-status-cadastro` FOREIGN KEY (`status_cadastro`) REFERENCES `status_cadastro` (`cod`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.instituicao_publica: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.instituicao_publica: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `instituicao_publica` DISABLE KEYS */;
 INSERT INTO `instituicao_publica` (`cnpj`, `razao_social`, `nome_fantasia`, `efr`, `email`, `natureza`, `telefone`, `status_cadastro`) VALUES
 	('22678874000135', 'MUNICIPIO DE MONTES CLAROS', 'MONTES CLAROS PREFEITURA GABINETE PREFEITO', 'MUNICÍPIO DE MONTES CLAROS', 'compras@montesclaros.mg.gov.br', '124-4 - Município', '(38) 3215-7693', 3),
-	('45279635000108', 'MUNICIPIO DE ATIBAIA', 'PREFEITURA DA ESTANCIA DE ATIBAIA', 'MUNICÍPIO DE ATIBAIA', 'cpd@prefeituradeatibaia.com.br', '124-4 - Município', '(11) 4413-0974', 3),
+	('45279635000108', 'MUNICIPIO DE ATIBAIA', 'PREFEITURA DA ESTANCIA DE ATIBAIA', 'MUNICÍPIO DE ATIBAIA', 'compras@prefeituradeatibaia.com.br', '124-4 - Município', '11 997645981', 3),
 	('45279643000154', 'MUNICIPIO DE NAZARE PAULISTA', 'NAZARE PAULISTA GABINETE PREFEITO', 'NAZARE PAULISTA - SP', 'nazare@nazare.sp.gov.br', '124-4 - Município', '11 97875756', 3),
 	('45623600000144', 'MUNICIPIO DE PINHALZINHO', 'NA', 'MUNICÍPIO DE PINHALZINHO', 'contato@pinhalzinho.sp.gov.br', '124-4 - Município', '11 4589 7997', 3),
 	('46352746000165', 'MUNICIPIO DE BRAGANCA PAULISTA', 'NA', 'MUNICÍPIO DE BRAGANCA PAULISTA', 'falecom@braganca.sp.gov.br', '124-4 - Município', '(11) 95554-6146', 3),
@@ -405,9 +430,9 @@ CREATE TABLE IF NOT EXISTS `item_pedido` (
   PRIMARY KEY (`cod`),
   KEY `FK_item_pedido-pedido` (`pedido_cod`),
   CONSTRAINT `FK_item_pedido-pedido` FOREIGN KEY (`pedido_cod`) REFERENCES `pedido` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.item_pedido: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.item_pedido: ~17 rows (aproximadamente)
 /*!40000 ALTER TABLE `item_pedido` DISABLE KEYS */;
 INSERT INTO `item_pedido` (`cod`, `item`, `descricao`, `quantidade`, `unidade`, `pedido_cod`) VALUES
 	(1, 'CABO EXTENSOR DE REDE RJ45 (PATCH CORD)', '- CABO COM NO MÍNIMO 2 METROS DE\r\nCOMPRIMENTO.', 1200, 'un', 1),
@@ -417,7 +442,17 @@ INSERT INTO `item_pedido` (`cod`, `item`, `descricao`, `quantidade`, `unidade`, 
 	(5, 'ESTABILIZADOR ELETRÔNICO 500VA', '- MONOVOLT 127V OU BIVOLT 127V/220V.\r\n- POTÊNCIA NOMINAL DE 300W OU 500VA.\r\n- NO MÍNIMO QUATRO TOMADAS DE SAÍDA\r\nPADRÃO NBR14136\r\n- TOMADA DE 10A PADRÃO TRIPOLAR, COM CABO\r\nDE NO MÍNIMO 1M.\r\n- FREQUÊNCIA DE 60HZ.\r\n- CHAVE LIGA E DESLIGA COM LED INDICADOR DE\r\nFUNCIONAMENTO.\r\n- PORTA FUSÍVEL EXTERNO COM 1 UNIDADE\r\nRESERVA DE 10A.\r\n- DEVERÁ ACOMPANHAR UM ADAPTADOR DE\r\nTOMADA PARA 3 PINOS CHATOS.', 900, 'un', 1),
 	(6, 'ITEM TESTE 3', 'DESCRIÇÃO DO ITEM TESTE 3', 2400, 'mt', 2),
 	(7, 'ITEM TESTE 2', 'DESCRIÇÃO DO ITEM TESTE 2', 1200, 'un', 2),
-	(8, 'ITEM TESTE 1', 'DESCRIÇÃO DO ITEM TESTE 1', 2600, 'lt', 2);
+	(8, 'ITEM TESTE 1', 'DESCRIÇÃO DO ITEM TESTE 1', 2600, 'lt', 2),
+	(9, 'CABO HDMI', 'Cabos HDMI de 2 metros', 25, 'un', 3),
+	(10, 'EXTENSÃO', 'Extensões com filtro de linha de 4 tomadas com padrão 10A', 20, 'un', 3),
+	(11, 'SSD SATA 500GB', 'SSD SATA 250GB, Leitura: 500MB/s, Gravação: 350MB/s;\r\n', 50, 'un', 3),
+	(12, 'SSD SATA 250GB', 'SSD SATA 500GB, Leitura: 500MB/s, Gravação: 350MB/s; 2.5POL', 40, 'un', 3),
+	(13, 'PEN DRIVE 32GB', 'Pen drive de 32gb de USB 3.0 com as seguintes características: Leitura:40MB/s; Gravação:10MB/s;Dimensões:60x21,2x10mm; Temperatura de Operação:0°C a 60°C; Temperatura de Armazenamento: - 20°C a 85°C; Compatibilidade Dupla:Conectividade com USB 3.0 e compatível com a versão anterior do USB 2.0; Compatibilidade:Windows 8/ 7 / Vista / XP / Mac OS X v.1', 100, 'un', 3),
+	(14, 'HD EXTERNO 1TB', 'HD externo de 1tb de porta USB 3.0 Super Speed, com as seguintes características: Cachê:64 MB; Conexões:USB 3.0; Capacidade de Armazenamento:1TB; Velocidade de Transferência de Dados:4,8GB/S; Conteúdo da Embalagem: HD Externo, Cabo USB 3.0 de 46 cm; Dimensões da embalagem - cm (AxLxP): 14,5x10x3cm;Dimensões do produto - cm (AxLxP): 11,5x8x1,5cm; Peso liq. aproximado do produto (Kg):170g; Material/Composição:Plástico; Peso da embalagem c/ produto (kg):260g', 50, 'un', 3),
+	(15, 'CARTUCHO PLOTTER', 'CARTUCHO DE TINTA HP 711 CZ133A PRETO | PLOTTER T120 T520 T130 CQ891A CQ890A CQ893A | ORIGINAL 80ML', 30, 'un', 4),
+	(16, 'IMPRESSORA BULK INK', 'Tipo de impressora Jato de tinta Cabeça de impressão Mono Piezo com 420 bocais x 1 Cor Piezo com 420 bicos x 3 Capacidade de memória 128 MB LCD (visor de cristal líquido) * 1 Ecrã LCD táctil a cores de 2,7 pol. (67,5 mm) Fonte de energia CA 100 a 120 V 50/60 Hz (Taiwan)', 30, 'un', 4),
+	(18, 'GRAMPEADOR', 'Grampeador de 20cm;\r\n', 500, 'un', 6),
+	(19, 'CANETA AZUL', 'Caneta esferográfica azul com corpo transparente;', 1200, 'un', 6);
 /*!40000 ALTER TABLE `item_pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.login_empresa_privada
@@ -438,6 +473,7 @@ INSERT INTO `login_empresa_privada` (`login`, `cnpj`, `senha`) VALUES
 	('beraldocontabil@bjpnet.com.br', '08914106000102', '123'),
 	('brendo@casaserralheiro.com.br', '12982965000106', '123'),
 	('br_tax@dell.com', '72381189000110', '123'),
+	('contabil@escritoriothomaz.com.br', '71684377000406', '123'),
 	('contabilidade@brasoftware.com.br', '57142978000458', '123'),
 	('contato@inforpro.com', '25063214000138', '123'),
 	('contato@mwmicroware.com.br', '56097645000149', '123'),
@@ -464,14 +500,14 @@ CREATE TABLE IF NOT EXISTS `login_instituicao_publica` (
   CONSTRAINT `FK_login_instituicao_publica-instituicao_publica` FOREIGN KEY (`cnpj`) REFERENCES `instituicao_publica` (`cnpj`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.login_instituicao_publica: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.login_instituicao_publica: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `login_instituicao_publica` DISABLE KEYS */;
 INSERT INTO `login_instituicao_publica` (`login`, `cnpj`, `senha`) VALUES
 	('compras@montesclaros.mg.gov.br', '22678874000135', '123'),
+	('compras@prefeituradeatibaia.com.br', '45279635000108', '123'),
 	('contabilidade@santaisabel.sp.br', '56900848000121', '123'),
 	('contato@pinhalzinho.sp.gov.br', '45623600000144', '123'),
 	('cpd@bjperdoes.sp.gov.br', '52359692000162', '123'),
-	('cpd@prefeituradeatibaia.com.br', '45279635000108', '123'),
 	('falecom@braganca.sp.gov.br', '46352746000165', '123'),
 	('nazare@nazare.sp.gov.br', '45279643000154', '123'),
 	('sac@campinas.sp.gov.br', '51885242000140', '123');
@@ -523,9 +559,9 @@ CREATE TABLE IF NOT EXISTS `notificacao_pedido` (
   CONSTRAINT `FK_notificacao_pedido_empresa_privada` FOREIGN KEY (`empresa`) REFERENCES `empresa_privada` (`cnpj`),
   CONSTRAINT `FK_notificacao_pedido_pedido` FOREIGN KEY (`pedido`) REFERENCES `pedido` (`cod`),
   CONSTRAINT `FK_notificacao_pedido_status_notificacao` FOREIGN KEY (`status`) REFERENCES `status_notificacao` (`cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.notificacao_pedido: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.notificacao_pedido: ~17 rows (aproximadamente)
 /*!40000 ALTER TABLE `notificacao_pedido` DISABLE KEYS */;
 INSERT INTO `notificacao_pedido` (`cod`, `pedido`, `empresa`, `status`) VALUES
 	(1, 1, '00258246000168', 2),
@@ -535,7 +571,15 @@ INSERT INTO `notificacao_pedido` (`cod`, `pedido`, `empresa`, `status`) VALUES
 	(5, 1, '56097645000149', 1),
 	(6, 2, '03376962000138', 1),
 	(7, 2, '05140584000114', 1),
-	(8, 2, '17750569000177', 1);
+	(8, 2, '17750569000177', 1),
+	(9, 3, '08914106000102', 1),
+	(10, 3, '10176707000107', 1),
+	(11, 3, '11340562000109', 1),
+	(12, 3, '56097645000149', 1),
+	(13, 4, '00258246000168', 1),
+	(14, 4, '04911191000102', 2),
+	(15, 4, '08914106000102', 1),
+	(16, 4, '10176707000107', 1);
 /*!40000 ALTER TABLE `notificacao_pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.pedido
@@ -559,13 +603,16 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   CONSTRAINT `FK_pedido-modo_pedido` FOREIGN KEY (`modo`) REFERENCES `modo_pedido` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_pedido-status_pedido` FOREIGN KEY (`status`) REFERENCES `status_pedido` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_pedido_endereco_instituicao_publica` FOREIGN KEY (`endereco_entrega`) REFERENCES `endereco_instituicao_publica` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.pedido: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.pedido: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `pedido` DISABLE KEYS */;
 INSERT INTO `pedido` (`cod`, `titulo`, `descricao`, `data_abertura`, `data_fechamento`, `distancia`, `status`, `modo`, `cnpj`, `endereco_entrega`) VALUES
 	(1, 'Registro de Preços de itens de informática', 'Pregão nº 076/2021 - Eletrônico - Processo Administrativo: PMC.2020.00056837-29 - Interessado: Secretaria Municipal de Educação - Objeto: Registro de Preços de itens de informática - Recebimento das Propostas dos itens 01 a 08: das 08h do dia 26/11/2', '2021-11-22 15:40:17', NULL, 100, 1, 2, '51885242000140', 13),
-	(2, 'AQUISIÇÃO DE ITENS TESTE', 'Pedido aberto para fins de teste', '2021-11-23 23:20:08', NULL, 0, 1, 1, '22678874000135', 28);
+	(2, 'AQUISIÇÃO DE ITENS TESTE', 'Pedido aberto para fins de teste', '2021-11-23 23:20:08', NULL, 0, 1, 1, '22678874000135', 28),
+	(3, 'AQUISIÇÃO DE ITENS DE INFORMÁTICA', 'COMPRA DE ITENS ESSENCIAIS DE INFORMÁTICA', '2021-11-24 23:23:23', NULL, 100, 1, 2, '52359692000162', 1),
+	(4, 'COMPRA DE NOVAS IMPRESSORAS', 'AQUISIÇÃO DE IMPRESSORAS NOVAS E PEÇAS DE REPOSIÇÃO', '2021-11-24 23:28:13', NULL, 200, 2, 1, '52359692000162', 1),
+	(6, 'AQUISIÇÃO DE MATERIAS DE ESCRITÓRIO', 'Este pedido tem como objetivo a compra dos materias de escritório descritos abaixo', '2021-11-25 20:33:05', '2021-11-25 20:43:19', 50, 2, 1, '45279635000108', 30);
 /*!40000 ALTER TABLE `pedido` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.status_cadastro
@@ -576,7 +623,7 @@ CREATE TABLE IF NOT EXISTS `status_cadastro` (
   PRIMARY KEY (`cod`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.status_cadastro: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.status_cadastro: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `status_cadastro` DISABLE KEYS */;
 INSERT INTO `status_cadastro` (`cod`, `status`, `descricao`) VALUES
 	(1, 'Solicitado', 'A solicitação foi realizada'),
@@ -595,17 +642,14 @@ CREATE TABLE IF NOT EXISTS `status_cadastro_hist` (
   KEY `FK_status_cadastro_hist-status_cadastro` (`status`),
   CONSTRAINT `FK_status_cadastro_hist-instituicao_publica` FOREIGN KEY (`cnpj`) REFERENCES `instituicao_publica` (`cnpj`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_status_cadastro_hist-status_cadastro` FOREIGN KEY (`status`) REFERENCES `status_cadastro` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.status_cadastro_hist: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.status_cadastro_hist: ~22 rows (aproximadamente)
 /*!40000 ALTER TABLE `status_cadastro_hist` DISABLE KEYS */;
 INSERT INTO `status_cadastro_hist` (`cod`, `cnpj`, `status`, `data`) VALUES
 	(1, '52359692000162', 1, '2021-09-14 22:32:29'),
 	(2, '52359692000162', 2, '2021-09-28 19:23:09'),
 	(3, '52359692000162', 3, '2021-09-28 19:27:22'),
-	(6, '45279635000108', 1, '2021-11-05 13:47:54'),
-	(7, '45279635000108', 2, '2021-11-05 13:48:50'),
-	(8, '45279635000108', 3, '2021-11-05 13:48:58'),
 	(9, '45279643000154', 1, '2021-11-12 01:02:13'),
 	(10, '45279643000154', 3, '2021-11-12 01:02:47'),
 	(11, '46352746000165', 1, '2021-11-22 10:15:48'),
@@ -622,7 +666,9 @@ INSERT INTO `status_cadastro_hist` (`cod`, `cnpj`, `status`, `data`) VALUES
 	(22, '45623600000144', 3, '2021-11-22 13:00:56'),
 	(25, '22678874000135', 1, '2021-11-23 23:08:34'),
 	(26, '22678874000135', 2, '2021-11-23 23:10:49'),
-	(27, '22678874000135', 3, '2021-11-23 23:11:21');
+	(30, '45279635000108', 1, '2021-11-25 20:27:48'),
+	(31, '45279635000108', 2, '2021-11-25 20:28:34'),
+	(32, '45279635000108', 3, '2021-11-25 20:28:47');
 /*!40000 ALTER TABLE `status_cadastro_hist` ENABLE KEYS */;
 
 -- Copiando estrutura para tabela database_portal.status_notificacao
@@ -632,7 +678,7 @@ CREATE TABLE IF NOT EXISTS `status_notificacao` (
   PRIMARY KEY (`cod`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.status_notificacao: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.status_notificacao: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `status_notificacao` DISABLE KEYS */;
 INSERT INTO `status_notificacao` (`cod`, `status`) VALUES
 	(1, 'Enviado'),
@@ -647,7 +693,7 @@ CREATE TABLE IF NOT EXISTS `status_pedido` (
   PRIMARY KEY (`cod`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
--- Copiando dados para a tabela database_portal.status_pedido: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela database_portal.status_pedido: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `status_pedido` DISABLE KEYS */;
 INSERT INTO `status_pedido` (`cod`, `status`, `desc`) VALUES
 	(1, 'Aberto', 'O pedido está disponível para receber cotações'),

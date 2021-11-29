@@ -101,5 +101,5 @@ $conteudo .= $tabelaItens;
 
 generatePDF($conteudo, $FINAL);
 $_SESSION["message"] = "Seu orçamento foi enviado com sucesso!";
-$_SESSION["href"] = "../Perfis/Pedidos/visualizarPedido.php?cod=$cod";
+$_SESSION["href"] = "../Cadastro/Privado";
 header("Location:../../scripts/redirectTo.php");

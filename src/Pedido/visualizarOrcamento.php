@@ -6,6 +6,7 @@ validarLogin("PUB");
 $connection  = require '../scripts/connectionClass.php';
 setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
 
+
 //variáveis globais
 $cnpj = $_SESSION["cnpj"];
 $codCotacao = $_GET['cod'];
@@ -13,6 +14,7 @@ $validation = false;
 $tabelaItens = "";
 
 //checka se o pedido pertence ao órgão público logado
+if(!isset($_GET['exView'])){
 $sqlConfirmaDados = "select pedido.cod from pedido
 INNER JOIN cotacoes ON pedido.cod = cotacoes.pedido
 where cotacoes.cod = $codCotacao and cnpj = $cnpj";
@@ -23,7 +25,7 @@ foreach ($connection->query($sqlConfirmaDados) as $key => $value) {
 if (!$validation) {
     header("Location:meusPedidos.php");
 }
-
+}
 //executa a consulta de dados básicos do pedido
 $sql = "SELECT empresa_privada.razao_social, cotacoes.last_update, cotacoes.observacao, pedido.titulo, pedido.cod, empresa_privada.cnpj
 FROM cotacoes

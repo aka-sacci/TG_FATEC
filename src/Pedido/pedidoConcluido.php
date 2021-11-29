@@ -45,7 +45,9 @@
                     ?>
                 </p><hr>
                 <p>Clique <?php echo "<a href='visualisarMeuPedido.php?cod=$pedidoId'><b>aqui</b></a>"; ?> para visualizar o pedido completo.</p>                     
-            </div><br><br><br><br><br><br>
+            </div>
+            <a class="btn btn-md buttoncad" href="../Cadastro/Publico">Voltar ao menu</a>
+            <br><br><br><br><br><br>
             <hr class="featurette-divider">
             <!-- footer da página -->
             <footer>

@@ -120,7 +120,7 @@ foreach ($connection->query($sql) as $key => $value) {
                     ?>
                     
             <hr></br>
-                <button class="btn btn-md buttoncad" onclick="goBack()">Concluir Alterações</button></br></br></br></br>
+                <a href="../" class="btn btn-md buttoncad">Concluir Alterações</a></br></br></br></br>
             <hr class="featurette-divider">
             <!-- footer da página -->
             <footer>

@@ -147,7 +147,7 @@ $sqlAnexos = "select * from anexos_pedido where pedido = $cod";
              WHERE pedido.cod=$cod
              GROUP BY empresa_privada.cnpj";
             foreach ($connection->query($sqlCotacoes) as $key => $value) {
-                echo  "<p><a href='../../Pedido/visualizarOrcamento.php?cod=" . $value['cod'] .  "'>" . $value['razao_social'] . " (" . $value['COUNT(cotacoes_itens.cod)'] . " Itens)</a></p>";
+                echo  "<p><a href='../../Pedido/visualizarOrcamento.php?cod=" . $value['cod'] .  "&exView=true'>" . $value['razao_social'] . " (" . $value['COUNT(cotacoes_itens.cod)'] . " Itens)</a></p>";
             }
             ?>
             <!-- footer da página --></br></br></br>
